@@ -3,6 +3,15 @@
 
 Volt.configure do |config|
   # Setup your global app config here.
+  config.db_driver = 'mongo'
+  config.db_name = (config.app_name + '_' + Volt.env.to_s)
+
+  if ENV['MONGOLAB_URI'].present?
+    config.db_uri = ENV['MONGOLAB_URI']
+  else
+    config.db_host = 'localhost'
+    config.db_port = 27017
+  end
 
   #######################################
   # Basic App Info (stuff you should set)
@@ -112,9 +121,9 @@ Volt.configure do |config|
   #
   # Encrypt message bus - messages on the message bus are encrypted by default
   # using rbnacl.
-  
+
   # config.message_bus.disable_encryption = true
-  
+
   #
   # ## MessageBus Server -- the message bus binds to a port and ip which the
   # other volt instances need to be able to connect to.  You can customize
