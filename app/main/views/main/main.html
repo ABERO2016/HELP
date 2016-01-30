@@ -2,19 +2,90 @@
   {{ view main_path, "title", {controller_group: 'main'} }}
 
 <:Body>
-  <div class="container">
-    <div class="header">
-      <ul class="nav nav-pills pull-right">
-        <:nav href="/">Home</:nav>
+  <div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">HELP</a>
+      </div>
+      <ul class="nav navbar-top-links navbar-right">
         <:nav href="/about">About</:nav>
         <:user_templates:menu />
       </ul>
-      <h3 class="text-muted">HELP</h3>
-    </div>
+    </nav>
+
+    <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="ui-elements.html"><i class="fa fa-desktop"></i> UI Elements</a>
+                    </li>
+					<li>
+                        <a href="chart.html"><i class="fa fa-bar-chart-o"></i> Charts</a>
+                    </li>
+                    <li>
+                        <a href="tab-panel.html"><i class="fa fa-qrcode"></i> Tabs &amp; Panels</a>
+                    </li>
+
+                    <li>
+                        <a href="table.html"><i class="fa fa-table"></i> Responsive Tables</a>
+                    </li>
+                    <li>
+                        <a href="form.html" class="active-menu"><i class="fa fa-edit"></i> Forms </a>
+                    </li>
+
+
+                    <li class="">
+                        <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse" style="height: 0px;">
+                            <li>
+                                <a href="#">Second Level Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Second Level Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level collapse">
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="empty.html"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
 
     <:volt:notices />
+    <div id="page-wrapper">
 
     {{ view main_path, 'body', {controller_group: 'main'} }}
+
+    </div>
 
     <div class="footer">
       <p>&copy; Company {{ Time.now.year }}</p>
@@ -26,4 +97,3 @@
   <li class="{{ if active_tab? }}active{{ end }}">
     <a href="{{ attrs.href }}">{{ yield }}</a>
   </li>
-
