@@ -9,3 +9,5 @@
 #
 # # provides templates for login, signup, and logout
 component 'user_templates'
+
+component 'survey'
