@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.2.2"
+ruby "2.2.3"
 
 gem 'volt', '0.9.6'
 
