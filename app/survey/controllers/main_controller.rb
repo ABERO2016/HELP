@@ -1,6 +1,7 @@
 module Survey
   class MainController < Volt::ModelController
     before_action :require_login
+    model :store
 
     def index
       # Add code for when the index view is loaded
