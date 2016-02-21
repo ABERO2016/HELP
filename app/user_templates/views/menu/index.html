@@ -1,0 +1,27 @@
+<:Body>
+  {{ if Volt.current_user }}
+    <li class="dropdown" style="float: right;">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <span class="glyphicon glyphicon-user"></span>
+        {{ show_name }}
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="/account"><span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span> Account</a>
+        </li>
+        <li>
+          <a href=""><span class="glyphicon glyphicon-folder-open" style="margin-right: 10px;"></span>Settings</a>
+        </li>
+        <li class="divider"></li>
+        <li><a e-click="logout"><span class="fa fa-fw fa-power-off" style="margin-right: 5px;"></span>Logout</a></li>
+      </ul>
+    </li>
+  {{ else }}
+    <li class="{{ if is_active? }}active{{ end }}" style="float: right;">
+      <a href="/login">
+        <span class="glyphicon glyphicon-log-in"></span>
+        Login
+      </a>
+    </li>
+  {{ end }}
