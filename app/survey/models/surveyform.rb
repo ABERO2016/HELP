@@ -1,12 +1,5 @@
 class SurveyForm < Volt::Model
-  field :smu_id
-  field :full_name, String
-  field :pref_name, String
-  field :smumail, String
-  field :date
-  field :curr_year
-  field :major, String
-  field :other_major, String, allow_nil: true
+  belongs_to :user
 
   # knowing how to reach goals
   field :q9_0, Numeric
@@ -102,6 +95,4 @@ class SurveyForm < Volt::Model
   field :q22_3, Numeric
   field :q22_4, Numeric
 
-  validate :smu_id, length: 8
-  validate :smumail, email
 end
