@@ -1,0 +1,67 @@
+<:Title>
+  Signup
+
+<:Body>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        HELP
+        <small>Sign Up</small>
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="span4 offset4 well">
+        <form e-submit="signup">
+          <div class="row">
+            <legend>Contact Information</legend>
+            <div class="col-md-6">
+              <:fields:text value="{{ _first_name }}" label="First Name *" />
+            </div>
+            <div class="col-md-6">
+              <:fields:text value="{{ _last_name }}" label="Last Name *" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <:fields:text value="{{ _prefered_name }}" label="Prefered Name" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <:fields:select value="{{ _major }}" label="Major *" options="{{ User::MAJORS_OPTIONS }}"/>
+            </div>
+            <div class="col-md-6">
+              <:fields:text value="{{ _graduation_year }}" label="Graduation Year *" />
+            </div>
+          </div>
+          <div class="row">
+            <legend>Account Information</legend>
+            <div class="col-md-6">
+              {{ if use_username? }}
+                <:fields:text value="{{ _username }}" />
+              {{ else }}
+                <:fields:text value="{{ _email }}" label="Email *"/>
+              {{ end }}
+            </div>
+            <div class="col-md-6">
+              <:fields:text value="{{ _smu_id }}" label="SMU ID *" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <:fields:text type="password" value="{{ _password }}" label="Password *"/>
+            </div>
+          </div>
+          <br>
+          <hr />
+          <button class="btn btn-info btn-block">Signup</button>
+          <a class="btn btn-default btn-block" href="/">Cancel</a>
+          <hr />
+          Already have an account? <a href="/login">Login here</a>
+
+        </form>
+      </div>
+    </div>
+  </div>

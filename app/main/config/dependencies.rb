@@ -11,3 +11,5 @@
 component 'user_templates'
 
 component 'survey'
+
+component 'datepicker'

@@ -1,0 +1,23 @@
+module UserTemplates
+  class MenuController < Volt::ModelController
+    def show_name
+      Volt.current_user.then do |user|
+        # Make sure there is a user
+        if user
+          user.name || user._email || user._username
+        else
+          ''
+        end
+      end
+    end
+
+    def is_active?
+      url.path.split('/')[1] == 'login'
+    end
+
+    def logout
+      Volt.logout
+      redirect_to "/"
+    end
+  end
+end

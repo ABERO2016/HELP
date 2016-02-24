@@ -1,0 +1,38 @@
+<:Title>
+  Your Account
+
+<:Body>
+  <br><br>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="span4 offset4 well">
+        <legend>Basic Info</legend>
+
+        <form e-submit="save">
+          <:fields:text value="{{ _first_name }}" />
+          <:fields:text value="{{ _last_name }}" />
+          <:fields:text value="{{ _prefered_name }}" />
+          <:fields:text value="{{ _smu_id }}" label="SMU ID"/>
+          <:fields:select value="{{ _major }}" label="Major " options="{{ User::MAJORS_OPTIONS }}"/>
+          <br />
+          <legend>Contact Info</legend>
+          <:fields:text value="{{ _email }}"  />
+          <:fields:text value="{{ _graduation_year }}"   />
+          <button class="btn btn-info btn-block">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+      <div class="span4 offset4 well">
+        <legend>Update Password</legend>
+        <form e-submit="save">
+          <:fields:text type="password" value="{{ _password }}" />
+          <button class="btn btn-info btn-block">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>

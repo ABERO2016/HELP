@@ -17,6 +17,7 @@ gem 'volt-bootstrap_jumbotron_theme', '~> 0.1.0'
 # User templates for login, signup, and logout menu.
 gem 'volt-user_templates', '~> 0.4.0'
 gem 'volt-fields'
+gem 'volt-datepicker'
 
 # Add ability to send e-mail from apps.
 gem 'volt-mailer', '~> 0.1.1'
