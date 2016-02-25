@@ -3,7 +3,7 @@
 
 <:Body>
   <div id="wrapper">
-    <nav class="navbar navbar-default top-navbar" role="navigation">
+    <nav class="navbar navbar-default top-navbar" id="nav_bar" role="navigation">
       <div class="navbar-header">
         {{ if Volt.current_user }}
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -22,11 +22,11 @@
     </nav>
 
     {{ if Volt.current_user }}
-    <nav class="navbar-default navbar-side" role="navigation">
+    <nav class="navbar-default navbar-side" id="side_bar" role="navigation">
       <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
-          <:nav href="/about">Link</:nav>
-          <:nav href="/">Link 2</:nav>
+          <:nav href="/">Dashboard</:nav>
+          <:nav href="/survey">Take Survey</:nav>
         </ul>
       </div>
     </nav>
