@@ -3,8 +3,9 @@
 class User < Volt::User
   # login_field is set to :email by default and can be changed to :username
   # in config/app.rb
+  ROLES = ['Student', 'Admin']
   MAJORS_OPTIONS = ['', 'Civil Engineering', 'Computer Engineering', 'Computer Science', 'Electrical Engineering', 'Engineering', 'Engineering Management Information Systems', 'Environmental Engineering','Management Science', 'Mechanical Engineering', 'Other']
-  MAJORS = ['Civil Engineering', 'Computer Engineering', 'Computer Science', 'Electrical Engineering', 'Engineering', 'Engineering Management Information Systems', 'Environmental Engineering','Management Science', 'Mechanical Engineering' 'Other']
+  MAJORS = ['Civil Engineering', 'Computer Engineering', 'Computer Science', 'Electrical Engineering', 'Engineering', 'Engineering Management Information Systems', 'Environmental Engineering','Management Science', 'Mechanical Engineering', 'Other']
 
   field login_field
   field :first_name
@@ -15,6 +16,7 @@ class User < Volt::User
   field :graduation_year
   field :major, String
   field :other_major, String
+  field :role
 
   #Validations
   validate login_field, unique: true, length: 8, presence: true
@@ -23,10 +25,15 @@ class User < Volt::User
   validate :major, format: { with: -> (major) { MAJORS.include?(major) }, message: "must be one of #{MAJORS.join(', ')}" }
   validate :first_name, presence: true
   validate :last_name, presence: true
+  validate :role, format: { with: -> (role) { ROLES.include?(role) }, message: "must be one of #{ROLES.join(', ')}" }
 
   def name
     name_missing = [first_name, last_name].compact.empty?
     name_missing ? email : "#{first_name} #{last_name}"
+  end
+
+  def admin?
+    role == 'Admin'
   end
 
 

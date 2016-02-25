@@ -8,7 +8,7 @@ module UserTemplates
       # Get login and password to login
       login = model.send(:"_#{User.login_field}")
       password = model._password
-      model.last_login = Time.now
+      model._last_login = Time.now
       save!.then do |result|
         flash._notices << "Signup successful"
 
