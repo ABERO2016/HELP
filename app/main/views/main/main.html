@@ -27,6 +27,9 @@
         <ul class="nav" id="main-menu">
           <:nav href="/">Dashboard</:nav>
           <:nav href="/survey">Take Survey</:nav>
+          {{ if Volt.current_user.admin? }}
+            <:nav href="/users">Users</:nav>
+          {{ end }}
         </ul>
       </div>
     </nav>

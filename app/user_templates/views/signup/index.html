@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
               <:fields:text value="{{ _prefered_name }}" label="Prefered Name" />
             </div>
           </div>
@@ -50,8 +50,11 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
               <:fields:text type="password" value="{{ _password }}" label="Password *"/>
+            </div>
+            <div class="col-lg-6">
+              <:fields:select value="{{ _role }}" options="{{ ['User', 'Admin']}}"/>
             </div>
           </div>
           <br>
