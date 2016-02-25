@@ -2,15 +2,173 @@
   Survey
 
 <:Body>
-  <div id="page-inner">
-    <div class="row">
-  <div class="col-md-12">
-    <h1 class="page-header">
-      Forms Page
-      <small>Best form elements.</small>
-    </h1>
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="page-header">
+        Hart Leadership Assessment
+        <small>{{ Time.now.year }}</small>
+      </h1>
+    </div>
   </div>
-</div>
-
-
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p>
+            As a student in the Boby B. Lyle School of Engineering, you will receive a world-class education in engineering and computer science. You will learn technical theory, technical skills, as well as necessary teamwork and leadership skills needed to apply
+            this knowledge. The Hart Leadership Assessment (HLA) will help you identify your leadership strengths and growth areas. It should take approximately 20-25 minutes minutes to complete. On August 19, after you have settled in to your residence hall, the
+            Hart Center for Engineering Leadership will distribute your personalized report based on your responses. Equipped with these results, and with the ongoing assistance of the Hart Center for Engineering Leadership, we encourage you to find meaningful ways
+            to engage at SMU.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          Using the scale below, click the option that best describes the extent to which you agree or disagree with each statement.
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+          <table class="table" >
+            <tbody>
+              <tr>
+                <th>Statement</th>
+                <th>Definitely <br>Disagree</th>
+                <th>Mostly <br>Disagree</th>
+                <th>Somewhat <br>Disagree</th>
+                <th>Somewhat <br>Agree</th>
+                <th>Mostly <br>Agree</th>
+                <th>Definitely <br>Agree</th>
+              </tr>
+              <tr>
+                <td>I know what I need to do to get started toward reaching my goals.</td>
+                <td>
+                  <input type="radio" name="griditem1" value="1">
+                </td>
+                <td>
+                  <input type="radio" name="griditem1" value="2">
+                </td>
+                <td>
+                  <input type="radio" name="griditem1" value="3">
+                </td>
+                <td>
+                  <input type="radio" name="griditem1" value="4">
+                </td>
+                <td>
+                  <input type="radio" name="griditem1" value="5">
+                </td>
+                <td>
+                  <input type="radio" name="griditem1" value="6">
+                </td>
+              </tr>
+              <tr>
+                <td class="griditem">I have a specific action plan to help me reach my goals.</td>
+                <td>
+                  <input type="radio" name="griditem2" value="1">
+                </td>
+                <td>
+                  <input type="radio" name="griditem2" value="2">
+                </td>
+                <td>
+                  <input type="radio" name="griditem2" value="3">
+                </td>
+                <td>
+                  <input type="radio" name="griditem2" value="4">
+                </td>
+                <td>
+                  <input type="radio" name="griditem2" value="5">
+                </td>
+                <td>
+                  <input type="radio" name="griditem2" value="6">
+                </td>
+              </tr>
+              <tr>
+                <td class="griditem">If I want to change something in my life, I initiate the transition process.</td>
+                <td>
+                  <input type="radio" name="griditem3" value="1">
+                </td>
+                <td>
+                  <input type="radio" name="griditem3" value="2">
+                </td>
+                <td>
+                  <input type="radio" name="griditem3" value="3">
+                </td>
+                <td>
+                  <input type="radio" name="griditem3" value="4">
+                </td>
+                <td>
+                  <input type="radio" name="griditem3" value="5">
+                </td>
+                <td>
+                  <input type="radio" name="griditem3" value="6">
+                </td>
+              </tr>
+              <tr>
+                <td class="griditem">I know how to change specific things that I want to change in my life.</td>
+                <td>
+                  <input type="radio" name="griditem4" value="1">
+                </td>
+                <td>
+                  <input type="radio" name="griditem4" value="2">
+                </td>
+                <td>
+                  <input type="radio" name="griditem4" value="3">
+                </td>
+                <td>
+                  <input type="radio" name="griditem4" value="4">
+                </td>
+                <td>
+                  <input type="radio" name="griditem4" value="5">
+                </td>
+                <td>
+                  <input type="radio" name="griditem4" value="6">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          Using the scale below, click the option that best describes the extent to which you agree or disagree with each statement.
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Question</th>
+                          <th>Definitely <br />Disagree</th>
+                          <th>Mostly <br />Disagree</th>
+                          <th>Somewhat <br>Disagree</th>
+                          <th>
+                            Somewhat <br> Agree
+                          </th>
+                          <th>
+                            Mostly <br /> Agree
+                          </th>
+                          <th>
+                            Definitely <br>Agree
+                          </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>I know how to change specific things that I want to change in my life.</td>
+                            <:fields:radio:inline value="{{ model.active }}" options="{{[{label: 'Definitely Disagree', value: '1'},{label:'Strongly Disagree', value: '2'},{label: 'Somewhat Disagree', value: '3'},{label:'Somewhat Agree', value: '4'},{label: 'Strongly Agree', value: '5'},{label:'Definitely Agree', value: '6'}]}}"/>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
