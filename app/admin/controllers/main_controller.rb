@@ -16,5 +16,10 @@ module Admin
     def main_path
       "#{params._component || 'main'}/#{params._controller || 'main'}/#{params._action || 'index'}"
     end
+    def allow_access
+      
+    end
+
+
   end
 end
