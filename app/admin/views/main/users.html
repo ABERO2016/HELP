@@ -14,10 +14,36 @@
   <div class="col-md-12">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        Users
       </div>
       <div class="panel-body">
-        Table goes here
+        {{ if Volt.current_user.admin?}}
+        <div class = "table-responsive">
+          <table class = "table">
+            <tbody>
+              <tr>
+                <th>Users</th>
+                <th>Allow Users Access to Survey</th>
+              </tr>
+
+            {{ store._users.each do |user|}}
+            <tr>
+            <td>
+              {{user._first_name}} {{user._last_name}}
+            </td>
+            <td>
+              <button onclick= "{{ allow_access() }}"> Grant {{user._first_name}} access </button>
+            </td>
+
+            </tr>
+            {{end}}
+
+          </tbody>
+          </table>
+          </div>
+      </div>
+        {{ else }}
+          <p> Please log in as Admin to access this page.</p>
+        {{ end }}
       </div>
     </div>
   </div>
