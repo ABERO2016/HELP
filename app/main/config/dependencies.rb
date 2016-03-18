@@ -12,6 +12,4 @@ component 'user_templates'
 component 'admin'
 component 'survey'
 component 'datepicker'
-component 'highcharts'
-component 'table'
 component "pagination"
