@@ -6,6 +6,7 @@ class User < Volt::User
   ROLES = ['Student', 'Admin']
   MAJORS_OPTIONS = ['', 'Civil Engineering', 'Computer Engineering', 'Computer Science', 'Electrical Engineering', 'Engineering', 'Engineering Management Information Systems', 'Environmental Engineering','Management Science', 'Mechanical Engineering', 'Other']
   MAJORS = ['Civil Engineering', 'Computer Engineering', 'Computer Science', 'Electrical Engineering', 'Engineering', 'Engineering Management Information Systems', 'Environmental Engineering','Management Science', 'Mechanical Engineering', 'Other']
+  SURVEY_STATUS = ['not taken', 'in progress', 'taken']
 
   field login_field
   field :first_name
@@ -17,6 +18,7 @@ class User < Volt::User
   field :major, String
   field :other_major, String
   field :role
+  field :survey_status
 
   #Validations
   validate login_field, unique: true, length: 8, presence: true
@@ -26,6 +28,7 @@ class User < Volt::User
   validate :first_name, presence: true
   validate :last_name, presence: true
   validate :role, format: { with: -> (role) { ROLES.include?(role) }, message: "must be one of #{ROLES.join(', ')}" }
+  validate :survey_status, format: { with: -> (role) { SURVEY_STATUS.include?(role) }, message: "must be one of #{SURVEY_STATUS.join(', ')}" }
 
   def name
     name_missing = [first_name, last_name].compact.empty?
@@ -34,6 +37,14 @@ class User < Volt::User
 
   def admin?
     role == 'Admin'
+  end
+
+  def survey_taken?
+    if survey_status == 'taken'
+      true
+    else
+      false
+    end
   end
 
 

@@ -26,7 +26,11 @@
       <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
           <:nav href="/">Dashboard</:nav>
+          {{ if in_progress? }}
           <:nav href="/survey">Take Survey</:nav>
+          {{ elsif taken? }}
+          <:nav href="/results">View Survey Results</:nav>
+          {{ end }}
           {{ if Volt.current_user.admin? }}
             <:nav href="/users">Users</:nav>
           {{ end }}

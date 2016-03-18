@@ -3,6 +3,8 @@
 
 # To include code only on the client use:
 # if RUBY_PLATFORM == 'opal'
+#   require 'native'
+# end
 #
 # To include code only on the server, use:
 # unless RUBY_PLATFORM == 'opal'

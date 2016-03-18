@@ -24,6 +24,7 @@
       </div>
     </div>
   </div>
+  <form e-submit="save_survey">
   <div class="row">
     <div class="col-lg-12">
       <div class="panel panel-info">
@@ -45,87 +46,39 @@
               </tr>
               <tr>
                 <td>I know what I need to do to get started toward reaching my goals.</td>
-                <td>
-                  <input type="radio" name="griditem1" value="1">
-                </td>
-                <td>
-                  <input type="radio" name="griditem1" value="2">
-                </td>
-                <td>
-                  <input type="radio" name="griditem1" value="3">
-                </td>
-                <td>
-                  <input type="radio" name="griditem1" value="4">
-                </td>
-                <td>
-                  <input type="radio" name="griditem1" value="5">
-                </td>
-                <td>
-                  <input type="radio" name="griditem1" value="6">
-                </td>
+                <td><input e-click="model._q9_0 = 1" type="radio" name="griditem1" ></td>
+                <td><input e-click="model._q9_0 = 2" type="radio" name="griditem1" ></td>
+                <td><input e-click="model._q9_0 = 3" type="radio" name="griditem1" ></td>
+                <td><input e-click="model._q9_0 = 4" type="radio" name="griditem1" ></td>
+                <td><input e-click="model._q9_0 = 5" type="radio" name="griditem1" ></td>
+                <td><input e-click="model._q9_0 = 6" type="radio" name="griditem1" ></td>
               </tr>
               <tr>
                 <td class="griditem">I have a specific action plan to help me reach my goals.</td>
-                <td>
-                  <input type="radio" name="griditem2" value="1">
-                </td>
-                <td>
-                  <input type="radio" name="griditem2" value="2">
-                </td>
-                <td>
-                  <input type="radio" name="griditem2" value="3">
-                </td>
-                <td>
-                  <input type="radio" name="griditem2" value="4">
-                </td>
-                <td>
-                  <input type="radio" name="griditem2" value="5">
-                </td>
-                <td>
-                  <input type="radio" name="griditem2" value="6">
-                </td>
+                <td><input e-click="model._q9_1 = 1" type="radio" name="griditem2" ></td>
+                <td><input e-click="model._q9_1 = 2" type="radio" name="griditem2" ></td>
+                <td><input e-click="model._q9_1 = 3" type="radio" name="griditem2" ></td>
+                <td><input e-click="model._q9_1 = 4" type="radio" name="griditem2" ></td>
+                <td><input e-click="model._q9_1 = 5" type="radio" name="griditem2" ></td>
+                <td><input e-click="model._q9_1 = 6" type="radio" name="griditem2" ></td>
               </tr>
               <tr>
                 <td class="griditem">If I want to change something in my life, I initiate the transition process.</td>
-                <td>
-                  <input type="radio" name="griditem3" value="1">
-                </td>
-                <td>
-                  <input type="radio" name="griditem3" value="2">
-                </td>
-                <td>
-                  <input type="radio" name="griditem3" value="3">
-                </td>
-                <td>
-                  <input type="radio" name="griditem3" value="4">
-                </td>
-                <td>
-                  <input type="radio" name="griditem3" value="5">
-                </td>
-                <td>
-                  <input type="radio" name="griditem3" value="6">
-                </td>
+                <td><input e-click="model._q9_2 = 1" type="radio" name="griditem3" ></td>
+                <td><input e-click="model._q9_2 = 2" type="radio" name="griditem3" ></td>
+                <td><input e-click="model._q9_2 = 3" type="radio" name="griditem3" ></td>
+                <td><input e-click="model._q9_2 = 4" type="radio" name="griditem3" ></td>
+                <td><input e-click="model._q9_2 = 5" type="radio" name="griditem3" ></td>
+                <td><input e-click="model._q9_2 = 6" type="radio" name="griditem3" ></td>
               </tr>
               <tr>
                 <td class="griditem">I know how to change specific things that I want to change in my life.</td>
-                <td>
-                  <input type="radio" name="griditem4" value="1">
-                </td>
-                <td>
-                  <input type="radio" name="griditem4" value="2">
-                </td>
-                <td>
-                  <input type="radio" name="griditem4" value="3">
-                </td>
-                <td>
-                  <input type="radio" name="griditem4" value="4">
-                </td>
-                <td>
-                  <input type="radio" name="griditem4" value="5">
-                </td>
-                <td>
-                  <input type="radio" name="griditem4" value="6">
-                </td>
+                <td><input e-click="model._q9_3 = 1" type="radio" name="griditem4" ></td>
+                <td><input e-click="model._q9_3 = 2" type="radio" name="griditem4" ></td>
+                <td><input e-click="model._q9_3 = 3" type="radio" name="griditem4" ></td>
+                <td><input e-click="model._q9_3 = 4" type="radio" name="griditem4" ></td>
+                <td><input e-click="model._q9_3 = 5" type="radio" name="griditem4" ></td>
+                <td><input e-click="model._q9_3 = 6" type="radio" name="griditem4" ></td>
               </tr>
             </tbody>
           </table>
@@ -149,21 +102,56 @@
                           <th>Definitely <br />Disagree</th>
                           <th>Mostly <br />Disagree</th>
                           <th>Somewhat <br>Disagree</th>
-                          <th>
-                            Somewhat <br> Agree
-                          </th>
-                          <th>
-                            Mostly <br /> Agree
-                          </th>
-                          <th>
-                            Definitely <br>Agree
-                          </th>
+                          <th>Somewhat <br> Agree</th>
+                          <th>Mostly <br /> Agree</th>
+                          <th>Definitely <br>Agree</th>
                       </tr>
                   </thead>
                   <tbody>
                       <tr>
                           <td>I know how to change specific things that I want to change in my life.</td>
-                            <:fields:radio:inline value="{{ model.active }}" options="{{[{label: 'Definitely Disagree', value: '1'},{label:'Strongly Disagree', value: '2'},{label: 'Somewhat Disagree', value: '3'},{label:'Somewhat Agree', value: '4'},{label: 'Strongly Agree', value: '5'},{label:'Definitely Agree', value: '6'}]}}"/>
+                          <td><input e-click="model._q10_0 = 1" type="radio" name="griditem5" ></td>
+                          <td><input e-click="model._q10_0 = 2" type="radio" name="griditem5" ></td>
+                          <td><input e-click="model._q10_0 = 3" type="radio" name="griditem5" ></td>
+                          <td><input e-click="model._q10_0 = 4" type="radio" name="griditem5" ></td>
+                          <td><input e-click="model._q10_0 = 5" type="radio" name="griditem5" ></td>
+                          <td><input e-click="model._q10_0 = 6" type="radio" name="griditem5" ></td>
+                      </tr>
+                      <tr>
+                          <td>I feel adequately prepared to manage the rigors of an engineering education.</td>
+                          <td><input e-click="model._q10_1 = 1" type="radio" name="griditem6" ></td>
+                          <td><input e-click="model._q10_1 = 2" type="radio" name="griditem6" ></td>
+                          <td><input e-click="model._q10_1 = 3" type="radio" name="griditem6" ></td>
+                          <td><input e-click="model._q10_1 = 4" type="radio" name="griditem6" ></td>
+                          <td><input e-click="model._q10_1 = 5" type="radio" name="griditem6" ></td>
+                          <td><input e-click="model._q10_1 = 6" type="radio" name="griditem6" ></td>
+                      </tr>
+                      <tr>
+                          <td>I see myself being engaged in one or more student groups during my first year of college.</td>
+                          <td><input e-click="model._q10_2 = 1" type="radio" name="griditem7" ></td>
+                          <td><input e-click="model._q10_2 = 2" type="radio" name="griditem7" ></td>
+                          <td><input e-click="model._q10_2 = 3" type="radio" name="griditem7" ></td>
+                          <td><input e-click="model._q10_2 = 4" type="radio" name="griditem7" ></td>
+                          <td><input e-click="model._q10_2 = 5" type="radio" name="griditem7" ></td>
+                          <td><input e-click="model._q10_2 = 6" type="radio" name="griditem7" ></td>
+                      </tr>
+                      <tr>
+                          <td>I see myself taking on leadership roles in college.</td>
+                          <td><input e-click="model._q10_3 = 1" type="radio" name="griditem8" ></td>
+                          <td><input e-click="model._q10_3 = 2" type="radio" name="griditem8" ></td>
+                          <td><input e-click="model._q10_3 = 3" type="radio" name="griditem8" ></td>
+                          <td><input e-click="model._q10_3 = 4" type="radio" name="griditem8" ></td>
+                          <td><input e-click="model._q10_3 = 5" type="radio" name="griditem8" ></td>
+                          <td><input e-click="model._q10_3 = 6" type="radio" name="griditem8" ></td>
+                      </tr>
+                      <tr>
+                          <td>I am usually one of the first to take on leadership responsibilities within a group or team.</td>
+                          <td><input e-click="model._q10_4 = 1" type="radio" name="griditem9" ></td>
+                          <td><input e-click="model._q10_4 = 2" type="radio" name="griditem9" ></td>
+                          <td><input e-click="model._q10_4 = 3" type="radio" name="griditem9" ></td>
+                          <td><input e-click="model._q10_4 = 4" type="radio" name="griditem9" ></td>
+                          <td><input e-click="model._q10_4 = 5" type="radio" name="griditem9" ></td>
+                          <td><input e-click="model._q10_4 = 6" type="radio" name="griditem9" ></td>
                       </tr>
                   </tbody>
               </table>
@@ -172,3 +160,548 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          Take a moment to think about leaders whom you personally know. These people could be mentors, bosses, coaches, teachers, parents, peers, siblings...the specific role or relationship to you is not important.
+        </div>
+        <div class="panel-body">
+          <ol>
+            <li>Out of all of the leaders you know, choose one person you believe to be a "Good Leader" and write this person's first name and last initial in the "Good Leader" blank below.
+              <:fields:text value="{{ model._good_leader }}" label="Good Leader"/>
+            </li>
+            <li>Out of all he people you know, choose one person you believe to be a "Poor Leader" and write this person's first name and last initial in the "Poor Leader" blank below.
+              <:fields:text value="{{ model._bad_leader }}" label="Bad Leader"/>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p>
+            For the remainder of this survey, you will be presented with several series of leadership statements. For each series, indicate how well these statements describe the leaders mentioned above, and yourself.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title">Self Awareness</h2>
+
+        </div>
+        <div class="panel-body">
+          <p>Working your way down each column, type a number ranging from 1-4 for each statement: <br><b>4 = Definitely Descriptive, 3 = Descriptive, 2 = Not Descriptive, 1 = Not Descriptive</b></p>
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Question</th>
+                          <th>Good Leader</th>
+                          <th>Bad Leader</th>
+                          <th>Self</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>Candid Self - Appraisal: Aware of personal strengths and shortcomings.</td>
+                        <:questions q1="{{ model._q12_0_a }}" q2="{{ model._q12_0_b }}" q3="{{ model._q12_0_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Self Management: Avoids spreading self too thin.</td>
+                        <:questions q1="{{ model._q12_1_a }}" q2="{{ model._q12_1_b }}" q3="{{ model._q12_1_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Self - disciplined: Stays on task even under difficult circumstances.</td>
+                        <:questions q1="{{ model._q12_2_a }}" q2="{{ model._q12_2_b }}" q3="{{ model._q12_2_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Optimistic: Believes most problems can be solved.</td>
+                        <:questions q1="{{ model._q12_3_a }}" q2="{{ model._q12_3_b }}" q3="{{ model._q12_3_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Open to Feedback: Willing to receive constructive feedback.</td>
+                        <:questions q1="{{ model._q12_4_a }}" q2="{{ model._q12_4_b }}" q3="{{ model._q12_4_c }}" />
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title">Intentional Learner</h2>
+
+        </div>
+        <div class="panel-body">
+          <p>Working your way down each column, type a number ranging from 1-4 for each statement: <br><b>4 = Definitely Descriptive, 3 = Descriptive, 2 = Not Descriptive, 1 = Not Descriptive</b></p>
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Question</th>
+                          <th>Good Leader</th>
+                          <th>Bad Leader</th>
+                          <th>Self</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>Improves Performance: Improves Performance over time.</td>
+                        <:questions q1="{{ model._q13_0_a }}" q2="{{ model._q13_0_b }}" q3="{{ model._q13_0_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Willing to Stretch: Addresses challenges outside of personal comfort zone.	</td>
+                        <:questions q1="{{ model._q13_1_a }}" q2="{{ model._q13_1_b }}" q3="{{ model._q13_1_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Reflective Learner: Reflects on and learns from experiences.	</td>
+                        <:questions q1="{{ model._q13_2_a }}" q2="{{ model._q13_2_b }}" q3="{{ model._q13_2_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Grows from Adversity: Learns from mistakes or adversity.	</td>
+                        <:questions q1="{{ model._q13_3_a }}" q2="{{ model._q13_3_b }}" q3="{{ model._q13_3_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Seeks Feedback: Asks for honest feedback about personal performance.	</td>
+                        <:questions q1="{{ model._q13_4_a }}" q2="{{ model._q13_4_b }}" q3="{{ model._q13_4_c }}" />
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title">Relationship Development</h2>
+        </div>
+        <div class="panel-body">
+          <p>Working your way down each column, type a number ranging from 1-4 for each statement: <br><b>4 = Definitely Descriptive, 3 = Descriptive, 2 = Not Descriptive, 1 = Not Descriptive</b></p>
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Question</th>
+                          <th>Good Leader</th>
+                          <th>Bad Leader</th>
+                          <th>Self</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>Inclusive: Welcomes and includes all kinds of people.	</td>
+                        <:questions q1="{{ model._q14_0_a }}" q2="{{ model._q14_0_b }}" q3="{{ model._q14_0_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Empathetic: Puts self in others' shoes; deeply considers others' point-of-view.	</td>
+                        <:questions q1="{{ model._q14_1_a }}" q2="{{ model._q14_1_b }}" q3="{{ model._q14_1_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Mends Fences: Can bring people back together after disagreements.	</td>
+                        <:questions q1="{{ model._q14_2_a }}" q2="{{ model._q14_2_b }}" q3="{{ model._q14_2_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Seeks Common Ground: Strives to find common ground whenever possible.	</td>
+                        <:questions q1="{{ model._q14_3_a }}" q2="{{ model._q14_3_b }}" q3="{{ model._q14_3_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Transparent: Encourages direct and open discussions about important issues.	</td>
+                        <:questions q1="{{ model._q14_4_a }}" q2="{{ model._q14_4_b }}" q3="{{ model._q14_4_c }}" />
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title">Diversity and Difference</h2>
+        </div>
+        <div class="panel-body">
+          <p>Working your way down each column, type a number ranging from 1-4 for each statement: <br><b>4 = Definitely Descriptive, 3 = Descriptive, 2 = Not Descriptive, 1 = Not Descriptive</b></p>
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Question</th>
+                          <th>Good Leader</th>
+                          <th>Bad Leader</th>
+                          <th>Self</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>Student of People: Seeks opportunities to learn about different types of people (e.g., races, nationalities, cultures).	</td>
+                        <:questions q1="{{ model._q15_0_a }}" q2="{{ model._q15_0_b }}" q3="{{ model._q15_0_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Values Differences: Sees the value in others' unique differences.	</td>
+                        <:questions q1="{{ model._q15_1_a }}" q2="{{ model._q15_1_b }}" q3="{{ model._q15_1_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Cultural Perspective: When working with people from different backgrounds (e.g., engineering discipline, culture, nationality) works hard to understand their perspective.	</td>
+                        <:questions q1="{{ model._q15_2_a }}" q2="{{ model._q15_2_b }}" q3="{{ model._q15_2_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Culturally Versatile: Adapts behavior to fit different cultural expectations.	</td>
+                        <:questions q1="{{ model._q15_3_a }}" q2="{{ model._q15_3_b }}" q3="{{ model._q15_3_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Multicultural Motivator: Can effectively motivate multicultural groups or teams.	</td>
+                        <:questions q1="{{ model._q15_4_a }}" q2="{{ model._q15_4_b }}" q3="{{ model._q15_4_c }}" />
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title">Engaging Leadership</h2>
+        </div>
+        <div class="panel-body">
+          <p>Working your way down each column, type a number ranging from 1-4 for each statement: <br><b>4 = Definitely Descriptive, 3 = Descriptive, 2 = Not Descriptive, 1 = Not Descriptive</b></p>
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Question</th>
+                          <th>Good Leader</th>
+                          <th>Bad Leader</th>
+                          <th>Self</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>Inspires Commitment: Gains commitment from others.	</td>
+                        <:questions q1="{{ model._q16_0_a }}" q2="{{ model._q16_0_b }}" q3="{{ model._q16_0_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Leverages Others' Strengths: Finds ways to utilize others' strengths.	</td>
+                        <:questions q1="{{ model._q16_1_a }}" q2="{{ model._q16_1_b }}" q3="{{ model._q16_1_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Influences Without Authority: Able to Influences others without requiring a formal leadership position.		</td>
+                        <:questions q1="{{ model._q16_2_a }}" q2="{{ model._q16_2_b }}" q3="{{ model._q16_2_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Considerate: Gives as much weight to others' perspectives as to one's own.	</td>
+                        <:questions q1="{{ model._q16_3_a }}" q2="{{ model._q16_3_b }}" q3="{{ model._q16_3_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Careful Listener: Listens intently to others' ideas, suggestions, and concerns.	</td>
+                        <:questions q1="{{ model._q16_4_a }}" q2="{{ model._q16_4_b }}" q3="{{ model._q16_4_c }}" />
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title">Directive Leadership</h2>
+        </div>
+        <div class="panel-body">
+          <p>Working your way down each column, type a number ranging from 1-4 for each statement: <br><b>4 = Definitely Descriptive, 3 = Descriptive, 2 = Not Descriptive, 1 = Not Descriptive</b></p>
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Question</th>
+                          <th>Good Leader</th>
+                          <th>Bad Leader</th>
+                          <th>Self</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>Gives Direction: Clearly communicates goals, deadlines, and expectations</td>
+                        <:questions q1="{{ model._q22_0_a }}" q2="{{ model._q22_0_b }}" q3="{{ model._q22_0_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Prioritizes Effectively: Is good at helping group/team prioritize tasks</td>
+                        <:questions q1="{{ model._q22_1_a }}" q2="{{ model._q22_1_b }}" q3="{{ model._q22_1_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Clarifies Roles: Ensures group or team members understand their roles</td>
+                        <:questions q1="{{ model._q22_2_a }}" q2="{{ model._q22_2_b }}" q3="{{ model._q22_2_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Provides Guidance: Offers guidance or support at the appropriate times</td>
+                        <:questions q1="{{ model._q22_3_a }}" q2="{{ model._q22_3_b }}" q3="{{ model._q22_3_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Gives Candid Feedback: Provides prompt feedback, both positive and negative	</td>
+                        <:questions q1="{{ model._q22_4_a }}" q2="{{ model._q22_4_b }}" q3="{{ model._q22_4_c }}" />
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title">Champions Effective Processes</h2>
+        </div>
+        <div class="panel-body">
+          <p>Working your way down each column, type a number ranging from 1-4 for each statement: <br><b>4 = Definitely Descriptive, 3 = Descriptive, 2 = Not Descriptive, 1 = Not Descriptive</b></p>
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Question</th>
+                          <th>Good Leader</th>
+                          <th>Bad Leader</th>
+                          <th>Self</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>Shares Leadership: Remains engaged when others are in control.	</td>
+                        <:questions q1="{{ model._q17_0_a }}" q2="{{ model._q17_0_b }}" q3="{{ model._q17_0_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Shares Responsibility: Willing to share important tasks, not just things he/she doesn't want to do.	</td>
+                        <:questions q1="{{ model._q17_1_a }}" q2="{{ model._q17_1_b }}" q3="{{ model._q17_1_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Believes in Others: Believes in everyone's ability to make valuable contributions.	</td>
+                        <:questions q1="{{ model._q17_2_a }}" q2="{{ model._q17_2_b }}" q3="{{ model._q17_2_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Trusting of Others: Is comfortable depending on others over whom he/she has no control.	</td>
+                        <:questions q1="{{ model._q17_3_a }}" q2="{{ model._q17_3_b }}" q3="{{ model._q17_3_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Maintains Accountability: Holds others accountable in a respectful way.		</td>
+                        <:questions q1="{{ model._q17_4_a }}" q2="{{ model._q17_4_b }}" q3="{{ model._q17_4_c }}" />
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title">Problem Solving</h2>
+        </div>
+        <div class="panel-body">
+          <p>Working your way down each column, type a number ranging from 1-4 for each statement: <br><b>4 = Definitely Descriptive, 3 = Descriptive, 2 = Not Descriptive, 1 = Not Descriptive</b></p>
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Question</th>
+                          <th>Good Leader</th>
+                          <th>Bad Leader</th>
+                          <th>Self</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>Defines Problems Effectively: Gets to the root cause of the issue.	</td>
+                        <:questions q1="{{ model._q18_0_a }}" q2="{{ model._q18_0_b }}" q3="{{ model._q18_0_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Makes Informed Decisions: Gathers information necessary to make good decisions.	</td>
+                        <:questions q1="{{ model._q18_1_a }}" q2="{{ model._q18_1_b }}" q3="{{ model._q18_1_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Logical Thinker: Thinks problems through clearly and logically.	</td>
+                        <:questions q1="{{ model._q18_2_a }}" q2="{{ model._q18_2_b }}" q3="{{ model._q18_2_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Uses Judgment: Shows good judgment when making decisions.		</td>
+                        <:questions q1="{{ model._q18_3_a }}" q2="{{ model._q18_3_b }}" q3="{{ model._q18_3_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Decisive: Makes effective decisions in a timely manner.		</td>
+                        <:questions q1="{{ model._q18_4_a }}" q2="{{ model._q18_4_b }}" q3="{{ model._q18_4_c }}" />
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title">Strategic Perspective</h2>
+        </div>
+        <div class="panel-body">
+          <p>Working your way down each column, type a number ranging from 1-4 for each statement: <br><b>4 = Definitely Descriptive, 3 = Descriptive, 2 = Not Descriptive, 1 = Not Descriptive</b></p>
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Question</th>
+                          <th>Good Leader</th>
+                          <th>Bad Leader</th>
+                          <th>Self</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>Sees Big Picture: Effectively frames large-scale problems or challenges.	</td>
+                        <:questions q1="{{ model._q19_0_a }}" q2="{{ model._q19_0_b }}" q3="{{ model._q19_0_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Systemic Awareness: Identifies patterns and cycles that impact performance.	</td>
+                        <:questions q1="{{ model._q19_1_a }}" q2="{{ model._q19_1_b }}" q3="{{ model._q19_1_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Considers Options: Recognizes trade-offs; doesn't assume a single best way.	</td>
+                        <:questions q1="{{ model._q19_2_a }}" q2="{{ model._q19_2_b }}" q3="{{ model._q19_2_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Pragmatic: Can articulate pros and cons when making important decisions.	</td>
+                        <:questions q1="{{ model._q19_3_a }}" q2="{{ model._q19_3_b }}" q3="{{ model._q19_3_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Recognizes Opportunity: Identifies issues and opportunities for strategic change.	</td>
+                        <:questions q1="{{ model._q19_4_a }}" q2="{{ model._q19_4_b }}" q3="{{ model._q19_4_c }}" />
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title">Ethics and Integrity</h2>
+        </div>
+        <div class="panel-body">
+          <p>Working your way down each column, type a number ranging from 1-4 for each statement: <br><b>4 = Definitely Descriptive, 3 = Descriptive, 2 = Not Descriptive, 1 = Not Descriptive</b></p>
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Question</th>
+                          <th>Good Leader</th>
+                          <th>Bad Leader</th>
+                          <th>Self</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>Encourages Honesty: Words and deeds facilitate an atmosphere of honesty.	</td>
+                        <:questions q1="{{ model._q20_0_a }}" q2="{{ model._q20_0_b }}" q3="{{ model._q20_0_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Trustworthy: Gains trust from others.	</td>
+                        <:questions q1="{{ model._q20_1_a }}" q2="{{ model._q20_1_b }}" q3="{{ model._q20_1_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Ethical Decision-maker: Uses ethical considerations to guide decisions.	</td>
+                      <:questions q1="{{ model._q20_2_a }}" q2="{{ model._q20_2_b }}" q3="{{ model._q20_2_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Pragmatic: Can articulate pros and cons when making important decisions.	</td>
+                        <:questions q1="{{ model._q20_3_a }}" q2="{{ model._q20_3_b }}" q3="{{ model._q20_3_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Principled: Places ethical behavior above personal gain.	</td>
+                        <:questions q1="{{ model._q20_4_a }}" q2="{{ model._q20_4_b }}" q3="{{ model._q20_4_c }}" />
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title">Innovative Spirit</h2>
+        </div>
+        <div class="panel-body">
+          <p>Working your way down each column, type a number ranging from 1-4 for each statement: <br><b>4 = Definitely Descriptive, 3 = Descriptive, 2 = Not Descriptive, 1 = Not Descriptive</b></p>
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Question</th>
+                          <th>Good Leader</th>
+                          <th>Bad Leader</th>
+                          <th>Self</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>Entrepreneurial: Seizes new opportunities.	</td>
+                        <:questions q1="{{ model._q21_0_a }}" q2="{{ model._q21_0_b }}" q3="{{ model._q21_0_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Thinks Differently: Forms unique ideas and associations.	</td>
+                        <:questions q1="{{ model._q21_1_a }}" q2="{{ model._q21_1_b }}" q3="{{ model._q21_1_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Inventive: Creates new and different ways to solve problems.	</td>
+                        <:questions q1="{{ model._q21_2_a }}" q2="{{ model._q21_2_b }}" q3="{{ model._q21_2_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Generative: Consistently generates new ideas.	</td>
+                        <:questions q1="{{ model._q21_3_a }}" q2="{{ model._q21_3_b }}" q3="{{ model._q21_3_c }}" />
+                      </tr>
+                      <tr>
+                        <td>Maker Instinct: Can access his or her inner drive to make, build, and grow things.	</td>
+                        <:questions q1="{{ model._q21_4_a }}" q2="{{ model._q21_4_b }}" q3="{{ model._q21_4_c }}" />
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-default">Reset</button>
+    </div>
+  </div>
+  </form>
