@@ -1,0 +1,46 @@
+ul.graph {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+ul.graph li
+{
+	margin-bottom: .5em;
+	padding: .2em;
+	background: #600;
+	color: black;
+}
+
+ul.graph li.percent
+{
+	background: #428bca;
+}
+ul.graph li.percent_green
+{
+	background: #5cb85c;
+}
+ul.graph li.percent_aqua
+{
+	background: #5bc0de;
+}
+ul.graph li.percent_orange
+{
+	background: #f0ad4e;
+}
+ul.graph li.percent_red {
+	background: #d9534f;
+}
+th.bar {
+  border-left: 1px solid black !important;
+  width: 80%;
+}
+.results-table {
+  width: 100%;
+}
+.results-table th {
+  padding: 0px;
+  border: none;
+  text-align: right;
+  padding-right: 10px;
+}

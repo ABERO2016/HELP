@@ -9,6 +9,7 @@ module UserTemplates
       login = model.send(:"_#{User.login_field}")
       password = model._password
       model._last_login = Time.now
+      model._survey_status = 'not taken';
       save!.then do |result|
         flash._notices << "Signup successful"
 

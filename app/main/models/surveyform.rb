@@ -14,37 +14,76 @@ class SurveyForm < Volt::Model
   field :q10_3, Numeric
   field :q10_4, Numeric
 
-  field :how_hart
   field :good_leader, String
   field :bad_leader, String
 
   # Self-Awareness
-  field :q12_0, Numeric
-  field :q12_1, Numeric
-  field :q12_2, Numeric
-  field :q12_3, Numeric
-  field :q12_4, Numeric
+  field :q12_0_a, Numeric
+  field :q12_0_b, Numeric
+  field :q12_0_c, Numeric
+  field :q12_1_a, Numeric
+  field :q12_1_b, Numeric
+  field :q12_1_c, Numeric
+  field :q12_2_a, Numeric
+  field :q12_2_a, Numeric
+  field :q12_2_a, Numeric
+  field :q12_3_q, Numeric
+  field :q12_3_b, Numeric
+  field :q12_3_c, Numeric
+  field :q12_4_a, Numeric
+  field :q12_4_b, Numeric
+  field :q12_4_c, Numeric
 
   # Intentional Learner
-  field :q13_0, Numeric
-  field :q13_1, Numeric
-  field :q13_2, Numeric
-  field :q13_3, Numeric
-  field :q13_4, Numeric
+  field :q13_0_a, Numeric
+  field :q13_0_b, Numeric
+  field :q13_0_c, Numeric
+  field :q13_1_a, Numeric
+  field :q13_1_b, Numeric
+  field :q13_1_c, Numeric
+  field :q13_2_a, Numeric
+  field :q13_2_b, Numeric
+  field :q13_2_c, Numeric
+  field :q13_3_a, Numeric
+  field :q13_3_b, Numeric
+  field :q13_3_c, Numeric
+  field :q13_4_a, Numeric
+  field :q13_4_b, Numeric
+  field :q13_4_c, Numeric
 
   # Relationship Development
-  field :q14_0, Numeric
-  field :q14_1, Numeric
-  field :q14_2, Numeric
-  field :q14_3, Numeric
-  field :q14_4, Numeric
+  field :q14_0_a, Numeric
+  field :q14_0_b, Numeric
+  field :q14_0_c, Numeric
+  field :q14_1_a, Numeric
+  field :q14_1_b, Numeric
+  field :q14_1_c, Numeric
+  field :q14_2_a, Numeric
+  field :q14_2_b, Numeric
+  field :q14_2_c, Numeric
+  field :q14_3_a, Numeric
+  field :q14_3_b, Numeric
+  field :q14_3_c, Numeric
+  field :q14_4_a, Numeric
+  field :q14_4_b, Numeric
+  field :q14_4_c, Numeric
 
   # Diversity and Difference
-  field :q15_0, Numeric
-  field :q15_1, Numeric
-  field :q15_2, Numeric
-  field :q15_3, Numeric
-  field :q15_4, Numeric
+  field :q15_0_a, Numeric
+  field :q15_0_b, Numeric
+  field :q15_0_c, Numeric
+  field :q15_1_a, Numeric
+  field :q15_1_b, Numeric
+  field :q15_1_c, Numeric
+  field :q15_2_a, Numeric
+  field :q15_2_b, Numeric
+  field :q15_2_c, Numeric
+  field :q15_3_a, Numeric
+  field :q15_3_b, Numeric
+  field :q15_3_c, Numeric
+  field :q15_4_a, Numeric
+  field :q15_4_b, Numeric
+  field :q15_4_c, Numeric
 
   # Engaging Leadership
   field :q16_0, Numeric
@@ -94,5 +133,8 @@ class SurveyForm < Volt::Model
   field :q22_2, Numeric
   field :q22_3, Numeric
   field :q22_4, Numeric
+
+  validate :good_leader, presence: true
+  validate :bad_leader, presence: true
 
 end

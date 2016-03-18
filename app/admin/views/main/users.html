@@ -18,28 +18,32 @@
       <div class="panel-body">
         {{ if Volt.current_user.admin?}}
         <div class = "table-responsive">
-          <table class = "table">
+          <table class="table">
             <tbody>
               <tr>
                 <th>Users</th>
                 <th>Allow Users Access to Survey</th>
               </tr>
-
-            {{ store._users.each do |user|}}
-            <tr>
-            <td>
-              {{user._first_name}} {{user._last_name}}
-            </td>
-            <td>
-              <button onclick= "{{ allow_access() }}"> Grant {{user._first_name}} access </button>
-            </td>
-
-            </tr>
-            {{end}}
-
-          </tbody>
+              {{ all_users.each do |user|}}
+              <tr>
+                <td>
+                  {{user._first_name}} {{user._last_name}}
+                </td>
+                <td>
+                  {{ if user._survey_status == 'not taken' }}
+                    <button class="btn btn-default" e-click="allow_access(user._id)" > Grant {{user._first_name}} access </button>
+                  {{ elsif user._survey_status == 'in progress' }}
+                    Survey in Progress
+                  {{ else }}
+                    <button e-click="survey(user._id)" class="btn btn-primary">View Results</button>
+                  {{ end }}
+                </td>
+              </tr>
+              {{end}}
+            </tbody>
           </table>
-          </div>
+          <:pagination total="{{ store.users.size }}" per_page="10" />
+        </div>
       </div>
         {{ else }}
           <p> Please log in as Admin to access this page.</p>

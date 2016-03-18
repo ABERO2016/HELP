@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 ruby "2.2.3"
+gem 'opal'
+gem 'jquery'
+gem 'opal-jquery'
 
 gem 'volt', '0.9.6'
 
@@ -18,6 +21,11 @@ gem 'volt-bootstrap_jumbotron_theme', '~> 0.1.0'
 gem 'volt-user_templates', '~> 0.4.0'
 gem 'volt-fields'
 gem 'volt-datepicker'
+gem 'opal-highcharts'
+gem 'volt-highcharts'
+gem 'volt-table', git: 'https://github.com/matthew342/volt-table.git', branch: :fix_table
+gem 'volt-pagination'
+
 
 # Add ability to send e-mail from apps.
 gem 'volt-mailer', '~> 0.1.1'

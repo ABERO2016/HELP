@@ -9,6 +9,26 @@ module Main
       # Add code for when the about view is loaded
     end
 
+    def in_progress?
+      Volt.current_user._survey_status.then do |status|
+        if status == 'in progress'
+          true
+        else
+          false
+        end
+      end
+    end
+
+    def taken?
+      Volt.current_user._survey_status.then do |status|
+        if status == 'taken'
+          true
+        else
+          false
+        end
+      end
+    end
+
     private
 
     # The main template contains a #template binding that shows another
