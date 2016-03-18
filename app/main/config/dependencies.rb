@@ -14,3 +14,4 @@ component 'admin'
 component 'survey'
 
 component 'datepicker'
+component 'main'
