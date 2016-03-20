@@ -95,5 +95,4 @@ class SurveyForm < Volt::Model
   field :q22_3, Numeric
   field :q22_4, Numeric
 
-  field :mktg, String
 end
