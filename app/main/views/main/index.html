@@ -15,6 +15,14 @@
       {{ if taken? }}
         <button class="btn btn-primary" e-click="go_to_survey">View Survey Results</button>
       {{ end }}
+      <h2>How did you learn about HELP? </h2>
+      <br>
+      <div class="col-lg-6">
+        <form e-submit="save">
+          <:fields:text value="{{ _mktg }}" label = ""/>
+          <button class="btn btn-info btn-block" e-click="submit_mktgQ">Submit</button>
+        </form>
+      </div>
     </div>
   </div>
   {{ else }}

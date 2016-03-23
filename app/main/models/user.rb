@@ -19,6 +19,7 @@ class User < Volt::User
   field :other_major, String
   field :role
   field :survey_status
+  field :mktg, String
 
   #Validations
   validate login_field, unique: true, length: 8, presence: true
@@ -46,6 +47,7 @@ class User < Volt::User
       false
     end
   end
+
 
 
 end
