@@ -9,6 +9,12 @@ module Main
       # Add code for when the about view is loaded
     end
 
+    def mktg_q
+      Volt.current_user_id.then do |id|
+        self.model = store.users.where(id: id).buffer
+      end
+    end
+
     def in_progress?
       Volt.current_user._survey_status.then do |status|
         if status == 'in progress'
@@ -37,6 +43,14 @@ module Main
       end
     end
 
+    def save
+      model.save!.then do
+        flash._successes << "saved answer"
+      end.fail do |err|
+        flash._errors << "#{err}"
+      end
+    end
+
     private
 
     # The main template contains a #template binding that shows another
@@ -46,7 +60,7 @@ module Main
       "#{params._component || 'main'}/#{params._controller || 'main'}/#{params._action || 'index'}"
     end
 
-    
+
     # Determine if the current nav component is the active one by looking
     # at the first part of the url against the href attribute.
     def active_tab?
