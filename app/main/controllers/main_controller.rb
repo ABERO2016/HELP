@@ -29,6 +29,24 @@ module Main
       end
     end
 
+    def go_to_survey
+      Volt.current_user_id.then do |id|
+        store._surveyforms.where(user_id: id).first.then do |s|
+          redirect_to "/results/#{s.id}"
+        end
+      end
+    end
+
+    def save
+      if !page._mktg.empty?
+        Volt.current_user._mktg = page._mktg
+        flash._successes << "saved answer"
+      else
+        flash._errors << "unable to save"
+      end
+
+    end
+
     private
 
     # The main template contains a #template binding that shows another
@@ -37,6 +55,7 @@ module Main
     def main_path
       "#{params._component || 'main'}/#{params._controller || 'main'}/#{params._action || 'index'}"
     end
+
 
     # Determine if the current nav component is the active one by looking
     # at the first part of the url against the href attribute.

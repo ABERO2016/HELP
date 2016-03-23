@@ -8,10 +8,10 @@
 # component 'bootstrap_jumbotron_theme'
 #
 # # provides templates for login, signup, and logout
+javascript_file 'http://code.jquery.com/jquery-2.0.3.min.js'
 component 'user_templates'
 component 'admin'
 component 'survey'
 component 'datepicker'
-component 'highcharts'
 component 'table'
-component "pagination"
+component 'pagination'
