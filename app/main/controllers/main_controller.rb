@@ -29,6 +29,14 @@ module Main
       end
     end
 
+    def go_to_survey
+      Volt.current_user_id.then do |id|
+        store._surveyforms.where(user_id: id).first.then do |s|
+          redirect_to "/results/#{s.id}"
+        end
+      end
+    end
+
     private
 
     # The main template contains a #template binding that shows another

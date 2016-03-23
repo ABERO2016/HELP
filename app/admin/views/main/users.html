@@ -10,45 +10,28 @@
     </h1>
   </div>
 </div>
+{{ if Volt.current_user.admin? }}
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-primary">
-      <div class="panel-heading">
+      <div class="panel-heading">Users Table
       </div>
       <div class="panel-body">
-        {{ if Volt.current_user.admin?}}
-        <div class = "table-responsive">
-          <table class="table">
-            <tbody>
-              <tr>
-                <th>Users</th>
-                <th>Allow Users Access to Survey</th>
-              </tr>
-              {{ all_users.each do |user|}}
-              <tr>
-                <td>
-                  {{user._first_name}} {{user._last_name}}
-                </td>
-                <td>
-                  {{ if user._survey_status == 'not taken' }}
-                    <button class="btn btn-default" e-click="allow_access(user._id)" > Grant {{user._first_name}} access </button>
-                  {{ elsif user._survey_status == 'in progress' }}
-                    Survey in Progress
-                  {{ else }}
-                    <button e-click="survey(user._id)" class="btn btn-primary">View Results</button>
-                  {{ end }}
-                </td>
-              </tr>
-              {{end}}
-            </tbody>
-          </table>
-          <:pagination total="{{ store.users.size }}" per_page="10" />
+        <div class="row">
+          <div class="col-xs-12">
+            <:table:headers />
+          </div>
         </div>
-      </div>
-        {{ else }}
-          <p> Please log in as Admin to access this page.</p>
-        {{ end }}
+        <:table:wrapper>
+          <:table:columns />
+          <:table:main:body source="{{ all_users }}" source_name="users" e-user_click="show_user_detail"/>
+        </:table:wrapper>
+        <:table:main:footers source="{{ all_users }}" source_name="users" />
       </div>
     </div>
   </div>
 </div>
+  {{ if model }}
+    <:user_modal model="{{ model }}"/>
+  {{ end }}
+{{ end }}

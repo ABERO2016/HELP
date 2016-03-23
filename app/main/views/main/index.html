@@ -12,7 +12,9 @@
   </div>
   <div class="row">
     <div class="col-lg-12">
-      <h2>More info will go here eventually..</h2>
+      {{ if taken? }}
+        <button class="btn btn-primary" e-click="go_to_survey">View Survey Results</button>
+      {{ end }}
     </div>
   </div>
   {{ else }}
