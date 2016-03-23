@@ -9,12 +9,6 @@ module Main
       # Add code for when the about view is loaded
     end
 
-    def mktg_q
-      Volt.current_user_id.then do |id|
-        self.model = store.users.where(id: id).buffer
-      end
-    end
-
     def in_progress?
       Volt.current_user._survey_status.then do |status|
         if status == 'in progress'
@@ -44,11 +38,13 @@ module Main
     end
 
     def save
-      model.save!.then do
+      if !page._mktg.empty?
+        Volt.current_user._mktg = page._mktg
         flash._successes << "saved answer"
-      end.fail do |err|
-        flash._errors << "#{err}"
+      else
+        flash._errors << "unable to save"
       end
+
     end
 
     private
