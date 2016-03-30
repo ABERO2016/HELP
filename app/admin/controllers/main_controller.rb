@@ -51,6 +51,10 @@ module Admin
       `$('#modalButton').trigger('click');`
     end
 
+    def send_email(email)
+      puts email
+    end
+
     private
 
     # the main template contains a #template binding that shows another
