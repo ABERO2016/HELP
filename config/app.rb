@@ -97,15 +97,15 @@ Volt.configure do |config|
   # NOTE: The from address is setup at the top
 
   # Normally pony uses /usr/sbin/sendmail if one is installed.  You can specify smtp below:
-  # config.mailer.via = :smtp
-  # config.mailer.via_options = {
-  #   :address        => 'smtp.yourserver.com',
-  #   :port           => '25',
-  #   :user_name      => 'user',
-  #   :password       => 'password',
-  #   :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
-  #   :domain         => "localhost.localdomain" # the HELO domain provided by the client to the server
-  # }
+  config.mailer.via = :smtp
+  config.mailer.via_options = {
+    :address        => 'localhost',
+    :port           => '1025',
+    # :user_name      => 'user',
+    # :password       => 'password',
+    # :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
+    # :domain         => "localhost.localdomain" # the HELO domain provided by the client to the server
+  }
 
   #############
   # Message Bus

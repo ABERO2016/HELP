@@ -52,7 +52,7 @@ module Admin
     end
 
     def send_email(email)
-      puts email
+      EmailHandlerTask.send_email(email)
     end
 
     private
