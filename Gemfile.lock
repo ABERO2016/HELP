@@ -190,7 +190,7 @@ DEPENDENCIES
   volt-bootstrap_jumbotron_theme (~> 0.1.0)
   volt-datepicker
   volt-fields
-  volt-mailer (~> 0.1.1)
+  volt-mailer (~> 0.1.2)
   volt-mongo (~> 0.1.0)
   volt-pagination
   volt-table!
