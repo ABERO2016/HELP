@@ -61,6 +61,16 @@ module Main
       $('.mini-submenu').hide();`
     end
 
+    def show_nav
+      puts `$('#collapse-navbar').css('display')`
+      if `$('#collapse-navbar').css('display')` == 'none' || `$('#collapse-navbar').css('display')` == 'hidden'
+        puts 'nav'
+        `$('#collapse-navbar').css('display', 'block');`
+      else
+        `$('#collapse-navbar').css('display', 'none');`
+      end
+    end
+
     private
 
     # The main template contains a #template binding that shows another
