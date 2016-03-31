@@ -8,7 +8,7 @@
 # component 'bootstrap_jumbotron_theme'
 #
 # # provides templates for login, signup, and logout
-javascript_file 'http://code.jquery.com/jquery-2.0.3.min.js'
+javascript_file 'https://code.jquery.com/jquery-2.0.3.min.js'
 component 'user_templates'
 component 'admin'
 component 'survey'
