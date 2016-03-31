@@ -13,7 +13,6 @@ module Survey
 
     def results
       self.model = store._surveyforms.where(id: params.id).first
-      puts params.id
     end
 
     def user

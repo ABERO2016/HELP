@@ -2,66 +2,90 @@
   {{ view main_path, "title", {controller_group: 'main'} }}
 
 <:Body>
-  <div id="wrapper">
-    <nav class="navbar navbar-default top-navbar" id="nav_bar" role="navigation">
-      <div class="navbar-header">
-        {{ if Volt.current_user }}
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        {{ end }}
-        <a class="navbar-brand" href="/">HELP</a>
-      </div>
-      <ul class="nav navbar-top-links navbar-right">
-        <:nav href="/about">About</:nav>
-        <:user_templates:menu />
-      </ul>
-    </nav>
-
-    {{ if Volt.current_user }}
-    <nav class="navbar-default navbar-side" id="side_bar" role="navigation">
-      <div class="sidebar-collapse">
-        <ul class="nav" id="main-menu">
-          <:nav href="/">Dashboard</:nav>
-          {{ if in_progress? }}
-          <:nav href="/survey">Take Survey</:nav>
-          {{ end }}
-          {{ if Volt.current_user.admin? }}
-            <:nav href="/users">Users</:nav>
-            <:nav href="/marketing">Marketing</:nav>
-          {{ end }}
-        </ul>
-      </div>
-    </nav>
-
-    <:volt:notices />
-    <div id="page-wrapper">
-
-    {{ view main_path, 'body', {controller_group: 'main'} }}
-
-    <footer>
-      <p>&copy; ABERO {{ Time.now.year }}</p>
-    </footer>
-
-
+<div class="">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">HELP</a>
     </div>
 
-      {{ else }}
-      <div id="page-wrapper-default">
-        {{ view main_path, 'body', {controller_group: 'main'} }}
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="collapse-navbar">
+      <ul class="nav navbar-nav">
+        <:nav href="/about">About</:nav>
+      </ul>
+      <!-- <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+       <button type="submit" class="btn btn-default">Submit</button>
+      </form> -->
+      <ul class="nav navbar-nav navbar-right">
+        <:user_templates:menu />
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
+<div class="content">
+  <div class="container">
+    {{ if Volt.current_user }}
+    <div id="sidebar" class="col-sm-4 col-md-3 sidebar">
+        <div class="mini-submenu" e-click="show_submenu">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </div>
+        <div class="list-group" id='side-bar'>
+            <span href="#" class="list-group-item active">
+                <b>Your Links</b>
+                <span class="pull-right" id="slide-submenu" e-click="hide_submenu">
+                    <i class="fa fa-times"></i>
+                </span>
+            </span>
+            <:link href="/">
+                <i class="fa fa-tachometer"></i> Dashboard
+            </:link>
+            {{ if in_progress? }}
+            <:link href="/survey">
+                <i class="fa fa-pencil"></i> Take Survey
+            </:link>
+            {{ end }}
+            {{ if Volt.current_user.admin? }}
+            <:link href="/users">
+                <i class="fa fa-users"></i> Users
+            </:link>
+            <:link href="/marketing">
+                <i class="fa fa-list-alt"></i> Marketing
+            </:link>
+            {{ end }}
+        </div>
+      </div>
+      {{ end }}
+
+      <div id="main" class="{{ if Volt.current_user }} col-sm-8 col-md-9 {{ end }}">
+        <:volt:notices />
+        {{ view main_path, 'body', {controller_group: 'main'} }}
         <footer>
           <p>&copy; ABERO {{ Time.now.year }}</p>
         </footer>
       </div>
-      {{ end }}
-
+    </div>
   </div>
-
+</div>
 <:Nav>
-  <li class="{{ if active_tab? }}active-menu{{ end }}">
+  <li class="{{ if active_tab? }}active{{ end }}">
     <a href="{{ attrs.href }}">{{ yield }}</a>
   </li>
+
+<:Link>
+  <a href="{{ attrs.href }}" class="list-group-item {{ if active_tab? }}active{{ end }}">
+    {{ yield }}
+  </a>

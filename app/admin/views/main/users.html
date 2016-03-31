@@ -4,19 +4,21 @@
 <:Body>
 <div class="row">
   <div class="col-md-12">
-    <h1 class="page-header">
-      Users
-      <small>{{ Time.now.year }}</small>
-      <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#NewUserModal">Add User +</button>
-    </h1>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1 class="page-header">
+          Users
+          <small>{{ Time.now.year }}</small>
+          <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#NewUserModal">Add User +</button>
+        </h1>
+      </div>
+    </div>
   </div>
 </div>
 {{ if Volt.current_user.admin? }}
 <div class="row">
   <div class="col-md-12">
-    <div class="panel panel-primary">
-      <div class="panel-heading">Users Table
-      </div>
+    <div class="panel panel-default">
       <div class="panel-body">
         <div class="row">
           <div class="col-xs-12">

@@ -35,6 +35,7 @@ module Admin
 
     def survey(id)
       `$('#myModal').modal('hide');`
+      `$("body").removeClass("modal-open");`
       store._surveyforms.where(user_id: id).first.then do |s|
         redirect_to "/results/#{s.id}"
       end
@@ -46,9 +47,8 @@ module Admin
     end
 
     def show_user_detail(user_id = nil)
-      puts "user info #{user_id}"
       self.model = store.users.where(id: user_id).first
-      `$('#modalButton').trigger('click');`
+      `$('#myModal').modal('show');`
     end
 
     def send_email(email)

@@ -44,7 +44,21 @@ module Main
       else
         flash._errors << "unable to save"
       end
+    end
 
+    def hide_submenu
+      `$('#side-bar').fadeOut('slide',function(){
+        	$('.mini-submenu').fadeIn();
+          $('#sidebar').removeClass('col-sm-4 col-md-3')
+          $('#main').removeClass('col-sm-8 col-md-9')
+        });`
+    end
+
+    def show_submenu
+      `$('#sidebar').addClass('col-sm-4 col-md-3')
+      $('#main').addClass('col-sm-8 col-md-9')
+      $('#side-bar').toggle('slide');
+      $('.mini-submenu').hide();`
     end
 
     private
