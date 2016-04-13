@@ -1,5 +1,43 @@
 <:Title>
-  Component Index
+  HELP | Marketing
 
 <:Body>
-  <h1>Hello</h1>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1 class="page-header">
+            HELP Outreach Analysis
+            <small>{{ Time.now.year }}</small>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="year">Graduation Year</label>
+            <select class="form-control" value="{{ params._type_filter }}" >
+              <option value="all">All</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <:table source="{{ users }}" source_name="users" />
+      </div>
+    </div>
+  </div>
+</div>
