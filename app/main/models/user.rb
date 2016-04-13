@@ -47,7 +47,4 @@ class User < Volt::User
       false
     end
   end
-
-
-
 end

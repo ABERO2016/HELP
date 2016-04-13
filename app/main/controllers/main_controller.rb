@@ -44,7 +44,31 @@ module Main
       else
         flash._errors << "unable to save"
       end
+    end
 
+    def hide_submenu
+      `$('#side-bar').fadeOut('slide',function(){
+        	$('.mini-submenu').fadeIn();
+          $('#sidebar').removeClass('col-sm-4 col-md-3')
+          $('#main').removeClass('col-sm-8 col-md-9')
+        });`
+    end
+
+    def show_submenu
+      `$('#sidebar').addClass('col-sm-4 col-md-3')
+      $('#main').addClass('col-sm-8 col-md-9')
+      $('#side-bar').toggle('slide');
+      $('.mini-submenu').hide();`
+    end
+
+    def show_nav
+      puts `$('#collapse-navbar').css('display')`
+      if `$('#collapse-navbar').css('display')` == 'none' || `$('#collapse-navbar').css('display')` == 'hidden'
+        puts 'nav'
+        `$('#collapse-navbar').css('display', 'block');`
+      else
+        `$('#collapse-navbar').css('display', 'none');`
+      end
     end
 
     private
@@ -61,6 +85,10 @@ module Main
     # at the first part of the url against the href attribute.
     def active_tab?
       url.path.split('/')[1] == attrs.href.split('/')[1]
+    end
+
+    def active_button?
+      url.path.split('/')[1] == 'results'
     end
   end
 end

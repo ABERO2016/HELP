@@ -4,17 +4,37 @@
 <:Body>
 <div class="row">
   <div class="col-md-12">
-    <h1 class="page-header">
-      Users
-      <small>{{ Time.now.year }}</small>
-    </h1>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1 class="page-header">
+          Users
+          <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#NewUserModal">Invite User(s) +</button>
+        </h1>
+      </div>
+    </div>
   </div>
 </div>
 {{ if Volt.current_user.admin? }}
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-primary">
-      <div class="panel-heading">Users Table
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="year">Graduation Year</label>
+            <select class="form-control" value="{{ params._type_filter }}" >
+              <option value="all">All</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+            </select>
+          </div>
+        </div>
       </div>
       <div class="panel-body">
         <div class="row">
@@ -24,9 +44,9 @@
         </div>
         <:table:wrapper>
           <:table:columns />
-          <:table:main:body source="{{ all_users }}" source_name="users" e-user_click="show_user_detail"/>
+          <:table:main:body source="{{ users }}" source_name="users" e-user_click="show_user_detail"/>
         </:table:wrapper>
-        <:table:main:footers source="{{ all_users }}" source_name="users" />
+        <:table:main:footers source="{{ users }}" source_name="users" />
       </div>
     </div>
   </div>
@@ -34,4 +54,5 @@
   {{ if model }}
     <:user_modal model="{{ model }}"/>
   {{ end }}
+  <:new_user />
 {{ end }}

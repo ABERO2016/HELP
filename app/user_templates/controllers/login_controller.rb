@@ -24,6 +24,7 @@ module UserTemplates
 
     def after_login
       redirect_to(attrs.post_login_url || '/')
+      Volt.current_user._last_login = Time.now
       Volt.current_user.name.then do |name|
         flash._successes << "Welcome Back #{name}"
       end
