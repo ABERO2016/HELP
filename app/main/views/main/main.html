@@ -54,9 +54,13 @@
                 <i class="fa fa-tachometer"></i> Dashboard
             </:link>
             {{ if in_progress? }}
-            <:link href="/survey">
-                <i class="fa fa-pencil"></i> Take Survey
-            </:link>
+              <:link href="/survey">
+                  <i class="fa fa-pencil"></i> Take Survey
+              </:link>
+            {{ elsif taken? }}
+              <:link2>
+                <i class="fa fa-pencil"></i> Survey Results
+              </:link2>
             {{ end }}
             {{ if Volt.current_user.admin? }}
             <:link href="/users">
@@ -87,5 +91,10 @@
 
 <:Link>
   <a href="{{ attrs.href }}" class="list-group-item {{ if active_tab? }}active{{ end }}">
+    {{ yield }}
+  </a>
+
+<:Link2>
+  <a  e-click="go_to_survey" class="list-group-item {{ if active_button? }}active{{ end }}">
     {{ yield }}
   </a>

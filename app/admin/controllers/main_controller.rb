@@ -1,7 +1,7 @@
 module Admin
   class MainController < Volt::ModelController
     before_action :require_login
-    before_action :setup_main_table, only: :users
+    before_action :setup_user_table, only: :users
 
     def index
       # Add code for when the index view is loaded
@@ -12,10 +12,11 @@ module Admin
     end
 
     def users
+      page._email = ""
       self.model ||= store.users.buffer
     end
 
-    def setup_main_table
+    def setup_user_table
       params._type_filter ||= 'all'
       params._sort_field ||= "last_name"
       params._sort_direction ||= 1
@@ -51,8 +52,9 @@ module Admin
       `$('#myModal').modal('show');`
     end
 
-    def send_email(email)
-      EmailHandlerTask.send_email(email)
+    def send_email
+      emails = page._email.split(';')
+      EmailHandlerTask.send_email(emails)
     end
 
     private

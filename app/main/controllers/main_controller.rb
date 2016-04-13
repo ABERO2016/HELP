@@ -86,5 +86,9 @@ module Main
     def active_tab?
       url.path.split('/')[1] == attrs.href.split('/')[1]
     end
+
+    def active_button?
+      url.path.split('/')[1] == 'results'
+    end
   end
 end
