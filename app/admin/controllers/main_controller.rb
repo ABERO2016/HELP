@@ -68,8 +68,14 @@ module Admin
     end
 
     def send_email
-      emails = page._email.split(';')
-      EmailHandlerTask.send_email(emails)
+      if page._email == ''
+        `swal("Error", "Please Provide a valid email!", "error")`
+      else
+        `swal("Sent!", "The invitation email has been sent!", "success")`
+        emails = page._email.split(';')
+        EmailHandlerTask.send_email(emails)
+        page._email = ''
+      end
     end
 
     private
