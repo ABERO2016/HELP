@@ -24,6 +24,7 @@ module Admin
         {title: "Last Name", search_field: 'last', field_name: 'last_name', sort_name: 'last_name', shown: true},
         {title: "SMU ID", search_field: 'smu_id', field_name: 'smu_id', sort_name: 'smu_id', shown: true},
         {title: "Major", search_field: 'major', field_name: 'major', sort_name: 'major', shown: true},
+        {title: "Year", search_field: 'graduation_year', field_name: 'graduation_year', sort_name: 'graduation_year', shown:true},
         # {title: "Major", search_field: 'major', field_name: 'major', sort_name: 'major', shown: true},
         # {title: "Address", field_name: 'address', sort_name: 'address', shown: false},
         # {title: "City", search_field: 'city', field_name: 'city', sort_name: 'city', shown: true}
