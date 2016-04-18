@@ -7,7 +7,15 @@ class User < Volt::User
   MAJORS_OPTIONS = ['', 'Civil Engineering', 'Computer Engineering', 'Computer Science', 'Electrical Engineering', 'Engineering', 'Engineering Management Information Systems', 'Environmental Engineering','Management Science', 'Mechanical Engineering', 'Other']
   MAJORS = ['Civil Engineering', 'Computer Engineering', 'Computer Science', 'Electrical Engineering', 'Engineering', 'Engineering Management Information Systems', 'Environmental Engineering','Management Science', 'Mechanical Engineering', 'Other']
   SURVEY_STATUS = ['not taken', 'in progress', 'taken']
-
+  SELF_AWARE = ['Career Counseling and Advising,Club Sports','Connecting Mentoring Program','Crain All-University Leadership Conference','Engineering Internship Work Term','Faith and Learning Scholars','KNW 2300 - Introduction to Engineering Design',
+  'Multicutural Greek Council (MGC)','National Pan-Hellenic Council (NPHC)','PanHellenic Council (PHC)'
+  ,'Hart Impact Program,Human Centered Design','Institute for Electrical and Electronic Engineers (IEEE)'
+  ,'James E. Caswell Undergraduate Leadership Fellows Program','Emerging Leaders','Learning Management Strategies Workshop'
+  ,'Lyle Engineering in the City','Mustang Intersections','Multicultural Student Organizations'
+  ,'Mustang Corral Directors','Mustang Corral Leaders','Outdoor Adventures','Residence Assistant'
+  ,'SMU Service House','Spirit Squads','Student Affairs Program Council'
+  ,'Student Engineering Joint Council (SEJC)','Student Organizations (ORGS)','Theta Tau: Beta Chapter',
+  'Women"s Interest Network','Worship Services','Co-op and Internships','ENGR 1101 - Engineering and Beyond']
   field login_field
   field :first_name
   field :last_name
