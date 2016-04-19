@@ -8,6 +8,7 @@ module UserTemplates
       # Get login and password to login
       login = model.send(:"_#{User.login_field}")
       password = model._password
+      model._role = 'Student'
       model._last_login = Time.now
       model._survey_status = 'not taken';
       save!.then do |result|

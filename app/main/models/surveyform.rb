@@ -16,6 +16,8 @@ class SurveyForm < Volt::Model
 
   field :good_leader, String
   field :bad_leader, String
+  field :competency_one, String
+  field :competency_two, String
 
   # Self-Awareness
   field :q12_0_a, Numeric
@@ -25,9 +27,9 @@ class SurveyForm < Volt::Model
   field :q12_1_b, Numeric
   field :q12_1_c, Numeric
   field :q12_2_a, Numeric
-  field :q12_2_a, Numeric
-  field :q12_2_a, Numeric
-  field :q12_3_q, Numeric
+  field :q12_2_b, Numeric
+  field :q12_2_c, Numeric
+  field :q12_3_a, Numeric
   field :q12_3_b, Numeric
   field :q12_3_c, Numeric
   field :q12_4_a, Numeric
@@ -136,5 +138,7 @@ class SurveyForm < Volt::Model
 
   validate :good_leader, presence: true
   validate :bad_leader, presence: true
+  validate :competency_one, presence: true
+  validate :competency_two, presence: true
 
 end
