@@ -15,8 +15,31 @@
     </div>
   </div>
   <div class="row">
-    
-
+        <div class="col-sm-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              Leadership Competencies
+            </div>
+            <div class="panel-body">
+              {{ if taken? }}
+              <div class="list-group">
+                <a href="#" class="list-group-item">{{ competency_one }} <span class="badge">Learn More</span></a>
+                <a href="#" class="list-group-item">{{ competency_two }} <span class="badge">Learn More</span></a>
+              </div>
+              {{ else }}
+                <p> Take the Survey to Determine your Leadership Competencies </p>
+              {{ end }}
+            </div>
+          </div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              Upcoming Events
+            </div>
+            <div class="panel-body">
+              Some Events can go here...
+            </div>
+          </div>
+        </div>
         <div class="col-sm-6">
           <div class="panel panel-primary">
             <div class="panel-heading">How did you learn about HELP?
@@ -35,20 +58,6 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
-          <div class="panel panel-primary">
-            <div class="panel-heading">Survey Results
-            </div>
-            <div class="panel-body">
-              {{ if taken? }}
-                <button class="btn btn-primary" e-click="go_to_survey">View Survey Results</button>
-              {{ else }}
-                <p> Take the Survey to View Results </p>
-              {{ end }}
-            </div>
-          </div>
-        </div>
-
   </div>
   {{ else }}
   <div class="row">

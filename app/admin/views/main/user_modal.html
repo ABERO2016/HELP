@@ -12,34 +12,34 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-12">
-              <table class="table">
+              <table class="table table-responsive">
                 <tbody>
                   <tr>
-                    <th>First Name</th>
+                    <td><b>First Name</b></td>
                     <td>{{ model.first_name || "--" }}</td>
                   </tr>
                   <tr>
-                    <th>Last Name</th>
+                    <td><b>Last Name</b></td>
                     <td>{{ model.last_name || "--" }}</td>
                   </tr>
                   <tr>
-                    <th>Prefered Name</th>
+                    <td><b>Prefered Name</b></td>
                     <td>{{ model.prefered_name || "--" }}</td>
                   </tr>
                   <tr>
-                    <th>SMU ID</th>
+                    <td><b>SMU ID</b></td>
                     <td>{{ model.smu_id || "--" }}</td>
                   </tr>
                   <tr>
-                    <th>Graduation Year</th>
+                    <td><b>Graduation Year</b></td>
                     <td>{{ model.graduation_year || "--" }}</td>
                   </tr>
                   <tr>
-                    <th>Major</th>
+                    <td><b>Major</b></td>
                     <td>{{ model.major || "--" }}</td>
                   </tr>
                   <tr>
-                    <th>Last Login</th>
+                    <td><b>Last Login</b></td>
                     <td>{{ model.last_login.strftime("%m/%d") }}</td>
                   </tr>
                 </tbody>

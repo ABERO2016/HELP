@@ -29,6 +29,22 @@ module Main
       end
     end
 
+    def competency_one
+      Volt.current_user_id.then do |id|
+        store._surveyforms.where(user_id: id).first.then do |survey|
+          survey._competency_one
+        end
+      end
+    end
+
+    def competency_two
+      Volt.current_user_id.then do |id|
+        store._surveyforms.where(user_id: id).first.then do |survey|
+          survey._competency_two
+        end
+      end
+    end
+
     def go_to_survey
       Volt.current_user_id.then do |id|
         store._surveyforms.where(user_id: id).first.then do |s|
