@@ -53,10 +53,14 @@
             <:link href="/">
                 <i class="fa fa-tachometer"></i> Dashboard
             </:link>
+            <:link href="/resources">
+                <i class ="fa fa-pencil"></i> Resources
+            </:link>
             {{ if in_progress? }}
               <:link href="/survey">
                   <i class="fa fa-pencil"></i> Take Survey
               </:link>
+
             {{ elsif taken? }}
               <:link2>
                 <i class="fa fa-pencil"></i> Survey Results
