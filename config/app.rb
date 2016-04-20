@@ -97,14 +97,26 @@ Volt.configure do |config|
   # NOTE: The from address is setup at the top
 
   # Normally pony uses /usr/sbin/sendmail if one is installed.  You can specify smtp below:
+  # config.mailer.via = :smtp
+  # config.mailer.via_options = {
+  #   :address        => 'localhost',
+  #   :port           => '1025',
+  #   # :user_name      => 'user',
+  #   # :password       => 'password',
+  #   # :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
+  #   # :domain         => "localhost.localdomain" # the HELO domain provided by the client to the server
+  # }
+
+  # production mail
   config.mailer.via = :smtp
   config.mailer.via_options = {
-    :address        => 'localhost',
-    :port           => '1025',
-    # :user_name      => 'user',
-    # :password       => 'password',
-    # :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
-    # :domain         => "localhost.localdomain" # the HELO domain provided by the client to the server
+     :address => 'smtp.sendgrid.net',
+     :port => '587',
+     :domain => 'heroku.com',
+     :user_name => ENV['SENDGRID_USERNAME'],
+     :password => ENV['SENDGRID_PASSWORD'],
+     :authentication => :plain,
+     :enable_starttls_auto => true
   }
 
   #############
