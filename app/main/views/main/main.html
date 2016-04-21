@@ -59,7 +59,7 @@
               </:link>
             {{ elsif taken? }}
               <:link2>
-                <i class="fa fa-pencil"></i> Survey Results
+                <i class="fa fa-bar-chart-o"></i> Survey Results
               </:link2>
             {{ end }}
             {{ if Volt.current_user.admin? }}
@@ -68,6 +68,12 @@
             </:link>
             <:link href="/marketing">
                 <i class="fa fa-list-alt"></i> Marketing
+            </:link>
+            <:link href="/clubs">
+                <i class="fa fa-cubes" ></i> Clubs and Organizations
+            </:link>
+            <:link href="/events">
+                <i class="fa fa-calendar"></i> Events
             </:link>
             {{ end }}
         </div>
