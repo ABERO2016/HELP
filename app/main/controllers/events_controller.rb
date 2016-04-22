@@ -5,7 +5,6 @@ module Main
 
     def index
       # Add code for when the index view is loaded
-      puts "Events"
     end
 
     def about

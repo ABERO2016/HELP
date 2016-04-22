@@ -47,6 +47,7 @@ group :test do
   gem 'selenium-webdriver', '~> 2.47.1'
   gem 'chromedriver-helper', '~> 1.0.0'
   gem 'poltergeist', '~> 1.6.0'
+  gem 'volt-browser_irb'
 end
 
 # Server for MRI
