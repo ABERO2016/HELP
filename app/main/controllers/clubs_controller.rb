@@ -70,12 +70,23 @@ module Main
     end
 
     def update_club
-      model.save!.then do
+      store._competencies.where(club_id: model.id).all.each do |comp|
+        comp.destroy
+      end
+      model.save!.then do |m|
+        page._competencies.each do |c|
+          m._competencies << {name: "#{c}"}
+        end
         `$('#ClubModal').modal('hide');`
+      end.fail do |er|
+        puts "#{er}"
       end
     end
 
     def delete_and_close
+      store._competencies.where(club_id: model.id).all.each do |comp|
+        comp.destroy
+      end
       store.clubs.where(id: model.id).first.then do |club|
         store.clubs.delete(club)
       end
