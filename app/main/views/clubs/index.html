@@ -20,7 +20,11 @@
       <div class="panel-body">
         <div class="list-group">
         {{ store._clubs.all.each do |club| }}
-          <a e-click="show_more(club.id)" class="list-group-item">{{ club._name }}</a>
+          <a e-click="show_more(club.id)" class="">{{ club._name }}</a><br>
+          {{ store._competencies.where(club_id: club.id).all.each do |comp| }}
+            <span class="badge">{{ comp.name }}</span>
+          {{ end }}
+          <br><br>
         {{ end }}
         </div>
       </div>
