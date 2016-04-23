@@ -57,11 +57,10 @@
               <:link href="/survey">
                   <i class="fa fa-pencil"></i> Take Survey
               </:link>
-            {{ elsif taken? }}
-              <:link href="/surveys">
-                <i class="fa fa-bar-chart-o"></i> Your Surveys
-              </:link>
             {{ end }}
+            <:link href="/surveys">
+              <i class="fa fa-bar-chart-o"></i> Your Surveys
+            </:link>
             {{ if Volt.current_user.admin? }}
             <:link href="/users">
                 <i class="fa fa-users"></i> Users

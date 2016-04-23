@@ -21,6 +21,48 @@ module Survey
       end
     end
 
+    def options
+      Volt::Model.new( {
+
+        # identity the chart in volt
+        id: 'chart',
+
+        mode: :chart,
+
+        # highcharts options
+        chart: {
+          type: 'line',
+          renderTo: 'chart',
+          width: 600
+        },
+        title: {
+          text: 'Competencies'
+        },
+        xAxis: {
+          categories: %w(Self-Awareness Bananas Oranges)
+        },
+        yAxis: {
+          title: {
+              text: 'Score'
+          }
+        },
+        series: [
+          {
+            name: model._good_leader,
+            data: [1, 0, 4]
+          },
+          {
+            name: model._bad_leader,
+            data: [5, 7, 3]
+          },
+          {
+            name: 'Erik',
+            data: [10, 4, 3]
+          }
+        ]
+      } )
+  end
+
     def surveys
       Volt.current_user_id.then do |id|
         store._surveyforms.where(user_id: id).all
