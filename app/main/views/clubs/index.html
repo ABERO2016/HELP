@@ -18,7 +18,18 @@
   <div class="col-lg-12">
     <div class="panel panel-default">
       <div class="panel-body">
-        <div class="list-group">
+        <div class="row">
+          <div class="col-xs-12">
+            <:table:headers />
+          </div>
+        </div>
+        <:table:wrapper>
+          <:table:columns />
+          <:table:main:body source="{{ store._clubs.all }}" source_name="clubs" e-club_click="show_more"/>
+        </:table:wrapper>
+        <:table:main:footers source="{{ store._clubs.all }}" source_name="clubs" />
+
+        <!-- <div class="list-group">
         {{ store._clubs.all.each do |club| }}
           <a e-click="show_more(club.id)" class="">{{ club._name }}</a><br>
           {{ store._competencies.where(club_id: club.id).all.each do |comp| }}
@@ -26,7 +37,7 @@
           {{ end }}
           <br><br>
         {{ end }}
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -35,14 +46,3 @@
 {{ if page._club }}
   <:club_modal model="{{ page._club }}"/>
 {{ end }}
-
-<!-- <div class="row">
-  <div class="col-xs-12">
-    <:table:headers />
-  </div>
-</div>
-<:table:wrapper>
-  <:table:columns />
-  <:table:main:body source="{{ store._clubs.all }}" source_name="clubs" e-club_click="show_more"/>
-</:table:wrapper>
-<:table:main:footers source="{{ store._clubs.all }}" source_name="clubs" /> -->

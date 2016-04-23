@@ -15,26 +15,36 @@
             <div class="col-lg-12">
               <label class="control-label" style="text-align:center;"> Competencies for this Club</label>
             </div>
-            <div class="col-md-6">
+            {{ if model.saved? }}
+            <div class="col-lg-12">
               <div class="list-group">
-                <:competency item="Self Awareness">Self Awareness</:competency>
-                <:competency item="Intentional Learner">Intentional Learner</:competency>
-                <:competency item="Communication">Communication</:competency>
-                <:competency item="Relationship Development">Relationship Development</:competency>
-                <:competency item="Diversity Difference">Diversity Difference</:competency>
-                <:competency item="Engaging Leadership">Engaging Leadership</:competency>
+                {{ club_competencies(model.id).each do |comp| }}
+                  <a href="" class="list-group-item">{{ comp.name }}</a>
+                {{ end }}
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="list-group">
-                <:competency item="Directive Leadership">Directive Leadership</:competency>
-                <:competency item="Champions">Champions</:competency>
-                <:competency item="Problem Solving">Problem Solving</:competency>
-                <:competency item="Strategic Perspective">Strategic Perspective</:competency>
-                <:competency item="Ethics Integrity">Ethics Integrity</:competency>
-                <:competency item="Innovative Spirit">Innovative Spirit</:competency>
+            {{ else }}
+              <div class="col-md-6">
+                <div class="list-group">
+                  <:competency item="Self Awareness">Self Awareness</:competency>
+                  <:competency item="Intentional Learner">Intentional Learner</:competency>
+                  <:competency item="Communication">Communication</:competency>
+                  <:competency item="Relationship Development">Relationship Development</:competency>
+                  <:competency item="Diversity Difference">Diversity Difference</:competency>
+                  <:competency item="Engaging Leadership">Engaging Leadership</:competency>
+                </div>
               </div>
-            </div>
+              <div class="col-md-6">
+                <div class="list-group">
+                  <:competency item="Directive Leadership">Directive Leadership</:competency>
+                  <:competency item="Champions">Champions</:competency>
+                  <:competency item="Problem Solving">Problem Solving</:competency>
+                  <:competency item="Strategic Perspective">Strategic Perspective</:competency>
+                  <:competency item="Ethics Integrity">Ethics Integrity</:competency>
+                  <:competency item="Innovative Spirit">Innovative Spirit</:competency>
+                </div>
+              </div>
+            {{ end }}
           </div>
       </div>
       <div class="modal-footer">

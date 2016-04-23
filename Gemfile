@@ -47,7 +47,6 @@ group :test do
   gem 'selenium-webdriver', '~> 2.47.1'
   gem 'chromedriver-helper', '~> 1.0.0'
   gem 'poltergeist', '~> 1.6.0'
-  gem 'volt-browser_irb'
 end
 
 # Server for MRI
@@ -57,6 +56,11 @@ platform :mri, :mingw, :x64_mingw do
 
   # Thin is the default volt server, Puma is also supported
   gem 'thin', '~> 1.6.0'
+end
+
+group :development do
+  gem 'smarter_csv'
+  gem 'pry'
 end
 
 group :production do
