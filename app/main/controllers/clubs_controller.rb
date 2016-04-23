@@ -13,6 +13,11 @@ module Main
       # Add code for when the about view is loaded
     end
 
+    def clubs
+      page._club ||= store.clubs.buffer
+      page._competencies = []
+    end
+
     def setup_club_table
       params._sort_field ||= "name"
       params._sort_direction ||= 1

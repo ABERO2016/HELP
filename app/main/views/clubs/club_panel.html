@@ -7,7 +7,7 @@
         <div class="list-group">
           {{ user_clubs.each do |club| }}
             {{ store.clubs.where(id: club._club_id).all.each do |c| }}
-            <a e-click="show_more(club.id)" class="list-group-item">{{ c._name }}</a>
+            <button e-click="show_more(club.id)" class="list-group-item">{{ c._name }}</button>
             {{ end }}
           {{ end }}
         </div>
