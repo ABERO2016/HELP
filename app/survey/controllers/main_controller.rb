@@ -16,7 +16,7 @@ module Survey
     end
 
     def user
-      store.users.where(id: _user_id).first.then do |user|
+      store.users.where(id: model._user_id).first.then do |user|
         user
       end
     end
@@ -33,31 +33,31 @@ module Survey
         chart: {
           type: 'line',
           renderTo: 'chart',
-          width: 600
         },
         title: {
           text: 'Competencies'
         },
         xAxis: {
-          categories: %w(Self-Awareness Bananas Oranges)
+          categories: ['Self Awareness', 'Intentional Learner', 'Communication', 'Relationship Development', 'Dviersity Difference', 'Engaging Leadership', 'Directive Leadership' ,'Champions', 'Problem Solving', 'Strategic Perspective', 'Ethics Integrity', 'Innovative Spirit']
         },
         yAxis: {
           title: {
-              text: 'Score'
-          }
+              text: 'Score',
+          },
+          max: 100
         },
         series: [
           {
             name: model._good_leader,
-            data: [1, 0, 4]
+            data: [100, 100, 100, 100]
           },
           {
             name: model._bad_leader,
-            data: [5, 7, 3]
+            data: [5, 7, 3, 10]
           },
           {
-            name: 'Erik',
-            data: [10, 4, 3]
+            name: "You",
+            data: [self_awareness, intentional_learner, communication, relationship_development, diversity_difference, engaging_leadership, directive_leadership, champions, problem_solving, strategic_perspective, ethics_integrity, innovative_spirit]
           }
         ]
       } )
