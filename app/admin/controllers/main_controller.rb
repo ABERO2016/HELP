@@ -13,6 +13,10 @@ module Admin
       self.model ||= store.users.buffer
     end
 
+    def user
+
+    end
+
     def setup_user_table
       params._type_filter ||= "#{Time.now.year}"
       params._sort_field ||= "last_name"
@@ -45,9 +49,15 @@ module Admin
     def survey(id)
       `$('#myModal').modal('hide');`
       `$("body").removeClass("modal-open");`
-      store._surveyforms.where(user_id: id).first.then do |s|
-        redirect_to "/results/#{s.id}"
-      end
+      redirect_to "/users/#{id}"
+    end
+
+    def users_surveys
+      store._surveyforms.where(user_id: params.id).all
+    end
+
+    def current_user
+      store.users.where(id: params.id).first
     end
 
     # NOTE: Soon specify grad year
@@ -57,6 +67,10 @@ module Admin
       else
         store.users.all
       end
+    end
+
+    def surveys
+      store._surveyforms.where(user_id: model.id).all
     end
 
     def show_user_detail(user_id = nil)

@@ -1,6 +1,13 @@
 <:Title>
   HELP | Results
 <:Body>
+  {{ if Volt.current_user.admin? }}
+  <ol class="breadcrumb">
+    <li><a href="/users">Users</a></li>
+    <li><a href="/users/{{ user.id }}">{{ user.name }}</a></li>
+    <li class="active">Survey {{ _date.strftime('%m/%d/%Y') }}</li>
+  </ol>
+  {{ end }}
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
@@ -8,7 +15,6 @@
           <h1 class="page-header" style="text-align:center;">
             Hart Leadership Assessment
           </h1>
-          <h1 style="text-align:center;"><small>First Year Leadership Profile Report</small></h1>
         </div>
       </div>
     </div>

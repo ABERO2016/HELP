@@ -58,9 +58,9 @@
                   <i class="fa fa-pencil"></i> Take Survey
               </:link>
             {{ elsif taken? }}
-              <:link2>
-                <i class="fa fa-bar-chart-o"></i> Survey Results
-              </:link2>
+              <:link href="/surveys">
+                <i class="fa fa-bar-chart-o"></i> Your Surveys
+              </:link>
             {{ end }}
             {{ if Volt.current_user.admin? }}
             <:link href="/users">
@@ -80,6 +80,9 @@
                 <i class="fa fa-cubes"></i> Clubs and Organizations
             </:link>
             {{ end }}
+            <:link href="/competencies">
+                <i class="fa fa-puzzle-piece"></i> Competencies
+            </:link>
         </div>
       </div>
       {{ end }}

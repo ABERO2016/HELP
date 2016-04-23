@@ -21,6 +21,12 @@ module Survey
       end
     end
 
+    def surveys
+      Volt.current_user_id.then do |id|
+        store._surveyforms.where(user_id: id).all
+      end
+    end
+
     def view?
       view = false
       if Volt.current_user.survey_taken?
