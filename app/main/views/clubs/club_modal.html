@@ -8,9 +8,22 @@
         <h2 class="modal-title">{{ model.name || 'New Club/Organization' }}</h2>
       </div>
       <div class="modal-body">
-          <:fields:text value="{{ model._name }}" label="Club/Organization Name"/>
-          <:fields:textarea value="{{ model._description }}" />
-          <:fields:text value="{{ model._more_info }}" label="More Info - A link or email to contact "/>
+          {{ if Volt.current_user.admin? }}
+            <:fields:text value="{{ model._name }}" label="Club/Organization Name"/>
+            <:fields:textarea value="{{ model._description }}" />
+            <:fields:text value="{{ model._more_info }}" label="More Info - A link or email to contact "/>
+          {{ else }}
+            <label>Description</label>
+            <p>{{ model._description }}</p>
+            <label>For More Information</label>
+            {{ if info_is_link? }}
+            <p>
+              <a href="{{ model._more_info }}" target="_blank">{{ model._more_info }}</a>
+            </p>
+            {{ else }}
+            <p>{{ model._more_info }}</p>
+            {{ end }}
+          {{ end }}
           <div class="row">
             <div class="col-lg-12">
               <label class="control-label" style="text-align:center;"> Competencies for this Club</label>
@@ -28,7 +41,7 @@
                 <div class="list-group">
                   <:competency item="Self Awareness">Self Awareness</:competency>
                   <:competency item="Intentional Learner">Intentional Learner</:competency>
-                  <:competency item="Communication">Communication</:competency>
+                  <:competency item="Communicates Effectively">Communicates Effectively</:competency>
                   <:competency item="Relationship Development">Relationship Development</:competency>
                   <:competency item="Diversity Difference">Diversity Difference</:competency>
                   <:competency item="Engaging Leadership">Engaging Leadership</:competency>
@@ -37,7 +50,7 @@
               <div class="col-md-6">
                 <div class="list-group">
                   <:competency item="Directive Leadership">Directive Leadership</:competency>
-                  <:competency item="Champions">Champions</:competency>
+                  <:competency item="Champions Effective Processing">Champions Effective Processing</:competency>
                   <:competency item="Problem Solving">Problem Solving</:competency>
                   <:competency item="Strategic Perspective">Strategic Perspective</:competency>
                   <:competency item="Ethics Integrity">Ethics Integrity</:competency>
@@ -48,10 +61,10 @@
           </div>
       </div>
       <div class="modal-footer">
-        {{ if model.saved? }}
+        {{ if model.saved? && Volt.current_user.admin? }}
           <button type="button" e-click="update_club" class="btn btn-primary btn-block">Save</button>
           <button type="button" class="btn btn-danger btn-block" e-click="delete_and_close">Delete Club/Organization</button>
-        {{ else }}
+        {{ elsif Volt.current_user.admin?}}
           <button type="button" e-click="save_club" class="btn btn-primary btn-block">Create Club/Organization</button>
         {{ end }}
         <button id="close" type="button" data-dismiss="modal" class="btn btn-default btn-block">Close</button>

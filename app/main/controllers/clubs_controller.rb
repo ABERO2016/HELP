@@ -20,10 +20,20 @@ module Main
         default_click_event: 'club_click',
         columns: [
         {title: "Club/Org Name", search_field: 'name', field_name: 'name', sort_name: 'name', shown: true},
-        {title: "Description", search_field: 'desc', field_name: 'description', sort_name: 'description', shown: true},
-        {title: "More Information", search_field: 'more_info', field_name: 'more_info', sort_name: 'more_info', shown: false},
+        {title: "Description", search_field: 'desc', field_name: 'description', shown: true},
+        {title: "More Information", search_field: 'more_info', field_name: 'more_info', shown: false},
         ]
       }
+    end
+
+    def taken?
+      Volt.current_user._survey_status.then do |status|
+        if status == 'taken'
+          true
+        else
+          false
+        end
+      end
     end
 
     def club_competencies(id)
@@ -38,10 +48,36 @@ module Main
       end
     end
 
-    def new_club
-      page._competencies = []
-      page._club = store.clubs.buffer
+    def info_is_link?
+      model._more_info.include?('http')
     end
+
+    def user_clubs
+      competency_one.then do |one|
+        store.competencies.where(name: "#{one}").all
+      end
+    end
+
+    def all_clubs
+      store._clubs.order(:name => 1).skip(((params._page || 1).to_i - 1) * 10).limit(10).all
+    end
+
+    def competency_one
+      Volt.current_user_id.then do |id|
+        store._surveyforms.where(user_id: id).first.then do |survey|
+          survey._competency_one
+        end
+      end
+    end
+
+    def competency_two
+      Volt.current_user_id.then do |id|
+        store._surveyforms.where(user_id: id).first.then do |survey|
+          survey._competency_two
+        end
+      end
+    end
+
 
     def selected?
       page._competencies.include?(attrs.item)

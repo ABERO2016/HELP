@@ -1,0 +1,18 @@
+<:Body>
+  <div class="panel panel-primary">
+    <div class="panel-heading">Clubs and Organizations
+    </div>
+    <div class="panel-body">
+      {{ if taken? }}
+        <div class="list-group">
+          {{ user_clubs.each do |club| }}
+            {{ store.clubs.where(id: club._club_id).all.each do |c| }}
+            <a href="" class="list-group-item">{{ c.name }}</a>
+            {{ end }}
+          {{ end }}
+        </div>
+      {{ else }}
+        Take the survey to see which clubs and organizations would fit your Leadership Competencies
+      {{ end }}
+    </div>
+  </div>
