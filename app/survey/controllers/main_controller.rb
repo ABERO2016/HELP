@@ -23,45 +23,166 @@ module Survey
 
     def options
       Volt::Model.new( {
-
-        # identity the chart in volt
         id: 'chart',
-
         mode: :chart,
-
-        # highcharts options
         chart: {
           type: 'line',
           renderTo: 'chart',
+          height: 600
         },
-        title: {
-          text: 'Competencies'
-        },
+        title: { text: 'Competencies' },
         xAxis: {
-          categories: ['Self Awareness', 'Intentional Learner', 'Communication', 'Relationship Development', 'Dviersity Difference', 'Engaging Leadership', 'Directive Leadership' ,'Champions', 'Problem Solving', 'Strategic Perspective', 'Ethics Integrity', 'Innovative Spirit']
+          categories: ['Self Awareness', 'Intentional Learner', 'Communicates Effectively', 'Relationship Development', 'Diversity Difference', 'Engaging Leadership', 'Directive Leadership' ,'Champions Effective<br> Processing', 'Problem Solving', 'Strategic Perspective', 'Ethics Integrity', 'Innovative Spirit']
         },
         yAxis: {
           title: {
-              text: 'Score',
+              text: 'Score %',
           },
           max: 100
         },
         series: [
           {
+            color: '#5cb85c',
             name: model._good_leader,
             data: [good_self_awareness, good_intentional_learner, good_communication, good_relationship_development, good_diversity_difference, good_engaging_leadership, good_directive_leadership, good_champions, good_problem_solving, good_strategic_perspective, good_ethics_integrity, good_innovative_spirit]
           },
           {
+            color: '#d9534f',
             name: model._bad_leader,
             data: [bad_self_awareness, bad_intentional_learner, bad_communication, bad_relationship_development, bad_diversity_difference, bad_engaging_leadership, bad_directive_leadership, bad_champions, bad_problem_solving, bad_strategic_perspective, bad_ethics_integrity, bad_innovative_spirit]
           },
           {
+            color: '#428bca',
             name: "You",
             data: [self_awareness, intentional_learner, communication, relationship_development, diversity_difference, engaging_leadership, directive_leadership, champions, problem_solving, strategic_perspective, ethics_integrity, innovative_spirit]
           }
         ]
       } )
-  end
+    end
+
+    def bar_graph_options
+      Volt::Model.new( {
+        id: 'bar_chart',
+        mode: :chart,
+        chart: {
+          type: 'bar',
+          renderTo: 'bar_chart',
+          height: 500
+        },
+        title: {
+          text: 'Competencies By Focus Area'
+        },
+        xAxis: {
+          categories: ['Self Awareness', 'Intentional Learner', 'Communicates Effectively', 'Relationship Development', 'Dviersity Difference', 'Engaging Leadership', 'Directive Leadership' ,'Champions Effective<br> Processing', 'Problem Solving', 'Strategic Perspective', 'Ethics Integrity', 'Innovative Spirit']
+        },
+        yAxis: {
+          title: {
+              text: 'Score %',
+          },
+          max: 100
+        },
+        plotOptions: {
+        	bar: {
+          	pointWidth: 30,
+          }
+        },
+        series: [
+          {
+            colorByPoint: true,
+            colors: ['#428bca', '#428bca', '#428bca', '#5cb85c', '#5cb85c', '#5cb85c', '#5bc0de', '#5bc0de', '#5bc0de', '#d9534f', '#d9534f', '#d9534f'],
+            name: "You",
+            data: [self_awareness, intentional_learner, communication, relationship_development, diversity_difference, engaging_leadership, directive_leadership, champions, problem_solving, strategic_perspective, ethics_integrity, innovative_spirit]
+          }
+        ]
+      } )
+    end
+
+    def sorted_graph_options
+      array = []
+      names = []
+      competencies.each do |comp|
+        names.push(comp[:competency])
+        array.push(comp[:value])
+      end
+      Volt::Model.new( {
+        id: 'sorted_bar_chart',
+        mode: :chart,
+        chart: {
+          type: 'bar',
+          renderTo: 'sorted_bar_chart',
+          height: 500
+        },
+        title: {
+          text: 'Ranked Competencies'
+        },
+        xAxis: {
+          categories: names
+        },
+        yAxis: {
+          title: {
+              text: 'Score %',
+          },
+          max: 100
+        },
+        plotOptions: {
+        	bar: {
+          	pointWidth: 30,
+          }
+        },
+        series: [
+          {
+            units: '%',
+            colorByPoint: true,
+            colors: ['#428bca', '#428bca', '#5cb85c', '#5cb85c', '#5cb85c', '#5cb85c', '#5cb85c', '#5cb85c', '#5cb85c', '#5cb85c', '#d9534f', '#d9534f'],
+            name: "You",
+            data: array
+          }
+        ]
+      } )
+    end
+
+    def focus_area_options
+      Volt::Model.new( {
+
+        # identity the chart in volt
+        id: 'focus_bar_chart',
+
+        mode: :chart,
+
+        # highcharts options
+        chart: {
+          type: 'bar',
+          renderTo: 'focus_bar_chart',
+          height: 400
+        },
+        title: {
+          text: 'Competencies By Focus Area'
+        },
+        xAxis: {
+          categories: ['Personal Leadership', 'Relational Leadership', 'Functional Leadership', 'Leading In Context']
+        },
+        yAxis: {
+          title: {
+              text: 'Score %',
+          },
+          max: 100
+        },
+        plotOptions: {
+        	bar: {
+          	pointWidth: 30,
+          }
+        },
+        series: [
+          {
+            units: '%',
+            colorByPoint: true,
+            colors: ['#428bca', '#5cb85c', '#5bc0de', '#d9534f'],
+            name: "You",
+            data: [personal_leadership, relational_leadership, functional_leadership, leading_in_context]
+          }
+        ]
+      } )
+    end
 
     def surveys
       Volt.current_user_id.then do |id|
