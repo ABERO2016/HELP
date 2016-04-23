@@ -58,6 +58,11 @@ platform :mri, :mingw, :x64_mingw do
   gem 'thin', '~> 1.6.0'
 end
 
+group :development do
+  gem 'smarter_csv'
+  gem 'pry'
+end
+
 group :production do
   # Asset compilation gems, they will be required when needed.
   gem 'csso-rails', '~> 0.3.4', require: false

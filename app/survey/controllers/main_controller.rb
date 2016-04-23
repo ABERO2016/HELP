@@ -41,6 +41,8 @@ module Survey
         closeOnConfirm: false }, function(){`
           Volt.current_user_id.then do |id|
             model._user_id = id
+            model._competency_one = competencies[0][:competency]
+            model._competency_two = competencies[1][:competency]
             model._date = Time.now
             model.save!.then do
               Volt.current_user._survey_status = 'taken'
@@ -133,6 +135,26 @@ module Survey
 
     def leading_in_context
       ((strategic_perspective + ethics_integrity + innovative_spirit) / 3).round(2)
+    end
+
+    ########################
+    # Assign Competencies   #
+    ########################
+    def competencies
+      comp = []
+      comp << {competency: "Innovative Spirit", value: innovative_spirit}
+      comp << {competency: "Ethics Integrity", value: ethics_integrity}
+      comp << {competency: "Strategic Perspective", value: strategic_perspective}
+      comp << {competency: "Problem Solving", value: problem_solving}
+      comp << {competency: "Champions Effective Processing", value: champions}
+      comp << {competency: "Directive Leadership", value: directive_leadership}
+      comp << {competency: "Engaging Leadership", value: engaging_leadership}
+      comp << {competency: "Diversity Difference", value: diversity_difference}
+      comp << {competency: "Relationship Development", value: relationship_development}
+      comp << {competency: "Communication", value: communication}
+      comp << {competency: "Intentional Learner", value: intentional_learner}
+      comp << {competency: "Self Awareness", value: self_awareness}
+      comp.sort_by { |hsh| hsh[:value] }.reverse!
     end
 
     private

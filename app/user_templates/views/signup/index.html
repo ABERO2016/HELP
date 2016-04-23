@@ -15,7 +15,7 @@
       <div class="span4 offset4 well">
         <form e-submit="signup">
           <div class="row">
-            <legend>Contact Information</legend>
+            <legend>Student Information</legend>
             <div class="col-md-6">
               <:fields:text value="{{ _first_name }}" label="First Name *" />
             </div>
@@ -27,13 +27,16 @@
             <div class="col-lg-6">
               <:fields:text value="{{ _prefered_name }}" label="Prefered Name" />
             </div>
+            <div class="col-lg-6">
+              <:fields:text value="{{ _smu_id }}" label="SMU ID *" />
+            </div>
           </div>
           <div class="row">
             <div class="col-md-6">
               <:fields:select value="{{ _major }}" label="Major *" options="{{ User::MAJORS_OPTIONS }}"/>
             </div>
             <div class="col-md-6">
-              <:fields:text value="{{ _graduation_year }}" label="Graduation Year *" />
+              <:fields:select value="{{ _graduation_year }}" label="Graduation Year *"  options="{{ ['2015', '2016', '2017', '2018', '2019', '2020'] }}"/>
             </div>
           </div>
           <div class="row">
@@ -46,15 +49,7 @@
               {{ end }}
             </div>
             <div class="col-md-6">
-              <:fields:text value="{{ _smu_id }}" label="SMU ID *" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
               <:fields:text type="password" value="{{ _password }}" label="Password *"/>
-            </div>
-            <div class="col-lg-6">
-              <:fields:select value="{{ _role }}" options="{{ User::ROLES }}"/>
             </div>
           </div>
           <br>

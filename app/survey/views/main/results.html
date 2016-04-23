@@ -34,12 +34,46 @@
       </div>
     </div>
   </div>
-  <!-- <div class="row">
+  <div class="row">
     <div class="col-md-12">
-      <p> Good Leader: {{ model._good_leader }} </p>
-      <p> Bad Leader: {{ model._bad_leader }} </p>
+      <h2 class="page-header" style="text-align:center"> Your Competencies </h2>
     </div>
-  </div> -->
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <!-- <div class="panel-heading">
+          <h2 class="panel-title">Top Competencies</h2>
+        </div> -->
+        <div class="panel-body">
+          <div style="text-align:center">
+            <div class="col-md-6">
+              <h3><small>1.</small> {{ model._competency_one }} </h3>
+            </div>
+            <div class="col-md-6">
+              <h3><small>2.</small> {{ model._competency_two }} </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3><small>Good Leader:</small> {{ model._good_leader }} </h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3><small>Bad Leader:</small> {{ model._bad_leader }} </h3>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-lg-12">
       <div class="panel panel-primary">
@@ -48,106 +82,106 @@
         </div>
         <div class="panel-body">
           <div style="text-align:center">
-            <h3 class="panel-title">Sorted by Focus Area</h3>
+            <h3 class="panel-title">Sorted by Focus Area</h3><br>
           </div>
           <div class="table-responsive">
             <table class="results-table">
               <tbody>
                 <tr>
-                  <th>Self Awareness</th>
-                  <th class="bar">
+                  <td>Self Awareness</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent" style="width: {{ self_awareness }}%">{{ self_awareness }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Intentional Learner</th>
-                  <th class="bar">
+                  <td>Intentional Learner</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent" style="width: {{ intentional_learner }}%">{{ intentional_learner }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Communication</th>
-                  <th class="bar">
+                  <td>Communication</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent" style="width: {{ communication }}%">{{ communication }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Relationship Development</th>
-                  <th class="bar">
+                  <td>Relationship Development</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent_green" style="width: {{ relationship_development }}%">{{ relationship_development }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Diversity and Difference</th>
-                  <th class="bar">
+                  <td>Diversity and Difference</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent_green" style="width: {{ diversity_difference }}%">{{ diversity_difference }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Engaging Leadership</th>
-                  <th class="bar">
+                  <td>Engaging Leadership</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent_green" style="width: {{ engaging_leadership }}%">{{ engaging_leadership }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Directive Leadership</th>
-                  <th class="bar">
+                  <td>Directive Leadership</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent_aqua" style="width: {{ directive_leadership }}%">{{ directive_leadership }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Champions Effective Processes</th>
-                  <th class="bar">
+                  <td>Champions Effective Processes</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent_aqua" style="width: {{ champions }}%">{{ champions }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Problem Solving</th>
-                  <th class="bar">
+                  <td>Problem Solving</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent_aqua" style="width: {{ problem_solving }}%">{{ problem_solving }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Strategic Perspective</th>
-                  <th class="bar">
+                  <td>Strategic Perspective</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent_red" style="width: {{ strategic_perspective }}%">{{ strategic_perspective }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Ethics and Integrity</th>
-                  <th class="bar">
+                  <td>Ethics and Integrity</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent_red" style="width: {{ ethics_integrity }}%">{{ ethics_integrity }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Innovative Spirit</th>
-                  <th class="bar">
+                  <td>Innovative Spirit</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent_red" style="width: {{ innovative_spirit }}%">{{ innovative_spirit }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -167,36 +201,36 @@
             <table class="results-table">
               <tbody>
                 <tr>
-                  <th>Personal Leadership</th>
-                  <th class="bar">
+                  <td>Personal Leadership</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent" style="width: {{ personal_leadership }}%">{{ personal_leadership }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Relational Leadership</th>
-                  <th class="bar">
+                  <td>Relational Leadership</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent_green" style="width: {{ intentional_learner }}%">{{ intentional_learner }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Functional Leadership</th>
-                  <th class="bar">
+                  <td>Functional Leadership</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent_aqua" style="width: {{ communication }}%">{{ communication }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
                 <tr>
-                  <th>Leading in Context</th>
-                  <th class="bar">
+                  <td>Leading in Context</td>
+                  <td class="bar">
                     <ul class="graph">
                       <li class="percent_red" style="width: {{ relationship_development }}%">{{ relationship_development }}%</li>
                     </ul>
-                  </th>
+                  </td>
                 </tr>
               </tbody>
             </table>
