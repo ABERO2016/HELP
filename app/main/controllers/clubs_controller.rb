@@ -26,6 +26,11 @@ module Main
       }
     end
 
+    def new_club
+      page._club = store._clubs.buffer
+      page._competencies = []
+    end
+
     def taken?
       Volt.current_user._survey_status.then do |status|
         if status == 'taken'
