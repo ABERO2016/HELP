@@ -49,11 +49,11 @@ module Survey
         series: [
           {
             name: model._good_leader,
-            data: [100, 100, 100, 100]
+            data: [good_self_awareness, good_intentional_learner, good_communication, good_relationship_development, good_diversity_difference, good_engaging_leadership, good_directive_leadership, good_champions, good_problem_solving, good_strategic_perspective, good_ethics_integrity, good_innovative_spirit]
           },
           {
             name: model._bad_leader,
-            data: [5, 7, 3, 10]
+            data: [bad_self_awareness, bad_intentional_learner, bad_communication, bad_relationship_development, bad_diversity_difference, bad_engaging_leadership, bad_directive_leadership, bad_champions, bad_problem_solving, bad_strategic_perspective, bad_ethics_integrity, bad_innovative_spirit]
           },
           {
             name: "You",
@@ -163,6 +163,132 @@ module Survey
 
     def innovative_spirit
       sum = _q21_0_c.to_i + _q21_1_c.to_i + _q21_2_c.to_i + _q21_3_c.to_i + _q21_4_c.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    ######################
+    #  Good Leader
+    ######################
+    def good_self_awareness
+      sum = _q12_0_a.to_i + _q12_1_a.to_i + _q12_2_a.to_i + _q12_3_a.to_i + _q12_4_a.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def good_intentional_learner
+      sum = _q13_0_a.to_i + _q13_1_a.to_i + _q13_2_a.to_i + _q13_3_a.to_i + _q13_4_a.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def good_communication
+      sum = _q12_4_a.to_i + _q13_4_a.to_i + _q14_4_a.to_i + _q16_4_a.to_i + _q22_4_a.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def good_relationship_development
+      sum = _q14_0_a.to_i + _q14_1_a.to_i + _q14_2_a.to_i + _q14_3_a.to_i + _q14_4_a.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def good_diversity_difference
+      sum = _q15_0_a.to_i + _q15_1_a.to_i + _q15_2_a.to_i + _q15_3_a.to_i + _q15_4_a.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def good_engaging_leadership
+      sum = _q16_0_a.to_i + _q16_1_a.to_i + _q16_2_a.to_i + _q16_3_a.to_i + _q16_4_a.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def good_directive_leadership
+      sum = _q22_0_a.to_i + _q22_1_a.to_i + _q22_2_a.to_i + _q22_3_a.to_i + _q22_4_a.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def good_champions
+      sum = _q17_0_a.to_i + _q17_1_a.to_i + _q17_2_a.to_i + _q17_3_a.to_i + _q17_4_a.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def good_problem_solving
+      sum = _q18_0_a.to_i + _q18_1_a.to_i + _q18_2_a.to_i + _q18_3_a.to_i + _q18_4_a.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def good_strategic_perspective
+      sum = _q19_0_a.to_i + _q19_1_a.to_i + _q19_2_a.to_i + _q19_3_a.to_i + _q19_4_a.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def good_ethics_integrity
+      sum = _q20_0_a.to_i + _q20_1_a.to_i + _q20_2_a.to_i + _q20_3_a.to_i + _q20_4_a.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def good_innovative_spirit
+      sum = _q21_0_a.to_i + _q21_1_a.to_i + _q21_2_a.to_i + _q21_3_a.to_i + _q21_4_a.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    ######################
+    #  Bad Leader
+    ######################
+    def bad_self_awareness
+      sum = _q12_0_b.to_i + _q12_1_b.to_i + _q12_2_b.to_i + _q12_3_b.to_i + _q12_4_b.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def bad_intentional_learner
+      sum = _q13_0_b.to_i + _q13_1_b.to_i + _q13_2_b.to_i + _q13_3_b.to_i + _q13_4_b.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def bad_communication
+      sum = _q12_4_b.to_i + _q13_4_b.to_i + _q14_4_b.to_i + _q16_4_b.to_i + _q22_4_b.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def bad_relationship_development
+      sum = _q14_0_b.to_i + _q14_1_b.to_i + _q14_2_b.to_i + _q14_3_b.to_i + _q14_4_b.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def bad_diversity_difference
+      sum = _q15_0_b.to_i + _q15_1_b.to_i + _q15_2_b.to_i + _q15_3_b.to_i + _q15_4_b.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def bad_engaging_leadership
+      sum = _q16_0_b.to_i + _q16_1_b.to_i + _q16_2_b.to_i + _q16_3_b.to_i + _q16_4_b.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def bad_directive_leadership
+      sum = _q22_0_b.to_i + _q22_1_b.to_i + _q22_2_b.to_i + _q22_3_b.to_i + _q22_4_b.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def bad_champions
+      sum = _q17_0_b.to_i + _q17_1_b.to_i + _q17_2_b.to_i + _q17_3_b.to_i + _q17_4_b.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def bad_problem_solving
+      sum = _q18_0_b.to_i + _q18_1_b.to_i + _q18_2_b.to_i + _q18_3_b.to_i + _q18_4_b.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def bad_strategic_perspective
+      sum = _q19_0_b.to_i + _q19_1_b.to_i + _q19_2_b.to_i + _q19_3_b.to_i + _q19_4_b.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def bad_ethics_integrity
+      sum = _q20_0_b.to_i + _q20_1_b.to_i + _q20_2_b.to_i + _q20_3_b.to_i + _q20_4_b.to_i
+      ((sum / 20) * 100).round(2)
+    end
+
+    def bad_innovative_spirit
+      sum = _q21_0_b.to_i + _q21_1_b.to_i + _q21_2_b.to_i + _q21_3_b.to_i + _q21_4_b.to_i
       ((sum / 20) * 100).round(2)
     end
 
