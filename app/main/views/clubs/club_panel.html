@@ -7,7 +7,7 @@
         <div class="list-group">
           {{ user_clubs.each do |club| }}
             {{ store.clubs.where(id: club._club_id).all.each do |c| }}
-            <a href="" class="list-group-item">{{ c.name }}</a>
+            <a e-click="show_more(club.id)" class="list-group-item">{{ c._name }}</a>
             {{ end }}
           {{ end }}
         </div>
@@ -15,4 +15,15 @@
         Take the survey to see which clubs and organizations would fit your Leadership Competencies
       {{ end }}
     </div>
+    <a href="/organizations">
+			<div class="panel-footer">
+        <span class="pull-left">View All</span>
+        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+        <div class="clearfix"></div>
+      </div>
+		</a>
   </div>
+
+  {{ if page._club }}
+    <:club_modal model="{{ page._club }}"/>
+  {{ end }}
