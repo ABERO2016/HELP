@@ -191,13 +191,7 @@ module Survey
     end
 
     def view?
-      view = false
-      if Volt.current_user._visible
-        view = true
-      elsif Volt.current_user.admin?
-        view = true
-      end
-      view
+      Volt.current_user.visible
     end
 
     def save_survey
