@@ -18,6 +18,11 @@ module Admin
       page._emails = []
     end
 
+    def issue_surveys
+      params._type_filter ||= "#{Time.now.year}"
+      page._users = []
+    end
+
     def setup_user_table
       params._type_filter ||= "#{Time.now.year}"
       params._sort_field ||= "last_name"
@@ -59,6 +64,18 @@ module Admin
       else
         page._emails << item
       end
+    end
+
+    def issue_toggle(item)
+      if user_selected?
+        page._users.delete(item)
+      else
+        page._users << item
+      end
+    end
+
+    def user_selected?
+      page._users.include?(attrs.item)
     end
 
     def selected?
@@ -126,6 +143,24 @@ module Admin
         array = page._emails.to_a
         EmailHandlerTask.send_reminder(array)
         page._emails = []
+      end
+    end
+
+    def issued_users
+      store.users.where(survey_status: 'taken').all
+    end
+
+    def issue_survey
+      if page._users == []
+        `swal("Error", "Please Select a User!", "error")`
+      else
+        page._users.each do |id|
+          store.users.where(id: id).first.then do |user|
+            user.survey_status = 'in progress'
+          end
+        end
+        `swal("Sent!", "The Survey has been sent!", "success")`
+        page._users = []
       end
     end
 
