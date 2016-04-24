@@ -9,6 +9,7 @@ Volt.skip_permissions do
   buffer._role = 'Student'
   buffer._survey_status = 'taken'
   buffer._mkrg = 'email'
+  buffer._visible = false
   buffer._password = 'sharpclaw'
   buffer.save!.then do
     puts 'saved'
@@ -259,16 +260,17 @@ Volt.skip_permissions do
   end
 
   buffer = Volt.current_app.store.users.buffer
-  buffer._first_name = 'Admin'
-  buffer._last_name = 'Test'
-  buffer._email = 'adminTest@smu.edu'
+  buffer._first_name = 'Kathy'
+  buffer._last_name = 'Hubbard'
+  buffer._email = 'khubbard@lyle.smu.edu'
   buffer._major = 'Other'
   buffer._graduation_year = '2017'
-  buffer._smu_id = '00000000'
+  buffer._smu_id = '18553448'
   buffer._role = 'Admin'
   buffer._survey_status = 'not taken'
   buffer._mkrg = 'email'
-  buffer._password = 'tester123'
+  buffer._visible = true
+  buffer._password = 'changeme'
   buffer.save!.then do
     puts 'saved'
   end.fail do |err|

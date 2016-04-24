@@ -23,6 +23,11 @@ module Admin
       page._users = []
     end
 
+    def allow_results
+      params._type_filter ||= "#{Time.now.year}"
+      page._users = []
+    end
+
     def setup_user_table
       params._type_filter ||= "#{Time.now.year}"
       params._sort_field ||= "last_name"
@@ -150,6 +155,10 @@ module Admin
       store.users.where(survey_status: 'taken').all
     end
 
+    def allowed_users
+      store.users.where(visible: false).all
+    end
+
     def issue_survey
       if page._users == []
         `swal("Error", "Please Select a User!", "error")`
@@ -160,6 +169,20 @@ module Admin
           end
         end
         `swal("Sent!", "The Survey has been sent!", "success")`
+        page._users = []
+      end
+    end
+
+    def give_results
+      if page._users == []
+        `swal("Error", "Please Select a User!", "error")`
+      else
+        page._users.each do |id|
+          store.users.where(id: id).first.then do |user|
+            user._visible = true
+          end
+        end
+        `swal("Sent!", "Users have been given access", "success")`
         page._users = []
       end
     end

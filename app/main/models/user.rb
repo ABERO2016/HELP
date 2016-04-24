@@ -20,6 +20,7 @@ class User < Volt::User
   field :role
   field :survey_status
   field :mktg, String
+  field :visible
 
   #Validations
   validate login_field, unique: true, length: 8, presence: true
