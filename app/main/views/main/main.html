@@ -53,14 +53,16 @@
             <:link href="/">
                 <i class="fa fa-tachometer"></i> Dashboard
             </:link>
-            {{ if in_progress? }}
-              <:link href="/survey">
-                  <i class="fa fa-pencil"></i> Take Survey
+            {{ if taken? }}
+              <:link href="/surveys">
+                <i class="fa fa-bar-chart-o"></i> Your Surveys
+              </:link>
+            {{ else }}
+              <:link href="/surveys">
+                <i class="fa fa-bar-chart-o"></i> Your Surveys
+                <span class="badge">1</span>
               </:link>
             {{ end }}
-            <:link href="/surveys">
-              <i class="fa fa-bar-chart-o"></i> Your Surveys
-            </:link>
             {{ if Volt.current_user.admin? }}
             <:link href="/users">
                 <i class="fa fa-users"></i> Users

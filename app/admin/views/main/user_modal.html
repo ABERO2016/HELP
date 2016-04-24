@@ -38,16 +38,18 @@
               </tr>
               <tr>
                 <td><b>Last Login</b></td>
-                <td>{{ model.last_login.strftime("%m/%d") }}</td>
+                <td>{{ model.last_login.strftime("%m/%d/%Y") }}</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="modal-footer">
-          {{ if model.survey_status == 'not taken' }}
-            <button e-click="allow_access(model.id)" class="btn btn-primary" >Issue Survey</button>
-          {{ elsif model.survey_status == 'in progress' }}
-            <button class="btn btn-default">Survey In Progress</button>
+          {{ if model.survey_status == 'taken' }}
+            <button e-click="allow_access(model.id)" class="btn btn-success" >Issue a Survey</button>
+          {{ else }}
+            <button class="btn btn-default" disabled="true">Survey In Progress</button>
+          {{ end }}
+          {{ if have_survey? }}
           {{ else }}
             <button e-click="survey(model.id)" class="btn btn-primary" >View Survey Results</button>
           {{ end }}

@@ -13,8 +13,9 @@ module Admin
       self.model ||= store.users.buffer
     end
 
-    def user
-
+    def reminders
+      params._type_filter ||= "#{Time.now.year}"
+      page._emails = []
     end
 
     def setup_user_table
@@ -52,6 +53,18 @@ module Admin
       redirect_to "/users/#{id}"
     end
 
+    def toggle(item)
+      if selected?
+        page._emails.delete(item)
+      else
+        page._emails << item
+      end
+    end
+
+    def selected?
+      page._emails.include?(attrs.item)
+    end
+
     def users_surveys
       store._surveyforms.where(user_id: params.id).all
     end
@@ -73,9 +86,24 @@ module Admin
       store._surveyforms.where(user_id: model.id).all
     end
 
+    def reminded_users
+      store.users.where('$or' => [{survey_status: 'in progress'}, {survey_status: 'not taken'}]).all
+    end
+
+    def have_survey?
+      store._surveyforms.where(user_id: model.id).all.length.then do |length|
+        length == 0
+      end
+    end
+
     def show_user_detail(user_id = nil)
       self.model = store.users.where(id: user_id).first
       `$('#myModal').modal('show');`
+    end
+
+    def select_all
+      puts "clicked"
+      `$(".clickable").click();`
     end
 
     def send_email
@@ -86,6 +114,18 @@ module Admin
         emails = page._email.split(';')
         EmailHandlerTask.send_email(emails)
         page._email = ''
+      end
+    end
+
+    def send_reminder
+      if page._emails == []
+        `swal("Error", "Please Select a user email!", "error")`
+      else
+        `swal("Sent!", "The reminder email has been sent!", "success")`
+        array = []
+        array = page._emails.to_a
+        EmailHandlerTask.send_reminder(array)
+        page._emails = []
       end
     end
 
