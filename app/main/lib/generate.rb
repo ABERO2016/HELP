@@ -4,7 +4,7 @@ Volt.skip_permissions do
   buffer._last_name = 'Gabrielsen'
   buffer._email = 'egabrielsen@smu.edu'
   buffer._major = 'Computer Science'
-  buffer._graduation_year = '2007'
+  buffer._graduation_year = '2017'
   buffer._smu_id = '40354578'
   buffer._role = 'Student'
   buffer._survey_status = 'taken'
