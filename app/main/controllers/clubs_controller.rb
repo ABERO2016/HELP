@@ -14,11 +14,6 @@ module Main
     end
 
     def clubs
-      page._club ||= store.clubs.buffer
-      page._competencies = []
-    end
-
-    def clubs
       params._type_filter ||= "all"
       puts params._type_filter
     end
