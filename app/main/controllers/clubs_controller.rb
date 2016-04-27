@@ -142,29 +142,40 @@ module Main
         page._competencies.each do |c|
           m._competencies << {name: "#{c}"}
         end
+        `swal("Success", "Club was created!", "success");`
         `$('#ClubModal').modal('hide');`
       end.fail do |er|
-        puts "#{er}"
+        `swal("Error", "Please make sure required fields are completed", "error");`
       end
     end
 
     def update_club
       model.save!.then do |m|
+        `swal("Success", "Club was saved!", "success");`
         `$('#ClubModal').modal('hide');`
       end.fail do |er|
-        puts "#{er}"
+        `swal("Error", "Please make sure required fields are completed", "error");`
       end
       index
     end
 
     def delete_and_close
-      store._competencies.where(club_id: model.id).all.each do |comp|
-        comp.destroy
-      end
-      store.clubs.where(id: model.id).first.then do |club|
-        store.clubs.delete(club)
-      end
-      `$('#ClubModal').modal('hide');`
+      `swal({   title: "Are you sure?",
+        text: "Are you sure that you want to delete this club? You will lose all data!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d43f3a",
+        confirmButtonText: "Delete!",
+        closeOnConfirm: false }, function(){`
+          store._competencies.where(club_id: model.id).all.each do |comp|
+            comp.destroy
+          end
+          store.clubs.where(id: model.id).first.then do |club|
+            store.clubs.delete(club)
+          end
+          `swal("Deleted", "Club has been deleted", "success");`
+          `$('#ClubModal').modal('hide');`
+        `});`
     end
 
   end

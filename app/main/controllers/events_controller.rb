@@ -153,9 +153,10 @@ module Main
         page._competencies.each do |c|
           m._competencies << {name: "#{c}"}
         end
+        `swal("Success", "Event was created!", "success");`
         `$('#EventModal').modal('hide');`
       end.fail do |er|
-        puts "#{er}"
+        `swal("Error", "Please make sure required fields are completed", "error");`
       end
     end
 
@@ -169,9 +170,10 @@ module Main
         model._end_time = nil
       end
       model.save!.then do |m|
+        `swal("Success", "Event was saved!", "success");`
         `$('#EventModal').modal('hide');`
       end.fail do |er|
-        puts "#{er}"
+        `swal("Error", "Please make sure required fields are completed", "error");`
       end
       index
     end
@@ -181,14 +183,22 @@ module Main
     end
 
     def delete_and_close
-      store._competencies.where(event_id: model.id).all.each do |comp|
-        comp.destroy
-      end
-      store.events.where(id: model.id).first.then do |event|
-        store.events.delete(event)
-      end
-      `$('#EventModal').modal('hide');`
+      `swal({   title: "Are you sure?",
+        text: "Are you sure that you want to delete this event? You will lose all data!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d43f3a",
+        confirmButtonText: "Delete!",
+        closeOnConfirm: false }, function(){`
+          store._competencies.where(event_id: model.id).all.each do |comp|
+            comp.destroy
+          end
+          store.events.where(id: model.id).first.then do |event|
+            store.events.delete(event)
+          end
+          `swal("Deleted", "Event has been deleted", "success");`
+          `$('#EventModal').modal('hide');`
+      `});`
     end
-
   end
 end
