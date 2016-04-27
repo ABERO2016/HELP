@@ -1,3 +1,5 @@
+require 'faker'
+
 Volt.skip_permissions do
   buffer = Volt.current_app.store.users.buffer
   buffer._first_name = 'Erik'

@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/matthew342/volt-table.git
-  revision: 9765a714442ea8b5f78fb2f18cef0d8121d65433
-  branch: fix_table
+  revision: e16f1951aaba1192f5d082be1f30dc97a240ccbb
+  branch: develop
   specs:
     volt-table (0.1.0)
 

@@ -23,12 +23,13 @@ gem 'volt-fields'
 gem 'volt-datepicker'
 gem 'opal-highcharts'
 gem 'volt-highcharts'
-gem 'volt-table', git: 'https://github.com/matthew342/volt-table.git', branch: :fix_table
+gem 'volt-table', git: 'https://github.com/matthew342/volt-table.git', branch: :develop
 gem 'volt-pagination'
 
 
 # Add ability to send e-mail from apps.
 gem 'volt-mailer', '~> 0.1.2'
+gem 'smarter_csv'
 
 # Use rbnacl for message bus encrpytion
 # (optional, if you don't need encryption, disable in app.rb and remove)
@@ -59,7 +60,6 @@ platform :mri, :mingw, :x64_mingw do
 end
 
 group :development do
-  gem 'smarter_csv'
   gem 'pry'
 end
 
@@ -67,7 +67,6 @@ group :production do
   # Asset compilation gems, they will be required when needed.
   gem 'csso-rails', '~> 0.3.4', require: false
   gem 'uglifier', '>= 2.4.0', require: false
-  gem 'smarter_csv'
   gem 'pry'
   # Image compression gem for precompiling assets
   gem 'image_optim'

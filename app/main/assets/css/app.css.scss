@@ -36,3 +36,9 @@
 .table-responsive {
   margin-top: 30px;
 }
+
+th {
+    vertical-align: bottom !important;
+    padding: 3px !important;
+    border-bottom: 3px solid #E5EBF2 !important;
+}

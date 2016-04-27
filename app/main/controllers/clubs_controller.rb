@@ -18,6 +18,11 @@ module Main
       page._competencies = []
     end
 
+    def clubs
+      params._type_filter ||= "all"
+      puts params._type_filter
+    end
+
     def setup_club_table
       params._sort_field ||= "name"
       params._sort_direction ||= 1
@@ -69,7 +74,40 @@ module Main
     end
 
     def all_clubs
-      store._clubs.order(:name => 1).skip(((params._page || 1).to_i - 1) * 10).limit(10).all
+      if params._type_filter == 'all'
+        store._clubs.order(:name => 1).skip(((params._page || 1).to_i - 1) * 10).limit(10).all
+      else
+        clubs = []
+        store.competencies.where(name: params._type_filter).all.each do |comp|
+          unless clubs.include?(comp.club_id)
+            store.clubs.where(id: comp.club_id).first.then do |club|
+              clubs << {id: comp.club_id, name: "#{club.name}"}
+            end
+          end
+        end
+        sorted_clubs = clubs.sort_by{ |hash| hash['name'] }
+        sorted_clubs.drop(((params._page || 1).to_i - 1) * 10).take(10)
+      end
+    end
+
+    def all_clubs_size
+      if params._type_filter == 'all'
+        store._clubs.order(:name => 1).all.size
+      else
+        clubs = []
+        store.competencies.where(name: params._type_filter).all.each do |comp|
+          unless clubs.include?(comp.club_id)
+            store.clubs.where(id: comp.club_id).first.then do |club|
+              clubs << {id: comp.club_id, name: "#{club.name}"}
+            end
+          end
+        end
+        clubs.size
+      end
+    end
+
+    def the_club(club_id)
+      store.clubs.where(id: club_id).first
     end
 
     def competency_one
