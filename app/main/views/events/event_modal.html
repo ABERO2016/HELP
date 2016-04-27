@@ -12,10 +12,12 @@
           {{ if Volt.current_user.admin? }}
             <:fields:text value="{{ model._name }}" label="Event Name/Title"/>
             <:fields:textarea value="{{ model._description }}" />
-            <!-- <:fields:text value="{{ model._more_info }}" label="More Info - A link or email to contact "/> -->
+            <:datepicker value="{{ model._date }}" label="Day of Event"/>
           {{ else }}
             <label>Description</label>
             <p>{{ model._description }}</p>
+            <label>Event Date</label>
+            <p>{{ model._date }}</p>
           {{ end }}
           <div class="row">
             <div class="col-lg-12">
@@ -43,7 +45,7 @@
               <div class="col-md-6">
                 <div class="list-group">
                   <:clubs:competency item="Directive Leadership">Directive Leadership</:clubs:competency>
-                  <:clubs:competency item="Champions Effective Processing">Champions Effective Processing</:clubs:competency>
+                  <:clubs:competency item="Champions Effective Processes">Champions Effective Processes</:clubs:competency>
                   <:clubs:competency item="Problem Solving">Problem Solving</:clubs:competency>
                   <:clubs:competency item="Strategic Perspective">Strategic Perspective</:clubs:competency>
                   <:clubs:competency item="Ethics and Integrity">Ethics and Integrity</:clubs:competency>

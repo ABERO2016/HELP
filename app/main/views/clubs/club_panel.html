@@ -5,7 +5,7 @@
     <div class="panel-body">
       {{ if taken? }}
         <div class="list-group">
-          {{ user_clubs.each do |club| }}
+          {{ user_clubs.limit(5).each do |club| }}
             {{ store.clubs.where(id: club._club_id).all.each do |c| }}
             <a href="" e-click="show_more(c.id)" class="list-group-item">{{ c._name }}</a>
             {{ end }}

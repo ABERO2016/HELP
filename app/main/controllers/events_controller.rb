@@ -72,7 +72,7 @@ module Main
       else
         events = []
         store.competencies.where(name: params._type_filter).all.each do |comp|
-          unless events.include?(comp.event_id) || comp.club_id
+          unless events.include?(comp.event_id)
             store.events.where(id: comp.event_id).first.then do |item|
               events << {id: comp.event_id, name: "#{item.name}"}
             end

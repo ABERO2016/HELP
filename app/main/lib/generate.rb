@@ -1,4 +1,3 @@
-require 'faker'
 
 Volt.skip_permissions do
   buffer = Volt.current_app.store.users.buffer
@@ -22,8 +21,8 @@ Volt.skip_permissions do
   Volt.current_app.store.users.where(smu_id: '40354578').first.then do |user|
     survey = Volt.current_app.store._surveyforms.buffer
     survey._user_id = user.id
-    survey._competency_one = 'Champions Effective Processing'
-    survey._competency_two = 'Self Awareness'
+    survey._competency_one = 'Champions Effective Processes'
+    survey._competency_two = 'Self Aware'
     survey._date = Time.now
     survey._q9_0 = 2
     survey._q9_1 = 3

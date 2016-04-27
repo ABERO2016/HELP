@@ -432,17 +432,17 @@ module Survey
     def competencies
       comp = []
       comp << {competency: "Innovative Spirit", value: innovative_spirit}
-      comp << {competency: "Ethics Integrity", value: ethics_integrity}
+      comp << {competency: "Ethics and Integrity", value: ethics_integrity}
       comp << {competency: "Strategic Perspective", value: strategic_perspective}
       comp << {competency: "Problem Solving", value: problem_solving}
-      comp << {competency: "Champions Effective Processing", value: champions}
+      comp << {competency: "Champions Effective Processes", value: champions}
       comp << {competency: "Directive Leadership", value: directive_leadership}
       comp << {competency: "Engaging Leadership", value: engaging_leadership}
-      comp << {competency: "Diversity Difference", value: diversity_difference}
-      comp << {competency: "Relationship Development", value: relationship_development}
-      comp << {competency: "Communication", value: communication}
+      comp << {competency: "Diversity and Difference", value: diversity_difference}
+      comp << {competency: "Develops Relationships", value: relationship_development}
+      comp << {competency: "Communicates Effectively", value: communication}
       comp << {competency: "Intentional Learner", value: intentional_learner}
-      comp << {competency: "Self Awareness", value: self_awareness}
+      comp << {competency: "Self Aware", value: self_awareness}
       comp.sort_by { |hsh| hsh[:value] }.reverse!
     end
 
