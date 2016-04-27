@@ -8,16 +8,10 @@ module Main
       # Add code for when the index view is loaded
       page._event ||= store.events.buffer
       page._competencies = []
-      params._type_filter ||= "all"
     end
 
     def about
       # Add code for when the about view is loaded
-    end
-
-    def events
-      params._type_filter ||= "all"
-      puts params._type_filter
     end
 
     # def setup_club_table
@@ -36,6 +30,8 @@ module Main
     def new_event
       page._event = store._events.buffer
       page._competencies = []
+      page._time = nil
+      page._end_time = nil
     end
 
     def taken?
@@ -67,36 +63,36 @@ module Main
     end
 
     def all_events
-      if params._type_filter == 'all'
-        store._events.order(:name => 1).skip(((params._page || 1).to_i - 1) * 10).limit(10).all
-      else
-        events = []
-        store.competencies.where(name: params._type_filter).all.each do |comp|
-          unless events.include?(comp.event_id)
-            store.events.where(id: comp.event_id).first.then do |item|
-              events << {id: comp.event_id, name: "#{item.name}"}
-            end
-          end
-        end
-        sorted_events = events.sort_by{ |hash| hash['name'] }
-        sorted_events.drop(((params._page || 1).to_i - 1) * 10).take(10)
-      end
+      # if params._type_filter == 'all'
+      store._events.order(:date => 1).skip(((params._page || 1).to_i - 1) * 10).limit(10).all
+      # else
+      #   events = []
+      #   store.competencies.where(name: params._type_filter).all.each do |comp|
+      #     unless events.include?(comp.event_id)
+      #       store.events.where(id: comp.event_id).first.then do |item|
+      #         events << {id: comp.event_id, name: "#{item.name}"}
+      #       end
+      #     end
+      #   end
+      #   sorted_events = events.sort_by{ |hash| hash['name'] }
+      #   sorted_events.drop(((params._page || 1).to_i - 1) * 10).take(10)
+      # end
     end
 
     def all_events_size
-      if params._type_filter == 'all'
-        store._events.order(:name => 1).all.size
-      else
-        events = []
-        store.competencies.where(name: params._type_filter).all.each do |comp|
-          unless events.include?(comp.event_id)
-            store.events.where(id: comp.event_id).first.then do |item|
-              events << {id: comp.event_id, name: "#{item.name}"}
-            end
-          end
-        end
-        events.size
-      end
+      # if params._type_filter == 'all'
+      store._events.order(:date => 1).all.size
+      # else
+      #   events = []
+      #   store.competencies.where(name: params._type_filter).all.each do |comp|
+      #     unless events.include?(comp.event_id)
+      #       store.events.where(id: comp.event_id).first.then do |item|
+      #         events << {id: comp.event_id, name: "#{item.name}"}
+      #       end
+      #     end
+      #   end
+      #   events.size
+      # end
     end
 
     def the_event(event_id)
@@ -124,10 +120,19 @@ module Main
     end
 
     def show_more(event_id = nil)
-      puts event_id
       page._competencies = []
       store.events.where(id: event_id).first.then do |event|
         page._event = event.buffer
+        if event._start_time
+          page._time  = "#{event._start_time.hour}:#{event._start_time.strftime("%M")}"
+        else
+          page._time = nil
+        end
+        if event._end_time
+          page._end_time = "#{event._end_time.hour}:#{event._end_time.strftime("%M")}"
+        else
+          page._end_time = nil
+        end
       end
       event_competencies(event_id).each do |comp|
         page._competencies << "#{comp.name}"
@@ -136,6 +141,14 @@ module Main
     end
 
     def save_event
+      if page._time
+        time = page._time.split(":")
+        model.start_time = Time.local(2017, 10, 10, time[0].to_i, time[1].to_i, 0)
+      end
+      if page._end_time
+        end_time = page._end_time.split(":")
+        model.end_time = Time.local(2017, 10, 10, end_time[0].to_i, end_time[1].to_i, 0)
+      end
       model.save!.then do |m|
         page._competencies.each do |c|
           m._competencies << {name: "#{c}"}
@@ -147,12 +160,24 @@ module Main
     end
 
     def update_event
+      time = page._time.split(":")
+      model.start_time = Time.local(2017, 10, 10, time[0].to_i, time[1].to_i, 0)
+      if page._end_time && page._end_time != "0:00" && page._end_time != ""
+        end_time = page._end_time.split(":")
+        model.end_time = Time.local(2017, 10, 10, end_time[0].to_i, end_time[1].to_i, 0)
+      else
+        model._end_time = nil
+      end
       model.save!.then do |m|
         `$('#EventModal').modal('hide');`
       end.fail do |er|
         puts "#{er}"
       end
       index
+    end
+
+    def info_is_link?
+      model._rsvp.include?('http')
     end
 
     def delete_and_close
