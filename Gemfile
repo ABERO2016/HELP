@@ -23,7 +23,7 @@ gem 'volt-fields'
 gem 'volt-datepicker'
 gem 'opal-highcharts'
 gem 'volt-highcharts'
-gem 'volt-table', git: 'https://github.com/matthew342/volt-table.git', branch: :develop
+gem 'volt-table', '~> 0.1.0'
 gem 'volt-pagination'
 
 
