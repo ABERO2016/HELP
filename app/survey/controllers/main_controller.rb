@@ -184,6 +184,11 @@ module Survey
       } )
     end
 
+    def take_survey
+      `swal("Survey", "Survey will take 10 - 20 minutes and must be completed in one sitting. Be sure to answer all questions honestly for best results. Progress will not be saved if you leave the survey and come back before submission", "warning");`
+      redirect_to '/survey'
+    end
+
     def surveys
       Volt.current_user_id.then do |id|
         store._surveyforms.where(user_id: id).all
@@ -209,7 +214,7 @@ module Survey
             model._date = Time.now
             model.save!.then do
               Volt.current_user._survey_status = 'taken'
-              `swal("Submitted", "Thank you for taking the survey. You may now review your results!", "success");`
+              `swal("Submitted", "Thank you for taking the survey. Your results will be available to you when you attend the Hart Leadership Freshmen Orientation!", "success");`
               redirect_to '/'
             end.fail do |err|
               `swal("Error", "Something went wrong!", "error");`

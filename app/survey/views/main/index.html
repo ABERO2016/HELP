@@ -13,6 +13,19 @@
     </div>
   </div>
 </div>
+{{ if Volt.current_user.survey_taken? }}
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <p>
+          Please contact an Kathy Hubbard to take the survey.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{{ else }}
   <div class="row">
     <div class="col-lg-12">
       <div class="panel panel-primary">
@@ -708,3 +721,4 @@
     </div>
   </div>
   </form>
+{{ end }}

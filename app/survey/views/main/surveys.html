@@ -21,7 +21,7 @@
         {{ if Volt.current_user.survey_taken? }}
 
         {{ else }}
-          <a href="/survey" class="btn btn-primary btn-block">Take Survey <span class="fa fa-pencil"></span></a><br>
+          <a e-click="take_survey" class="btn btn-primary btn-block">Take Survey <span class="fa fa-pencil"></span></a><br>
         {{ end }}
         <div class="list-group">
         {{ surveys.each do |survey| }}
