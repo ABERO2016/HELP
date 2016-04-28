@@ -3,6 +3,7 @@ module Admin
     before_action :require_login
     before_action :setup_user_table, only: :users
     before_action :setup_user_outreach_table, only: :index
+    before_action :setup_user_outreach_table, only: :index
 
     def index
       # Add code for when the index view is loaded
@@ -28,39 +29,130 @@ module Admin
       page._users = []
     end
 
-    def options
-      Volt::Model.new( {
+    def email_data
+      if params._type_filter == 'all'
+        store.users.all.size.then do |size|
+          store.users.where(mktg: 'Email').all.size.then do |size1|
+            page._email_data = size1
+            email_size = ((size1 / size) * 100).round(2)
+          end
+        end
+      else
+        store.users.all.size.then do |size|
+          store.users.where('$and' => [{mktg: 'Email'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
+            page._email_data = size1
+            email_size = ((size1 / size) * 100).round(2)
+          end
+        end
+      end
+    end
 
-        # identity the chart in volt
-        id: 'chart',
+    def email_data
+      if params._type_filter == 'all'
+        store.users.all.size.then do |size|
+          store.users.where(mktg: 'Email').all.size.then do |size1|
+            page._email_data = size1
+            ((size1 / size) * 100).round(2)
+          end
+        end
+      else
+        store.users.all.size.then do |size|
+          store.users.where('$and' => [{mktg: 'Email'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
+            page._email_data = size1
+            ((size1 / size) * 100).round(2)
+          end
+        end
+      end
+    end
 
-        mode: :chart,
+    def student_data
+      if params._type_filter == 'all'
+        store.users.all.size.then do |size|
+          store.users.where(mktg: 'Student').all.size.then do |size1|
+            page._student_data = size1
+            ((size1 / size) * 100).round(2)
+          end
+        end
+      else
+        store.users.all.size.then do |size|
+          store.users.where('$and' => [{mktg: 'Student'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
+            page._student_data = size1
+            ((size1 / size) * 100).round(2)
+          end
+        end
+      end
+    end
 
-        # highcharts options
-        chart: {
-          type: 'column',
-          renderTo: 'chart'
-        },
-        title: {
-          text: 'Outreach Answers'
-        },
-        xAxis: {
-          categories: ['Email', 'Student', 'Faculty/Staff', 'Lyle Website', 'Hart Institute', 'Other']
-        },
-        yAxis: {
-          title: {
-              text: '# of Users',
-          },
-        },
-        plotOptions: {
-        },
-        series: [
-          {
-            name: 'Users',
-            data: [CountTask.count('users', {:mktg => 'Email'}), CountTask.count('users', {:mktg => 'Student'}), CountTask.count('users', {:mktg => 'Faculty/Staff'}), CountTask.count('users', {:mktg => 'Lyle Website'}), CountTask.count('users', {:mktg => 'Hart Institute'})]
-          }
-        ]
-      } )
+    def staff_data
+      if params._type_filter == 'all'
+        store.users.all.size.then do |size|
+          store.users.where(mktg: 'Faculty/Staff').all.size.then do |size1|
+            page._staff_data = size1
+            ((size1 / size) * 100).round(2)
+          end
+        end
+      else
+        store.users.all.size.then do |size|
+          store.users.where('$and' => [{mktg: 'Faculty/Staff'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
+            page._staff_data = size1
+            ((size1 / size) * 100).round(2)
+          end
+        end
+      end
+    end
+
+    def lyle_data
+      if params._type_filter == 'all'
+        store.users.all.size.then do |size|
+          store.users.where(mktg: 'Lyle Website').all.size.then do |size1|
+            page._lyle_data = size1
+            ((size1 / size) * 100).round(2)
+          end
+        end
+      else
+        store.users.all.size.then do |size|
+          store.users.where('$and' => [{mktg: 'Lyle Website'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
+            page._lyle_data = size1
+            ((size1 / size) * 100).round(2)
+          end
+        end
+      end
+    end
+
+    def hart_data
+      if params._type_filter == 'all'
+        store.users.all.size.then do |size|
+          store.users.where(mktg: 'Hart Institute').all.size.then do |size1|
+            page._hart_data = size1
+            ((size1 / size) * 100).round(2)
+          end
+        end
+      else
+        store.users.all.size.then do |size|
+          store.users.where('$and' => [{mktg: 'Hart Institute'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
+            page._hart_data = size1
+            ((size1 / size) * 100).round(2)
+          end
+        end
+      end
+    end
+
+    def other_data
+      if params._type_filter == 'all'
+        store.users.all.size.then do |size|
+          store.users.where(mktg: 'Other').all.size.then do |size1|
+            page._other_data = size1
+            ((size1 / size) * 100).round(2)
+          end
+        end
+      else
+        store.users.all.size.then do |size|
+          store.users.where('$and' => [{mktg: 'Other'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
+            page._other_data = size1
+            ((size1 / size) * 100).round(2)
+          end
+        end
+      end
     end
 
     def setup_user_table
