@@ -28,6 +28,41 @@ module Admin
       page._users = []
     end
 
+    def options
+      Volt::Model.new( {
+
+        # identity the chart in volt
+        id: 'chart',
+
+        mode: :chart,
+
+        # highcharts options
+        chart: {
+          type: 'column',
+          renderTo: 'chart'
+        },
+        title: {
+          text: 'Outreach Answers'
+        },
+        xAxis: {
+          categories: ['Email', 'Student', 'Faculty/Staff', 'Lyle Website', 'Hart Institute', 'Other']
+        },
+        yAxis: {
+          title: {
+              text: '# of Users',
+          },
+        },
+        plotOptions: {
+        },
+        series: [
+          {
+            name: 'Users',
+            data: [CountTask.count('users', {:mktg => 'Email'}), CountTask.count('users', {:mktg => 'Student'}), CountTask.count('users', {:mktg => 'Faculty/Staff'}), CountTask.count('users', {:mktg => 'Lyle Website'}), CountTask.count('users', {:mktg => 'Hart Institute'})]
+          }
+        ]
+      } )
+    end
+
     def setup_user_table
       params._type_filter ||= "#{Time.now.year}"
       params._sort_field ||= "last_name"
@@ -184,6 +219,13 @@ module Admin
         end
         `swal("Sent!", "Users have been given access", "success")`
         page._users = []
+      end
+    end
+
+    def access(id)
+      store.users.where(id: id).first.then do |user|
+        user._visible = true
+        `swal("Sent!", "User has been given access", "success")`
       end
     end
 

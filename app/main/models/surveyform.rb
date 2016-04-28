@@ -16,6 +16,7 @@ class SurveyForm < Volt::Model
 
   field :good_leader, String
   field :bad_leader, String
+  field :comps_chosen
   field :competency_one, String
   field :competency_two, String
 

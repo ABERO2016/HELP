@@ -184,6 +184,19 @@ module Survey
       } )
     end
 
+    def save_comps
+      if page._comp_one == '' || page._comp_two == ''
+        `swal("Uh Oh!", "Please Select a Competency", "error");`
+      else
+        model._comps_chosen = true
+        Volt.current_user.then do |user|
+          user._competency = page._comp_one
+          user._competency2 = page._comp_two
+          `swal("Success!", "Your Top Two Competencies have been chosen", "success");`
+        end
+      end
+    end
+
     def take_survey
       `swal("Survey", "Survey will take 10 - 20 minutes and must be completed in one sitting. Be sure to answer all questions honestly for best results. Progress will not be saved if you leave the survey and come back before submission", "warning");`
       redirect_to '/survey'
@@ -199,6 +212,16 @@ module Survey
       Volt.current_user.visible
     end
 
+    def has_competency?
+      user._competency.then do |comp|
+        if comp == '' || comp == nil
+          true
+        else
+          false
+        end
+      end
+    end
+
     def save_survey
       `swal({   title: "Are you sure?",
         text: "Make sure you've answered all questions to the best of your ability!",
@@ -208,6 +231,7 @@ module Survey
         confirmButtonText: "Submit!",
         closeOnConfirm: false }, function(){`
           Volt.current_user_id.then do |id|
+            model._comps_chosen = false
             model._user_id = id
             model._competency_one = competencies[0][:competency]
             model._competency_two = competencies[1][:competency]

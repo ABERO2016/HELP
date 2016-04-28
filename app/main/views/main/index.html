@@ -21,7 +21,7 @@
               Leadership Competencies
             </div>
             <div class="panel-body">
-              {{ if taken? }}
+              {{ if has_competency? }}
               <div class="list-group">
                 <a href="#" class="list-group-item">{{ competency_one }} <span class="badge">Learn More</span></a>
                 <a href="#" class="list-group-item">{{ competency_two }} <span class="badge">Learn More</span></a>
@@ -43,12 +43,40 @@
               Upcoming Events
             </div>
             <div class="panel-body">
-              Some Events can go here...
+              <div class="list-group">
+              {{ upcoming_events.each do |event| }}
+                <a class="list-group-item">{{ event.name }} <span class="badge">{{ event._date }}</span></a>
+              {{ end }}
+              </div>
             </div>
+            <a href="/events">
+              <div class="panel-footer">
+                <span class="pull-left">View All</span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
+              </div>
+            </a>
           </div>
         </div>
 
         <div class="col-sm-6">
+          {{ if Volt.current_user.admin? }}
+          <div class="panel panel-primary">
+            <div class="panel-heading">Recently Taken Surveys
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="list-group">
+                    {{ store._surveyforms.order(:date => -1).all.limit(10).each do |survey| }}
+                      <a href="/results/{{ survey.id }}" class="list-group-item">{{ user_name(survey._user_id) }}<span class="badge">{{ survey._date.strftime("%m/%d/%Y") }}</span></a>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{ end }}
           {{ if Volt.current_user.mktg }}
 
           {{ else }}

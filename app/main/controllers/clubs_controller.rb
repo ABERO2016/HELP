@@ -46,6 +46,16 @@ module Main
       end
     end
 
+    def has_competency?
+      Volt.current_user._competency.then do |comp|
+        if comp == '' || comp == nil
+          false
+        else
+          true
+        end
+      end
+    end
+
     def club_competencies(id)
       store._competencies.where(club_id: id).all
     end
@@ -63,7 +73,7 @@ module Main
     end
 
     def user_clubs
-      competency_one.then do |one|
+      Volt.current_user._competency.then do |one|
         store.competencies.where(name: "#{one}").all
       end
     end
@@ -104,23 +114,6 @@ module Main
     def the_club(club_id)
       store.clubs.where(id: club_id).first
     end
-
-    def competency_one
-      Volt.current_user_id.then do |id|
-        store._surveyforms.where(user_id: id).first.then do |survey|
-          survey._competency_one
-        end
-      end
-    end
-
-    def competency_two
-      Volt.current_user_id.then do |id|
-        store._surveyforms.where(user_id: id).first.then do |survey|
-          survey._competency_two
-        end
-      end
-    end
-
 
     def selected?
       page._competencies.include?(attrs.item)

@@ -21,6 +21,7 @@ Volt.skip_permissions do
   Volt.current_app.store.users.where(smu_id: '40354578').first.then do |user|
     survey = Volt.current_app.store._surveyforms.buffer
     survey._user_id = user.id
+    survey._comps_chosen = false
     survey._competency_one = 'Champions Effective Processes'
     survey._competency_two = 'Self Aware'
     survey._date = Time.now

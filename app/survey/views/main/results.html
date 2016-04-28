@@ -40,6 +40,48 @@
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        {{ if _comps_chosen || Volt.current_user.admin? }}
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 class="panel-title">Top Competencies</h2>
+          </div>
+          <div class="panel-body">
+            {{ if has_competency? }}
+
+            {{ else }}
+            <div class="list-group">
+              <a class="list-group-item">{{ user._competency }} <span class="badge">1</span></a>
+              <a class="list-group-item">{{ user._competency2 }} <span class="badge">2</span></a>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+        {{ else }}
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h2 class="panel-title">Choose Your Competencies</h2>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <:fields:select label="1st Competency" value="{{ page._comp_one }}" options="{{ User::COMPETENCIES }}" />
+                </div>
+                <div class="col-md-6">
+                  <:fields:select label="2nd Competency" value="{{ page._comp_two }}" options="{{ User::COMPETENCIES }}" />
+                </div>
+                <div class="col-md-12">
+                  <button e-click="save_comps" class="btn btn-success btn-block">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-md-6">
         <div class="panel panel-primary">
@@ -48,8 +90,8 @@
           </div>
           <div class="panel-body">
             <div class="list-group">
-              <a href="#" class="list-group-item">{{ competencies[0][:competency] }} <span class="badge">{{ competencies[0][:value] }}%</span></a>
-              <a href="#" class="list-group-item">{{ competencies[1][:competency] }} <span class="badge">{{ competencies[1][:value] }}%</span></a>
+              <a class="list-group-item">{{ competencies[0][:competency] }} <span class="badge">{{ competencies[0][:value] }}%</span></a>
+              <a class="list-group-item">{{ competencies[1][:competency] }} <span class="badge">{{ competencies[1][:value] }}%</span></a>
             </div>
           </div>
         </div>

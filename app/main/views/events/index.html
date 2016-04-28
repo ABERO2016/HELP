@@ -46,6 +46,21 @@
   <div class="col-lg-12">
     <div class="panel panel-default">
       <div class="panel-body">
+        <label for="year">Filter Events</label>
+        <select class="form-control" value="{{ params._time }}" >
+          <option value="past">Past</option>
+          <option value="today">Today</option>
+          <option value="future">Future</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
         <!-- {{ if params._type_filter == 'all'}} -->
           {{ all_events.each do |item| }}
             <div class="row">

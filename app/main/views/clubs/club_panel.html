@@ -3,7 +3,7 @@
     <div class="panel-heading">Recommended Clubs and Organizations
     </div>
     <div class="panel-body">
-      {{ if taken? }}
+      {{ if has_competency? }}
         <div class="list-group">
           {{ user_clubs.limit(5).each do |club| }}
             {{ store.clubs.where(id: club._club_id).all.each do |c| }}

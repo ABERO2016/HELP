@@ -36,6 +36,10 @@
         </div>
       </div>
       <div class="panel-body">
+        <div id="chart">
+          <:highcharts options="{{ options }}" />
+        </div>
+        <br>
         <:table source="{{ users }}" source_name="users" />
       </div>
     </div>

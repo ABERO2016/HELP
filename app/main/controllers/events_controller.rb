@@ -8,6 +8,7 @@ module Main
       # Add code for when the index view is loaded
       page._event ||= store.events.buffer
       page._competencies = []
+      params._time ||= 'future'
     end
 
     def about
@@ -64,7 +65,13 @@ module Main
 
     def all_events
       # if params._type_filter == 'all'
-      store._events.order(:date => 1).skip(((params._page || 1).to_i - 1) * 10).limit(10).all
+      if params._time == 'past'
+        store.events.where({:date => { '$lte' => Time.now.strftime("%m/%d/%Y") } }).order(:date => 1).skip(((params._page || 1).to_i - 1) * 10).limit(10).all
+      elsif params._time == 'today'
+        store.events.where({:date => { '$eq' => Time.now.strftime("%m/%d/%Y") } }).order(:date => 1).skip(((params._page || 1).to_i - 1) * 10).limit(10).all
+      else
+        store.events.where({:date => { '$gte' => Time.now.strftime("%m/%d/%Y") } }).order(:date => 1).skip(((params._page || 1).to_i - 1) * 10).limit(10).all
+      end
       # else
       #   events = []
       #   store.competencies.where(name: params._type_filter).all.each do |comp|
