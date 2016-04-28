@@ -66,7 +66,7 @@ module Main
     def all_events
       # if params._type_filter == 'all'
       if params._time == 'past'
-        store.events.where({:date => { '$lte' => Time.now.strftime("%m/%d/%Y") } }).order(:date => 1).skip(((params._page || 1).to_i - 1) * 10).limit(10).all
+        store.events.where({:date => { '$lt' => Time.now.strftime("%m/%d/%Y") } }).order(:date => 1).skip(((params._page || 1).to_i - 1) * 10).limit(10).all
       elsif params._time == 'today'
         store.events.where({:date => { '$eq' => Time.now.strftime("%m/%d/%Y") } }).order(:date => 1).skip(((params._page || 1).to_i - 1) * 10).limit(10).all
       else
