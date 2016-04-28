@@ -56,9 +56,9 @@ module Main
     def save
       if !page._mktg.empty?
         Volt.current_user._mktg = page._mktg
-        flash._successes << "saved answer"
+        `swal("Thank You", "", "success");`
       else
-        flash._errors << "unable to save"
+        `swal("Error", "Please Select an option", "error");`
       end
     end
 
