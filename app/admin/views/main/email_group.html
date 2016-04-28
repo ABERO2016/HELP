@@ -9,6 +9,7 @@
         <h1 class="page-header">
           Email Competency Groups
         </h1>
+        <p> Choose email reciepients </p>
       </div>
     </div>
   </div>
@@ -69,6 +70,6 @@
 
 <:Comp_User>
   <a e-click="toggle(attrs.item)" href="" class="list-group-item {{ if selected? }} list-group-item-success {{ end }} clickable">
-    {{ if user_selected? }} <span class="fa fa-check"></span> {{ end }}
+    {{ if selected? }} <span class="fa fa-check"></span> {{ end }}
     {{ yield }}
   </a>

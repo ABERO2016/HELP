@@ -287,6 +287,21 @@ module Admin
       end
     end
 
+    def send_group_email
+      emails = []
+      if page._subject == '' || page._email_body == ''
+        `swal("Error", "Please Provide a Subject and Body to the email!", "error")`
+      else
+        emails = page._emails.to_a
+        EmailHandlerTask.send_group_email(emails, page._subject, page._email_body)
+        `swal("Sent!", "The invitation email has been sent!", "success")`
+        page._emails = []
+        page._email_body = ''
+        page._subject = ''
+        `$('#emailModal').modal('hide');`
+      end
+    end
+
     def send_reminder
       if page._emails == []
         `swal("Error", "Please Select a user email!", "error")`
