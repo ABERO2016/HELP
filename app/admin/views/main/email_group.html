@@ -1,0 +1,74 @@
+<:Title>
+  HELP | Email Groups
+
+<:Body>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1 class="page-header">
+          Email Competency Groups
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="year">Graduation Year</label>
+            <select class="form-control" value="{{ params._type_filter }}" >
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="year">Leadership Competency</label>
+            <select class="form-control" value="{{ params._competency }}" >
+              <option value="all">All</option>
+              <option value="Self Aware">Self Awareness</option>
+              <option value="Intentional Learner">Intentional Learner</option>
+              <option value="Communicates Effectively">Communication</option>
+              <option value="Develops Relationships">Relationship Development</option>
+              <option value="Diversity and Difference">Diversity Difference</option>
+              <option value="Engaging Leadership">Engaging Leadership</option>
+              <option value="Directive Leadership">Directive Leadership</option>
+              <option value="Champions Effective Processes">Champions Effective Processes</option>
+              <option value="Problem Solving">Problem Solving</option>
+              <option value="Strategic Perspective">Strategic Perspective</option>
+              <option value="Ethics and Integrity">Ethics and Integrity</option>
+              <option value="Innovative Spirit">Innovative Spirit</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <button e-click="select_all" class="btn btn-primary btn-block">Select All</button><br>
+        <div class="list-group">
+          {{ comp_group_users.each do |user| }}
+            <:comp_user item="{{ user.email }}">{{ user.name }}<span class="pull-right">{{ user.email }}</span></:comp_user>
+          {{ end }}
+        </div>
+        <button e-click="create_email" class="btn btn-success btn-block">Create Email</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<:email_group_modal model="{{ page._emails }}"/>
+
+<:Comp_User>
+  <a e-click="toggle(attrs.item)" href="" class="list-group-item {{ if selected? }} list-group-item-success {{ end }} clickable">
+    {{ if user_selected? }} <span class="fa fa-check"></span> {{ end }}
+    {{ yield }}
+  </a>

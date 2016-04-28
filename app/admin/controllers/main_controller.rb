@@ -14,6 +14,11 @@ module Admin
       self.model ||= store.users.buffer
     end
 
+    def email_group
+      params._type_filter ||= "#{Time.now.year}"
+      params._competency ||= "all"
+    end
+
     def reminders
       params._type_filter ||= "#{Time.now.year}"
       page._emails = []
@@ -27,6 +32,22 @@ module Admin
     def allow_results
       params._type_filter ||= "#{Time.now.year}"
       page._users = []
+    end
+
+    def comp_group_users
+      if params._competency == 'all'
+        store.users.where(graduation_year: params._type_filter).all
+      else
+        store.users.where('$and' => [{competency: "#{params._competency}"},{graduation_year: params._type_filter}]).all
+      end
+    end
+
+    def create_email
+      if page._emails == '' || page._emails == []
+        `swal("Error", "Please Select an email", "error");`
+      else
+        `$('#emailModal').modal('show');`
+      end
     end
 
     def email_data
