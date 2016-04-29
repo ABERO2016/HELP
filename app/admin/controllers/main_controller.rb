@@ -55,24 +55,6 @@ module Admin
         store.users.all.size.then do |size|
           store.users.where(mktg: 'Email').all.size.then do |size1|
             page._email_data = size1
-            email_size = ((size1 / size) * 100).round(2)
-          end
-        end
-      else
-        store.users.all.size.then do |size|
-          store.users.where('$and' => [{mktg: 'Email'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
-            page._email_data = size1
-            email_size = ((size1 / size) * 100).round(2)
-          end
-        end
-      end
-    end
-
-    def email_data
-      if params._type_filter == 'all'
-        store.users.all.size.then do |size|
-          store.users.where(mktg: 'Email').all.size.then do |size1|
-            page._email_data = size1
             ((size1 / size) * 100).round(2)
           end
         end
