@@ -77,7 +77,7 @@ module Admin
           end
         end
       else
-        store.users.all.size.then do |size|
+        store.users.where(graduation_year: params._type_filter).all.size.then do |size|
           store.users.where('$and' => [{mktg: 'Email'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
             page._email_data = size1
             ((size1 / size) * 100).round(2)
@@ -95,7 +95,7 @@ module Admin
           end
         end
       else
-        store.users.all.size.then do |size|
+        store.users.where(graduation_year: params._type_filter).all.size.then do |size|
           store.users.where('$and' => [{mktg: 'Student'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
             page._student_data = size1
             ((size1 / size) * 100).round(2)
@@ -113,7 +113,7 @@ module Admin
           end
         end
       else
-        store.users.all.size.then do |size|
+        store.users.where(graduation_year: params._type_filter).all.size.then do |size|
           store.users.where('$and' => [{mktg: 'Faculty/Staff'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
             page._staff_data = size1
             ((size1 / size) * 100).round(2)
@@ -131,7 +131,7 @@ module Admin
           end
         end
       else
-        store.users.all.size.then do |size|
+        store.users.where(graduation_year: params._type_filter).all.size.then do |size|
           store.users.where('$and' => [{mktg: 'Lyle Website'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
             page._lyle_data = size1
             ((size1 / size) * 100).round(2)
@@ -149,7 +149,7 @@ module Admin
           end
         end
       else
-        store.users.all.size.then do |size|
+        store.users.where(graduation_year: params._type_filter).all.size.then do |size|
           store.users.where('$and' => [{mktg: 'Hart Institute'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
             page._hart_data = size1
             ((size1 / size) * 100).round(2)
@@ -167,7 +167,7 @@ module Admin
           end
         end
       else
-        store.users.all.size.then do |size|
+        store.users.where(graduation_year: params._type_filter).all.size.then do |size|
           store.users.where('$and' => [{mktg: 'Other'}, {graduation_year: params._type_filter}]).all.size.then do |size1|
             page._other_data = size1
             ((size1 / size) * 100).round(2)
