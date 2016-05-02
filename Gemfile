@@ -23,9 +23,8 @@ gem 'volt-fields'
 gem 'volt-datepicker'
 gem 'opal-highcharts'
 gem 'volt-highcharts'
-gem 'volt-table', '~> 0.1.0'
-gem 'volt-pagination'
-
+gem 'volt-pagination', git: 'https://github.com/modernds/volt-pagination'
+gem 'volt-table',  git: 'https://github.com/matthew342/volt-table.git', branch: 'develop'
 
 # Add ability to send e-mail from apps.
 gem 'volt-mailer', '~> 0.1.2'

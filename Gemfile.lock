@@ -1,3 +1,16 @@
+GIT
+  remote: https://github.com/matthew342/volt-table.git
+  revision: e16f1951aaba1192f5d082be1f30dc97a240ccbb
+  branch: develop
+  specs:
+    volt-table (0.1.0)
+
+GIT
+  remote: https://github.com/modernds/volt-pagination
+  revision: f6c724486183bf5b8012e14fb4e796141b6a7871
+  specs:
+    volt-pagination (0.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -154,8 +167,6 @@ GEM
       pony (~> 1.11)
     volt-mongo (0.1.4)
       mongo (~> 2.1.2)
-    volt-pagination (0.2.1)
-    volt-table (0.1.0)
     volt-user_templates (0.4.0)
       volt-fields (~> 0.1.0)
       volt-mailer (~> 0.1.0)
@@ -195,8 +206,8 @@ DEPENDENCIES
   volt-highcharts
   volt-mailer (~> 0.1.2)
   volt-mongo (~> 0.1.0)
-  volt-pagination
-  volt-table (~> 0.1.0)
+  volt-pagination!
+  volt-table!
   volt-user_templates (~> 0.4.0)
 
 BUNDLED WITH
