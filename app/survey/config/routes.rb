@@ -3,3 +3,4 @@
 client '/survey', component: 'survey', controller: 'main', action: 'index'
 # client '/results', component: 'survey', controller: 'main', action: 'results'
 client '/results/{{ id }}', component: 'survey', controller: 'main', action: 'results'
+client '/surveys', component: 'survey', controller: 'main', action: 'surveys'

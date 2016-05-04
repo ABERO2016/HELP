@@ -1,0 +1,56 @@
+<:Title>
+  HELP | Issue Surveys
+
+<:Body>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1 class="page-header">
+          Send Users Another Survey
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="year">Graduation Year</label>
+            <select class="form-control" value="{{ params._type_filter }}" >
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <button e-click="select_all" class="btn btn-default pull-right">Select All</button>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="list-group">
+          {{ issued_users.where(graduation_year: params._type_filter).all.each do |user| }}
+            <:reminder_user item="{{ user.id }}">{{ user.name }}<span class="pull-right">{{ user.email }}</span></:reminder_user>
+          {{ end }}
+        </div>
+        <button e-click="issue_survey" class="btn btn-success btn-block">Issue Survey</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<:Reminder_User>
+  <a e-click="issue_toggle(attrs.item)" href="" class="list-group-item {{ if user_selected? }} list-group-item-success {{ end }} clickable">
+    {{ if user_selected? }} <span class="fa fa-check"></span> {{ end }}
+    {{ yield }}
+  </a>

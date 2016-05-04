@@ -13,7 +13,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">HELP</a>
+      <a class="navbar-brand" href="/"><img src="{{ asset_url('../../assets/images/hart.png') }}" alt="HELP" /><span class="nav-brand">H.E.L.P.</span></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,14 +53,15 @@
             <:link href="/">
                 <i class="fa fa-tachometer"></i> Dashboard
             </:link>
-            {{ if in_progress? }}
-              <:link href="/survey">
-                  <i class="fa fa-pencil"></i> Take Survey
+            {{ if taken? }}
+              <:link href="/surveys">
+                <i class="fa fa-bar-chart-o"></i> Your Surveys
               </:link>
-            {{ elsif taken? }}
-              <:link2>
-                <i class="fa fa-pencil"></i> Survey Results
-              </:link2>
+            {{ else }}
+              <:link href="/surveys">
+                <i class="fa fa-bar-chart-o"></i> Your Surveys
+                <span class="badge">1</span>
+              </:link>
             {{ end }}
             {{ if Volt.current_user.admin? }}
             <:link href="/users">
@@ -69,7 +70,20 @@
             <:link href="/marketing">
                 <i class="fa fa-list-alt"></i> Marketing
             </:link>
+            <:link href="/clubs">
+                <i class="fa fa-cubes" ></i> Clubs and Organizations
+            </:link>
+            {{ else }}
+            <:link href="/organizations">
+                <i class="fa fa-cubes"></i> Clubs and Organizations
+            </:link>
             {{ end }}
+            <:link href="/events">
+                <i class="fa fa-calendar"></i> Events
+            </:link>
+            <:link href="/competencies">
+                <i class="fa fa-puzzle-piece"></i> Competencies
+            </:link>
         </div>
       </div>
       {{ end }}

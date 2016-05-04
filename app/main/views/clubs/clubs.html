@@ -1,0 +1,75 @@
+<:Title>
+  HELP | Clubs and Organizations
+
+<:Body>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1 class="page-header">
+          Clubs and Organizations
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <label for="year">Leadership Competency</label>
+        <select class="form-control" value="{{ params._type_filter }}" >
+          <option value="all">All</option>
+          <option value="Self Aware">Self Awareness</option>
+          <option value="Intentional Learner">Intentional Learner</option>
+          <option value="Communicates Effectively">Communication</option>
+          <option value="Develops Relationships">Relationship Development</option>
+          <option value="Diversity and Difference">Diversity Difference</option>
+          <option value="Engaging Leadership">Engaging Leadership</option>
+          <option value="Directive Leadership">Directive Leadership</option>
+          <option value="Champions Effective Processes">Champions Effective Processes</option>
+          <option value="Problem Solving">Problem Solving</option>
+          <option value="Strategic Perspective">Strategic Perspective</option>
+          <option value="Ethics and Integrity">Ethics and Integrity</option>
+          <option value="Innovative Spirit">Innovative Spirit</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="list-group">
+        {{ if params._type_filter == 'all'}}
+          {{ all_clubs.each do |club| }}
+            <a e-click="show_more(club.id)"><h3>{{ club._name }}</h3></a>
+            <p>{{ club._description }}</p>
+            {{ store._competencies.where(club_id: club.id).all.each do |comp| }}
+              <span class="badge">{{ comp.name }}</span>
+            {{ end }}
+            <br><br>
+          {{ end }}
+        {{ else }}
+          {{ all_clubs.each do |club| }}
+            <a e-click="show_more(club[:id])"><h3>{{ the_club(club[:id])._name }}</h3></a>
+            <p>{{ the_club(club[:id])._description }}</p>
+            {{ store._competencies.where(club_id: club[:id]).all.each do |comp| }}
+              <span class="badge">{{ comp.name }}</span>
+            {{ end }}
+            <br><br>
+          {{ end }}
+        {{ end }}
+        </div>
+        <:pagination total="{{ all_clubs_size }}" per_page="10" />
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ if page._club }}
+  <:club_modal model="{{ page._club }}"/>
+{{ end }}

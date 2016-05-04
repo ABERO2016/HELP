@@ -1,918 +1,995 @@
 <:Title>
   HELP | Results
-<:Body>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <h1 class="page-header" style="text-align:center;">
+  <:Body>
+    {{ if Volt.current_user.admin? }}
+    <ol class="breadcrumb">
+      <li><a href="/users">Users</a></li>
+      <li><a href="/users/{{ user.id }}">{{ user.name }}</a></li>
+      <li class="active">Survey {{ _date.strftime('%m/%d/%Y') }}</li>
+    </ol>
+    {{ end }}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h1 class="page-header" style="text-align:center;">
             Hart Leadership Assessment
           </h1>
-          <h1 style="text-align:center;"><small>First Year Leadership Profile Report</small></h1>
-        </div>
-      </div>
-    </div>
-  </div>
-  {{ if view? }}
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-xs-6">
-          <h3><small>Name:</small> {{ user.name }}</h3>
-        </div>
-        <div class="col-xs-6">
-          <h3 class="pull-right"><small>SMU ID:</small> {{ user.smu_id }}</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-6">
-          <h3><small>Major(s):</small> {{ user.major }}</h3>
-        </div>
-        <div class="col-xs-6">
-          <h3 class="pull-right"><small>Date Taken:</small> {{ _date.strftime('%m/%d/%Y') }}</h3>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- <div class="row">
-    <div class="col-md-12">
-      <p> Good Leader: {{ model._good_leader }} </p>
-      <p> Bad Leader: {{ model._bad_leader }} </p>
-    </div>
-  </div> -->
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h2 class="panel-title">Your Leadership Competencies</h2>
-        </div>
-        <div class="panel-body">
-          <div style="text-align:center">
-            <h3 class="panel-title">Sorted by Focus Area</h3>
-          </div>
-          <div class="table-responsive">
-            <table class="results-table">
-              <tbody>
-                <tr>
-                  <th>Self Awareness</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent" style="width: {{ self_awareness }}%">{{ self_awareness }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Intentional Learner</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent" style="width: {{ intentional_learner }}%">{{ intentional_learner }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Communication</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent" style="width: {{ communication }}%">{{ communication }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Relationship Development</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent_green" style="width: {{ relationship_development }}%">{{ relationship_development }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Diversity and Difference</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent_green" style="width: {{ diversity_difference }}%">{{ diversity_difference }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Engaging Leadership</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent_green" style="width: {{ engaging_leadership }}%">{{ engaging_leadership }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Directive Leadership</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent_aqua" style="width: {{ directive_leadership }}%">{{ directive_leadership }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Champions Effective Processes</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent_aqua" style="width: {{ champions }}%">{{ champions }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Problem Solving</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent_aqua" style="width: {{ problem_solving }}%">{{ problem_solving }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Strategic Perspective</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent_red" style="width: {{ strategic_perspective }}%">{{ strategic_perspective }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Ethics and Integrity</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent_red" style="width: {{ ethics_integrity }}%">{{ ethics_integrity }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Innovative Spirit</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent_red" style="width: {{ innovative_spirit }}%">{{ innovative_spirit }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h2 class="panel-title">Focus Area Averages</h2>
+    {{ if view? }}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-6">
+            <h3><small>Name:</small> {{ user.name }}</h3>
+          </div>
+          <div class="col-xs-6">
+            <h3 class="pull-right"><small>SMU ID:</small> {{ user.smu_id }}</h3>
+          </div>
         </div>
-        <div class="panel-body">
-          <div class="table-responsive">
-            <table class="results-table">
-              <tbody>
-                <tr>
-                  <th>Personal Leadership</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent" style="width: {{ personal_leadership }}%">{{ personal_leadership }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Relational Leadership</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent_green" style="width: {{ intentional_learner }}%">{{ intentional_learner }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Functional Leadership</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent_aqua" style="width: {{ communication }}%">{{ communication }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Leading in Context</th>
-                  <th class="bar">
-                    <ul class="graph">
-                      <li class="percent_red" style="width: {{ relationship_development }}%">{{ relationship_development }}%</li>
-                    </ul>
-                  </th>
-                </tr>
-              </tbody>
-            </table>
+        <div class="row">
+          <div class="col-xs-6">
+            <h3><small>Major(s):</small> {{ user.major }}</h3>
+          </div>
+          <div class="col-xs-6">
+            <h3 class="pull-right"><small>Date Taken:</small> {{ _date.strftime('%m/%d/%Y') }}</h3>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h2 class="page-header" style="text-align:center"> Personal Leadership </h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="graph">
-            Self Awareness
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ self_awareness }}%;">
-                {{ self_awareness }}%
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          Intentional Learner
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ intentional_learner }}%;">
-              {{ intentional_learner }}%
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="graph">
-            Communication
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ communication }}%;">
-                {{ communication }}%
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive">
-              <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Self Awareness</th>
-                          <th>Good Leader</th>
-                          <th>Bad Leader</th>
-                          <th>Self</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <td>Candid Self - Appraisal: Aware of personal strengths and shortcomings.</td>
-                        <td>{{ _q12_0_a }}</td>
-                        <td>{{ _q12_0_b }}</td>
-                        <td>{{ _q12_0_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Self Management: Avoids spreading self too thin.</td>
-                        <td>{{ _q12_1_a }}</td>
-                        <td>{{ _q12_1_b }}</td>
-                        <td>{{ _q12_1_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Self - disciplined: Stays on task even under difficult circumstances.</td>
-                        <td>{{ _q12_2_a }}</td>
-                        <td>{{ _q12_2_b }}</td>
-                        <td>{{ _q12_2_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Optimistic: Believes most problems can be solved.</td>
-                        <td>{{ _q12_3_a }}</td>
-                        <td>{{ _q12_3_b }}</td>
-                        <td>{{ _q12_3_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Open to Feedback: Willing to receive constructive feedback.</td>
-                        <td>{{ _q12_4_a }}</td><td>{{ _q12_4_b }}</td><td>{{ _q12_4_c }}</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive">
-              <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Intentional Learner</th>
-                          <th>Good Leader</th>
-                          <th>Bad Leader</th>
-                          <th>Self</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <td>Improves Performance: Improves Performance over time.</td>
-                        <td>{{ model._q13_0_a }}</td> <td>{{ model._q13_0_b }}</td><td>{{ model._q13_0_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Willing to Stretch: Addresses challenges outside of personal comfort zone.	</td>
-                        <td>{{ model._q13_1_a }}</td> <td>{{ model._q13_1_b }}</td><td>{{ model._q13_1_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Reflective Learner: Reflects on and learns from experiences.	</td>
-                        <td>{{ model._q13_2_a }}</td> <td>{{ model._q13_2_b }}</td><td>{{ model._q13_2_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Grows from Adversity: Learns from mistakes or adversity.	</td>
-                        <td>{{ model._q13_3_a }}</td> <td>{{ model._q13_3_b }}</td><td>{{ model._q13_3_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Seeks Feedback: Asks for honest feedback about personal performance.	</td>
-                        <td>{{ model._q13_4_a }}</td> <td>{{ model._q13_4_b }}</td><td>{{ model._q13_4_c }}</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive">
-              <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Communication</th>
-                          <th>Good Leader</th>
-                          <th>Bad Leader</th>
-                          <th>Self</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <td>Open to Feedback: Willing to receive constructive feedback.</td>
-                        <td>{{ _q12_4_a }}</td><td>{{ _q12_4_b }}</td><td>{{ _q12_4_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Seeks Feedback: Asks for honest feedback about personal performance.	</td>
-                        <td>{{ model._q13_4_a }}</td> <td>{{ model._q13_4_b }}</td><td>{{ model._q13_4_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Transparent: Encourages direct and open discussions about important issues.	</td>
-                        <td>{{ model._q14_4_a }}</td><td>{{ model._q14_4_b }}</td><td>{{ model._q14_4_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Careful Listener: Listens intently to others' ideas, suggestions, and concerns.	</td>
-                        <td>{{ model._q16_4_a }}</td><td>{{ model._q16_4_b }}</td><td>{{ model._q16_4_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Gives Candid Feedback: Provides prompt feedback, both positive and negative	</td>
-                        <td>{{ model._q22_4_a }}</td><td>{{ model._q22_4_b }}</td><td>{{ model._q22_4_c }}</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <h2 class="page-header" style="text-align:center"> Relational Leadership </h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="graph">
-            Relational Development
-            <div class="progress">
-              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ relationship_development }}%;">
-                {{ relationship_development }}%
-              </div>
-            </div>
+    <div class="row">
+      <div class="col-lg-12">
+        {{ if _comps_chosen || Volt.current_user.admin? }}
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 class="panel-title">Top Competencies</h2>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          Diversity and Difference
-          <div class="progress">
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ diversity_difference }}%;">
-              {{ diversity_difference }}%
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="graph">
-            Engaging Leadership
-            <div class="progress">
-              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ engaging_leadership }}%;">
-                {{ engaging_leadership }}%
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="panel-body">
+            {{ if has_competency? }}
 
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive">
-              <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Relational Development</th>
-                          <th>Good Leader</th>
-                          <th>Bad Leader</th>
-                          <th>Self</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <td>Inclusive: Welcomes and includes all kinds of people.	</td>
-                        <td>{{ model._q14_0_a }}</td><td>{{ model._q14_0_b }}</td><td>{{ model._q14_0_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Empathetic: Puts self in others' shoes; deeply considers others' point-of-view.	</td>
-                        <td>{{ model._q14_1_a }}</td><td>{{ model._q14_1_b }}</td><td>{{ model._q14_1_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Mends Fences: Can bring people back together after disagreements.	</td>
-                        <td>{{ model._q14_2_a }}</td><td>{{ model._q14_2_b }}</td><td>{{ model._q14_2_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Seeks Common Ground: Strives to find common ground whenever possible.	</td>
-                        <td>{{ model._q14_3_a }}</td><td>{{ model._q14_3_b }}</td><td>{{ model._q14_3_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Transparent: Encourages direct and open discussions about important issues.	</td>
-                        <td>{{ model._q14_4_a }}</td><td>{{ model._q14_4_b }}</td><td>{{ model._q14_4_c }}</td>
-                      </tr>
-                  </tbody>
-              </table>
+            {{ else }}
+            <div class="list-group">
+              <a class="list-group-item">{{ user._competency }} <span class="badge">1</span></a>
+              <a class="list-group-item">{{ user._competency2 }} <span class="badge">2</span></a>
+            </div>
+            {{ end }}
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive">
-              <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Diversity and Difference</th>
-                          <th>Good Leader</th>
-                          <th>Bad Leader</th>
-                          <th>Self</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <td>Student of People: Seeks opportunities to learn about different types of people (e.g., races, nationalities, cultures).	</td>
-                        <td>{{ model._q15_0_a }}</td><td>{{ model._q15_0_b }}</td><td>{{ model._q15_0_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Values Differences: Sees the value in others' unique differences.	</td>
-                        <td>{{ model._q15_1_a }}</td><td>{{ model._q15_1_b }}</td><td>{{ model._q15_1_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Cultural Perspective: When working with people from different backgrounds (e.g., engineering discipline, culture, nationality) works hard to understand their perspective.	</td>
-                        <td>{{ model._q15_2_a }}</td><td>{{ model._q15_2_b }}</td><td>{{ model._q15_2_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Culturally Versatile: Adapts behavior to fit different cultural expectations.	</td>
-                        <td>{{ model._q15_3_a }}</td><td>{{ model._q15_3_b }}</td><td>{{ model._q15_3_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Multicultural Motivator: Can effectively motivate multicultural groups or teams.	</td>
-                        <td>{{ model._q15_4_a }}</td><td>{{ model._q15_4_b }}</td><td>{{ model._q15_4_c }}</td>
-                      </tr>
-                  </tbody>
-              </table>
+        {{ else }}
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h2 class="panel-title">Choose Your Competencies</h2>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <:fields:select label="1st Competency" value="{{ page._comp_one }}" options="{{ User::COMPETENCIES }}" />
+                </div>
+                <div class="col-md-6">
+                  <:fields:select label="2nd Competency" value="{{ page._comp_two }}" options="{{ User::COMPETENCIES }}" />
+                </div>
+                <div class="col-md-12">
+                  <button e-click="save_comps" class="btn btn-success btn-block">Save</button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        {{ end }}
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive">
-              <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Engaging Leadership</th>
-                          <th>Good Leader</th>
-                          <th>Bad Leader</th>
-                          <th>Self</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <td>Inspires Commitment: Gains commitment from others.	</td>
-                        <td>{{ model._q16_0_a }}</td><td>{{ model._q16_0_b }}</td><td>{{ model._q16_0_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Leverages Others' Strengths: Finds ways to utilize others' strengths.	</td>
-                        <td>{{ model._q16_1_a }}</td><td>{{ model._q16_1_b }}</td><td>{{ model._q16_1_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Influences Without Authority: Able to Influences others without requiring a formal leadership position.		</td>
-                        <td>{{ model._q16_2_a }}</td><td>{{ model._q16_2_b }}</td><td>{{ model._q16_2_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Considerate: Gives as much weight to others' perspectives as to one's own.	</td>
-                        <td>{{ model._q16_3_a }}</td><td>{{ model._q16_3_b }}</td><td>{{ model._q16_3_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Careful Listener: Listens intently to others' ideas, suggestions, and concerns.	</td>
-                        <td>{{ model._q16_4_a }}</td><td>{{ model._q16_4_b }}</td><td>{{ model._q16_4_c }}</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <h2 class="page-header" style="text-align:center"> Functional Leadership </h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 class="panel-title">Top Competencies</h2>
+          </div>
+          <div class="panel-body">
+            <div class="list-group">
+              <a class="list-group-item">{{ competencies[0][:competency] }} <span class="badge">{{ competencies[0][:value] }}%</span></a>
+              <a class="list-group-item">{{ competencies[1][:competency] }} <span class="badge">{{ competencies[1][:value] }}%</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+              <h2 class="panel-title">Leaders</h2>
+          </div>
+          <div class="panel-body">
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-success">{{ model._good_leader }} <span class="badge">Good Leader</span></a>
+              <a href="#" class="list-group-item list-group-item-danger">{{ model._bad_leader }} <span class="badge">Bad Leader</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="graph">
-            Directive Leadership
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-primary">
+          <!-- <div class="panel-heading">
+            <h2 class="panel-title">Your Leadership Competencies</h2>
+          </div> -->
+          <div class="panel-body">
+            <div id="chart">
+              <:highcharts options="{{ options }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-primary">
+          <!-- <div class="panel-heading">
+            <h2 class="panel-title">Your Leadership Competencies</h2>
+          </div> -->
+          <div class="panel-body">
+            <div id="bar_chart">
+              <:highcharts options="{{ bar_graph_options }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-primary">
+          <!-- <div class="panel-heading">
+            <h2 class="panel-title">Your Ranked Leadership Competencies</h2>
+          </div> -->
+          <div class="panel-body">
+            <div id="sorted_bar_chart">
+              <:highcharts options="{{ sorted_graph_options }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-primary">
+          <!-- <div class="panel-heading">
+            <h2 class="panel-title">Your Leadership Competencies</h2>
+          </div> -->
+          <div class="panel-body">
+            <div id="focus_bar_chart">
+              <:highcharts options="{{ focus_area_options }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="page-header" style="text-align:center"> Personal Leadership </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="graph">
+              Self Awareness
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ self_awareness }}%;">
+                  {{ self_awareness }}%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            Intentional Learner
             <div class="progress">
-              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ directive_leadership }}%;">
-                {{ directive_leadership }}%
+              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ intentional_learner }}%;">
+                {{ intentional_learner }}%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="graph">
+              Communication
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ communication }}%;">
+                  {{ communication }}%
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          Champions Effective Progress
-          <div class="progress">
-            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ champions }}%;">
-              {{ champions }}%
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Self Awareness</th>
+                    <th>Good Leader</th>
+                    <th>Bad Leader</th>
+                    <th>Self</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Candid Self - Appraisal: Aware of personal strengths and shortcomings.</td>
+                    <td>{{ _q12_0_a }}</td>
+                    <td>{{ _q12_0_b }}</td>
+                    <td>{{ _q12_0_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Self Management: Avoids spreading self too thin.</td>
+                    <td>{{ _q12_1_a }}</td>
+                    <td>{{ _q12_1_b }}</td>
+                    <td>{{ _q12_1_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Self - disciplined: Stays on task even under difficult circumstances.</td>
+                    <td>{{ _q12_2_a }}</td>
+                    <td>{{ _q12_2_b }}</td>
+                    <td>{{ _q12_2_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Optimistic: Believes most problems can be solved.</td>
+                    <td>{{ _q12_3_a }}</td>
+                    <td>{{ _q12_3_b }}</td>
+                    <td>{{ _q12_3_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Open to Feedback: Willing to receive constructive feedback.</td>
+                    <td>{{ _q12_4_a }}</td>
+                    <td>{{ _q12_4_b }}</td>
+                    <td>{{ _q12_4_c }}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="graph">
-            Problem Solving
-            <div class="progress">
-              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ problem_solving }}%;">
-                {{ problem_solving }}%
-              </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Intentional Learner</th>
+                    <th>Good Leader</th>
+                    <th>Bad Leader</th>
+                    <th>Self</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Improves Performance: Improves Performance over time.</td>
+                    <td>{{ model._q13_0_a }}</td>
+                    <td>{{ model._q13_0_b }}</td>
+                    <td>{{ model._q13_0_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Willing to Stretch: Addresses challenges outside of personal comfort zone. </td>
+                    <td>{{ model._q13_1_a }}</td>
+                    <td>{{ model._q13_1_b }}</td>
+                    <td>{{ model._q13_1_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Reflective Learner: Reflects on and learns from experiences. </td>
+                    <td>{{ model._q13_2_a }}</td>
+                    <td>{{ model._q13_2_b }}</td>
+                    <td>{{ model._q13_2_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Grows from Adversity: Learns from mistakes or adversity. </td>
+                    <td>{{ model._q13_3_a }}</td>
+                    <td>{{ model._q13_3_b }}</td>
+                    <td>{{ model._q13_3_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Seeks Feedback: Asks for honest feedback about personal performance. </td>
+                    <td>{{ model._q13_4_a }}</td>
+                    <td>{{ model._q13_4_b }}</td>
+                    <td>{{ model._q13_4_c }}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-responsive">
               <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Directive Leadership</th>
-                          <th>Good Leader</th>
-                          <th>Bad Leader</th>
-                          <th>Self</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <td>Gives Direction: Clearly communicates goals, deadlines, and expectations</td>
-                        <td>{{ model._q22_0_a }}</td><td>{{ model._q22_0_b }}</td><td>{{ model._q22_0_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Prioritizes Effectively: Is good at helping group/team prioritize tasks</td>
-                        <td>{{ model._q22_1_a }}</td><td>{{ model._q22_1_b }}</td><td>{{ model._q22_1_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Clarifies Roles: Ensures group or team members understand their roles</td>
-                        <td>{{ model._q22_2_a }}</td><td>{{ model._q22_2_b }}</td><td>{{ model._q22_2_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Provides Guidance: Offers guidance or support at the appropriate times</td>
-                        <td>{{ model._q22_3_a }}</td><td>{{ model._q22_3_b }}</td><td>{{ model._q22_3_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Gives Candid Feedback: Provides prompt feedback, both positive and negative	</td>
-                        <td>{{ model._q22_4_a }}</td><td>{{ model._q22_4_b }}</td><td>{{ model._q22_4_c }}</td>
-                      </tr>
-                  </tbody>
+                <thead>
+                  <tr>
+                    <th>Communication</th>
+                    <th>Good Leader</th>
+                    <th>Bad Leader</th>
+                    <th>Self</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Open to Feedback: Willing to receive constructive feedback.</td>
+                    <td>{{ _q12_4_a }}</td>
+                    <td>{{ _q12_4_b }}</td>
+                    <td>{{ _q12_4_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Seeks Feedback: Asks for honest feedback about personal performance. </td>
+                    <td>{{ model._q13_4_a }}</td>
+                    <td>{{ model._q13_4_b }}</td>
+                    <td>{{ model._q13_4_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Transparent: Encourages direct and open discussions about important issues. </td>
+                    <td>{{ model._q14_4_a }}</td>
+                    <td>{{ model._q14_4_b }}</td>
+                    <td>{{ model._q14_4_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Careful Listener: Listens intently to others' ideas, suggestions, and concerns. </td>
+                    <td>{{ model._q16_4_a }}</td>
+                    <td>{{ model._q16_4_b }}</td>
+                    <td>{{ model._q16_4_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Gives Candid Feedback: Provides prompt feedback, both positive and negative </td>
+                    <td>{{ model._q22_4_a }}</td>
+                    <td>{{ model._q22_4_b }}</td>
+                    <td>{{ model._q22_4_c }}</td>
+                  </tr>
+                </tbody>
               </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive">
-              <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Champions Effective Processes</th>
-                          <th>Good Leader</th>
-                          <th>Bad Leader</th>
-                          <th>Self</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <td>Shares Leadership: Remains engaged when others are in control.	</td>
-                        <td>{{ model._q17_0_a }}</td><td>{{ model._q17_0_b }}</td><td>{{ model._q17_0_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Shares Responsibility: Willing to share important tasks, not just things he/she doesn't want to do.	</td>
-                        <td>{{ model._q17_1_a }}</td><td>{{ model._q17_1_b }}</td><td>{{ model._q17_1_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Believes in Others: Believes in everyone's ability to make valuable contributions.	</td>
-                        <td>{{ model._q17_2_a }}</td><td>{{ model._q17_2_b }}</td><td>{{ model._q17_2_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Trusting of Others: Is comfortable depending on others over whom he/she has no control.	</td>
-                        <td>{{ model._q17_3_a }}</td><td>{{ model._q17_3_b }}</td><td>{{ model._q17_3_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Maintains Accountability: Holds others accountable in a respectful way.		</td>
-                        <td>{{ model._q17_4_a }}</td><td>{{ model._q17_4_b }}</td><td>{{ model._q17_4_c }}</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive">
-              <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Problem Solving</th>
-                          <th>Good Leader</th>
-                          <th>Bad Leader</th>
-                          <th>Self</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <td>Defines Problems Effectively: Gets to the root cause of the issue.	</td>
-                        <td>{{ model._q18_0_a }}</td><td>{{ model._q18_0_b }}</td><td>{{ model._q18_0_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Makes Informed Decisions: Gathers information necessary to make good decisions.	</td>
-                        <td>{{ model._q18_1_a }}</td><td>{{ model._q18_1_b }}</td><td>{{ model._q18_1_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Logical Thinker: Thinks problems through clearly and logically.	</td>
-                        <td>{{ model._q18_2_a }}</td><td>{{ model._q18_2_b }}</td><td>{{ model._q18_2_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Uses Judgment: Shows good judgment when making decisions.		</td>
-                        <td>{{ model._q18_3_a }}</td><td>{{ model._q18_3_b }}</td><td>{{ model._q18_3_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Decisive: Makes effective decisions in a timely manner.		</td>
-                        <td>{{ model._q18_4_a }}</td><td>{{ model._q18_4_b }}</td><td>{{ model._q18_4_c }}</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <h2 class="page-header" style="text-align:center"> Leading in Context </h2>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="page-header" style="text-align:center"> Relational Leadership </h2>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="graph">
-            Strategic Perspective
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="graph">
+              Relational Development
+              <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ relationship_development }}%;">
+                  {{ relationship_development }}%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            Diversity and Difference
             <div class="progress">
-              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ strategic_perspective }}%;">
-                {{ strategic_perspective }}%
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ diversity_difference }}%;">
+                {{ diversity_difference }}%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="graph">
+              Engaging Leadership
+              <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ engaging_leadership }}%;">
+                  {{ engaging_leadership }}%
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          Ethics and Integrity
-          <div class="progress">
-            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ ethics_integrity }}%;">
-              {{ ethics_integrity }}%
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Relational Development</th>
+                    <th>Good Leader</th>
+                    <th>Bad Leader</th>
+                    <th>Self</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Inclusive: Welcomes and includes all kinds of people. </td>
+                    <td>{{ model._q14_0_a }}</td>
+                    <td>{{ model._q14_0_b }}</td>
+                    <td>{{ model._q14_0_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Empathetic: Puts self in others' shoes; deeply considers others' point-of-view. </td>
+                    <td>{{ model._q14_1_a }}</td>
+                    <td>{{ model._q14_1_b }}</td>
+                    <td>{{ model._q14_1_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Mends Fences: Can bring people back together after disagreements. </td>
+                    <td>{{ model._q14_2_a }}</td>
+                    <td>{{ model._q14_2_b }}</td>
+                    <td>{{ model._q14_2_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Seeks Common Ground: Strives to find common ground whenever possible. </td>
+                    <td>{{ model._q14_3_a }}</td>
+                    <td>{{ model._q14_3_b }}</td>
+                    <td>{{ model._q14_3_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Transparent: Encourages direct and open discussions about important issues. </td>
+                    <td>{{ model._q14_4_a }}</td>
+                    <td>{{ model._q14_4_b }}</td>
+                    <td>{{ model._q14_4_c }}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="graph">
-            Innovative Spirit
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Diversity and Difference</th>
+                    <th>Good Leader</th>
+                    <th>Bad Leader</th>
+                    <th>Self</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Student of People: Seeks opportunities to learn about different types of people (e.g., races, nationalities, cultures). </td>
+                    <td>{{ model._q15_0_a }}</td>
+                    <td>{{ model._q15_0_b }}</td>
+                    <td>{{ model._q15_0_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Values Differences: Sees the value in others' unique differences. </td>
+                    <td>{{ model._q15_1_a }}</td>
+                    <td>{{ model._q15_1_b }}</td>
+                    <td>{{ model._q15_1_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Cultural Perspective: When working with people from different backgrounds (e.g., engineering discipline, culture, nationality) works hard to understand their perspective. </td>
+                    <td>{{ model._q15_2_a }}</td>
+                    <td>{{ model._q15_2_b }}</td>
+                    <td>{{ model._q15_2_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Culturally Versatile: Adapts behavior to fit different cultural expectations. </td>
+                    <td>{{ model._q15_3_a }}</td>
+                    <td>{{ model._q15_3_b }}</td>
+                    <td>{{ model._q15_3_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Multicultural Motivator: Can effectively motivate multicultural groups or teams. </td>
+                    <td>{{ model._q15_4_a }}</td>
+                    <td>{{ model._q15_4_b }}</td>
+                    <td>{{ model._q15_4_c }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Engaging Leadership</th>
+                    <th>Good Leader</th>
+                    <th>Bad Leader</th>
+                    <th>Self</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Inspires Commitment: Gains commitment from others. </td>
+                    <td>{{ model._q16_0_a }}</td>
+                    <td>{{ model._q16_0_b }}</td>
+                    <td>{{ model._q16_0_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Leverages Others' Strengths: Finds ways to utilize others' strengths. </td>
+                    <td>{{ model._q16_1_a }}</td>
+                    <td>{{ model._q16_1_b }}</td>
+                    <td>{{ model._q16_1_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Influences Without Authority: Able to Influences others without requiring a formal leadership position. </td>
+                    <td>{{ model._q16_2_a }}</td>
+                    <td>{{ model._q16_2_b }}</td>
+                    <td>{{ model._q16_2_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Considerate: Gives as much weight to others' perspectives as to one's own. </td>
+                    <td>{{ model._q16_3_a }}</td>
+                    <td>{{ model._q16_3_b }}</td>
+                    <td>{{ model._q16_3_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Careful Listener: Listens intently to others' ideas, suggestions, and concerns. </td>
+                    <td>{{ model._q16_4_a }}</td>
+                    <td>{{ model._q16_4_b }}</td>
+                    <td>{{ model._q16_4_c }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="page-header" style="text-align:center"> Functional Leadership </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="graph">
+              Directive Leadership
+              <div class="progress">
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ directive_leadership }}%;">
+                  {{ directive_leadership }}%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            Champions Effective Progress
             <div class="progress">
-              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ innovative_spirit }}%;">
-                {{ innovative_spirit }}%
+              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ champions }}%;">
+                {{ champions }}%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="graph">
+              Problem Solving
+              <div class="progress">
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ problem_solving }}%;">
+                  {{ problem_solving }}%
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-responsive">
               <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Strategic Perspective</th>
-                          <th>Good Leader</th>
-                          <th>Bad Leader</th>
-                          <th>Self</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <td>Sees Big Picture: Effectively frames large-scale problems or challenges.	</td>
-                        <td>{{ model._q19_0_a }}</td><td>{{ model._q19_0_b }}</td><td>{{ model._q19_0_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Systemic Awareness: Identifies patterns and cycles that impact performance.	</td>
-                        <td>{{ model._q19_1_a }}</td><td>{{ model._q19_1_b }}</td><td>{{ model._q19_1_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Considers Options: Recognizes trade-offs; doesn't assume a single best way.	</td>
-                        <td>{{ model._q19_2_a }}</td><td>{{ model._q19_2_b }}</td><td>{{ model._q19_2_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Pragmatic: Can articulate pros and cons when making important decisions.	</td>
-                        <td>{{ model._q19_3_a }}</td><td>{{ model._q19_3_b }}</td><td>{{ model._q19_3_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Recognizes Opportunity: Identifies issues and opportunities for strategic change.	</td>
-                        <td>{{ model._q19_4_a }}</td><td>{{ model._q19_4_b }}</td><td>{{ model._q19_4_c }}</td>
-                      </tr>
-                  </tbody>
+                <thead>
+                  <tr>
+                    <th>Directive Leadership</th>
+                    <th>Good Leader</th>
+                    <th>Bad Leader</th>
+                    <th>Self</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Gives Direction: Clearly communicates goals, deadlines, and expectations</td>
+                    <td>{{ model._q22_0_a }}</td>
+                    <td>{{ model._q22_0_b }}</td>
+                    <td>{{ model._q22_0_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Prioritizes Effectively: Is good at helping group/team prioritize tasks</td>
+                    <td>{{ model._q22_1_a }}</td>
+                    <td>{{ model._q22_1_b }}</td>
+                    <td>{{ model._q22_1_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Clarifies Roles: Ensures group or team members understand their roles</td>
+                    <td>{{ model._q22_2_a }}</td>
+                    <td>{{ model._q22_2_b }}</td>
+                    <td>{{ model._q22_2_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Provides Guidance: Offers guidance or support at the appropriate times</td>
+                    <td>{{ model._q22_3_a }}</td>
+                    <td>{{ model._q22_3_b }}</td>
+                    <td>{{ model._q22_3_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Gives Candid Feedback: Provides prompt feedback, both positive and negative </td>
+                    <td>{{ model._q22_4_a }}</td>
+                    <td>{{ model._q22_4_b }}</td>
+                    <td>{{ model._q22_4_c }}</td>
+                  </tr>
+                </tbody>
               </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-responsive">
               <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Ethics and Integrity</th>
-                          <th>Good Leader</th>
-                          <th>Bad Leader</th>
-                          <th>Self</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <td>Encourages Honesty: Words and deeds facilitate an atmosphere of honesty.	</td>
-                        <td>{{ model._q20_0_a }}</td><td>{{ model._q20_0_b }}</td><td>{{ model._q20_0_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Trustworthy: Gains trust from others.	</td>
-                        <td>{{ model._q20_1_a }}</td><td>{{ model._q20_1_b }}</td><td>{{ model._q20_1_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Ethical Decision-maker: Uses ethical considerations to guide decisions.	</td>
-                        <td>{{ model._q20_2_a }}</td><td>{{ model._q20_2_b }}</td><td>{{ model._q20_2_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Pragmatic: Can articulate pros and cons when making important decisions.	</td>
-                        <td>{{ model._q20_3_a }}</td><td>{{ model._q20_3_b }}</td><td>{{ model._q20_3_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Principled: Places ethical behavior above personal gain.	</td>
-                        <td>{{ model._q20_4_a }}</td><td>{{ model._q20_4_b }}</td><td>{{ model._q20_4_c }}</td>
-                      </tr>
-                  </tbody>
+                <thead>
+                  <tr>
+                    <th>Champions Effective Processes</th>
+                    <th>Good Leader</th>
+                    <th>Bad Leader</th>
+                    <th>Self</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Shares Leadership: Remains engaged when others are in control. </td>
+                    <td>{{ model._q17_0_a }}</td>
+                    <td>{{ model._q17_0_b }}</td>
+                    <td>{{ model._q17_0_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Shares Responsibility: Willing to share important tasks, not just things he/she doesn't want to do. </td>
+                    <td>{{ model._q17_1_a }}</td>
+                    <td>{{ model._q17_1_b }}</td>
+                    <td>{{ model._q17_1_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Believes in Others: Believes in everyone's ability to make valuable contributions. </td>
+                    <td>{{ model._q17_2_a }}</td>
+                    <td>{{ model._q17_2_b }}</td>
+                    <td>{{ model._q17_2_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Trusting of Others: Is comfortable depending on others over whom he/she has no control. </td>
+                    <td>{{ model._q17_3_a }}</td>
+                    <td>{{ model._q17_3_b }}</td>
+                    <td>{{ model._q17_3_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Maintains Accountability: Holds others accountable in a respectful way. </td>
+                    <td>{{ model._q17_4_a }}</td>
+                    <td>{{ model._q17_4_b }}</td>
+                    <td>{{ model._q17_4_c }}</td>
+                  </tr>
+                </tbody>
               </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="table-responsive">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-responsive">
               <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Innovative Spirit</th>
-                          <th>Good Leader</th>
-                          <th>Bad Leader</th>
-                          <th>Self</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <td>Entrepreneurial: Seizes new opportunities.	</td>
-                        <td>{{ model._q21_0_a }}</td><td>{{ model._q21_0_b }}</td><td>{{ model._q21_0_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Thinks Differently: Forms unique ideas and associations.	</td>
-                        <td>{{ model._q21_1_a }}</td><td>{{ model._q21_1_b }}</td><td>{{ model._q21_1_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Inventive: Creates new and different ways to solve problems.	</td>
-                        <td>{{ model._q21_2_a }}</td><td>{{ model._q21_2_b }}</td><td>{{ model._q21_2_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Generative: Consistently generates new ideas.	</td>
-                        <td>{{ model._q21_3_a }}</td><td>{{ model._q21_3_b }}</td><td>{{ model._q21_3_c }}</td>
-                      </tr>
-                      <tr>
-                        <td>Maker Instinct: Can access his or her inner drive to make, build, and grow things.	</td>
-                        <td>{{ model._q21_4_a }}</td><td>{{ model._q21_4_b }}</td><td>{{ model._q21_4_c }}</td>
-                      </tr>
-                  </tbody>
+                <thead>
+                  <tr>
+                    <th>Problem Solving</th>
+                    <th>Good Leader</th>
+                    <th>Bad Leader</th>
+                    <th>Self</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Defines Problems Effectively: Gets to the root cause of the issue. </td>
+                    <td>{{ model._q18_0_a }}</td>
+                    <td>{{ model._q18_0_b }}</td>
+                    <td>{{ model._q18_0_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Makes Informed Decisions: Gathers information necessary to make good decisions. </td>
+                    <td>{{ model._q18_1_a }}</td>
+                    <td>{{ model._q18_1_b }}</td>
+                    <td>{{ model._q18_1_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Logical Thinker: Thinks problems through clearly and logically. </td>
+                    <td>{{ model._q18_2_a }}</td>
+                    <td>{{ model._q18_2_b }}</td>
+                    <td>{{ model._q18_2_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Uses Judgment: Shows good judgment when making decisions. </td>
+                    <td>{{ model._q18_3_a }}</td>
+                    <td>{{ model._q18_3_b }}</td>
+                    <td>{{ model._q18_3_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Decisive: Makes effective decisions in a timely manner. </td>
+                    <td>{{ model._q18_4_a }}</td>
+                    <td>{{ model._q18_4_b }}</td>
+                    <td>{{ model._q18_4_c }}</td>
+                  </tr>
+                </tbody>
               </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  {{ else }}
-  <div class="row">
-    <div class="col-md-12">
-      <p> To view results first take the survey </p>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="page-header" style="text-align:center"> Leading in Context </h2>
+      </div>
     </div>
-  </div>
-  {{ end }}
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="graph">
+              Strategic Perspective
+              <div class="progress">
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ strategic_perspective }}%;">
+                  {{ strategic_perspective }}%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            Ethics and Integrity
+            <div class="progress">
+              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ ethics_integrity }}%;">
+                {{ ethics_integrity }}%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="graph">
+              Innovative Spirit
+              <div class="progress">
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ innovative_spirit }}%;">
+                  {{ innovative_spirit }}%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Strategic Perspective</th>
+                    <th>Good Leader</th>
+                    <th>Bad Leader</th>
+                    <th>Self</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sees Big Picture: Effectively frames large-scale problems or challenges. </td>
+                    <td>{{ model._q19_0_a }}</td>
+                    <td>{{ model._q19_0_b }}</td>
+                    <td>{{ model._q19_0_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Systemic Awareness: Identifies patterns and cycles that impact performance. </td>
+                    <td>{{ model._q19_1_a }}</td>
+                    <td>{{ model._q19_1_b }}</td>
+                    <td>{{ model._q19_1_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Considers Options: Recognizes trade-offs; doesn't assume a single best way. </td>
+                    <td>{{ model._q19_2_a }}</td>
+                    <td>{{ model._q19_2_b }}</td>
+                    <td>{{ model._q19_2_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Pragmatic: Can articulate pros and cons when making important decisions. </td>
+                    <td>{{ model._q19_3_a }}</td>
+                    <td>{{ model._q19_3_b }}</td>
+                    <td>{{ model._q19_3_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Recognizes Opportunity: Identifies issues and opportunities for strategic change. </td>
+                    <td>{{ model._q19_4_a }}</td>
+                    <td>{{ model._q19_4_b }}</td>
+                    <td>{{ model._q19_4_c }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Ethics and Integrity</th>
+                    <th>Good Leader</th>
+                    <th>Bad Leader</th>
+                    <th>Self</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Encourages Honesty: Words and deeds facilitate an atmosphere of honesty. </td>
+                    <td>{{ model._q20_0_a }}</td>
+                    <td>{{ model._q20_0_b }}</td>
+                    <td>{{ model._q20_0_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Trustworthy: Gains trust from others. </td>
+                    <td>{{ model._q20_1_a }}</td>
+                    <td>{{ model._q20_1_b }}</td>
+                    <td>{{ model._q20_1_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Ethical Decision-maker: Uses ethical considerations to guide decisions. </td>
+                    <td>{{ model._q20_2_a }}</td>
+                    <td>{{ model._q20_2_b }}</td>
+                    <td>{{ model._q20_2_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Pragmatic: Can articulate pros and cons when making important decisions. </td>
+                    <td>{{ model._q20_3_a }}</td>
+                    <td>{{ model._q20_3_b }}</td>
+                    <td>{{ model._q20_3_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Principled: Places ethical behavior above personal gain. </td>
+                    <td>{{ model._q20_4_a }}</td>
+                    <td>{{ model._q20_4_b }}</td>
+                    <td>{{ model._q20_4_c }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Innovative Spirit</th>
+                    <th>Good Leader</th>
+                    <th>Bad Leader</th>
+                    <th>Self</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Entrepreneurial: Seizes new opportunities. </td>
+                    <td>{{ model._q21_0_a }}</td>
+                    <td>{{ model._q21_0_b }}</td>
+                    <td>{{ model._q21_0_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Thinks Differently: Forms unique ideas and associations. </td>
+                    <td>{{ model._q21_1_a }}</td>
+                    <td>{{ model._q21_1_b }}</td>
+                    <td>{{ model._q21_1_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Inventive: Creates new and different ways to solve problems. </td>
+                    <td>{{ model._q21_2_a }}</td>
+                    <td>{{ model._q21_2_b }}</td>
+                    <td>{{ model._q21_2_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Generative: Consistently generates new ideas. </td>
+                    <td>{{ model._q21_3_a }}</td>
+                    <td>{{ model._q21_3_b }}</td>
+                    <td>{{ model._q21_3_c }}</td>
+                  </tr>
+                  <tr>
+                    <td>Maker Instinct: Can access his or her inner drive to make, build, and grow things. </td>
+                    <td>{{ model._q21_4_a }}</td>
+                    <td>{{ model._q21_4_b }}</td>
+                    <td>{{ model._q21_4_c }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ else }}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p> Your results will be given to you at a orientation. Remember to RSVP for the event </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}

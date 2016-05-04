@@ -7,6 +7,7 @@ class User < Volt::User
   MAJORS_OPTIONS = ['', 'Civil Engineering', 'Computer Engineering', 'Computer Science', 'Electrical Engineering', 'Engineering', 'Engineering Management Information Systems', 'Environmental Engineering','Management Science', 'Mechanical Engineering', 'Other']
   MAJORS = ['Civil Engineering', 'Computer Engineering', 'Computer Science', 'Electrical Engineering', 'Engineering', 'Engineering Management Information Systems', 'Environmental Engineering','Management Science', 'Mechanical Engineering', 'Other']
   SURVEY_STATUS = ['not taken', 'in progress', 'taken']
+  COMPETENCIES = ['Self Aware', 'Intentional Learner', 'Communicates Effectively', 'Develops Relationships', 'Diversity and Difference', 'Engaging Leadership', 'Directive Leadership', 'Champions Effective Processes', 'Problem Solving', 'Strategic Perspective', 'Ethics and Integrity', 'Innovative Spirit']
 
   field login_field
   field :first_name
@@ -20,6 +21,7 @@ class User < Volt::User
   field :role
   field :survey_status
   field :mktg, String
+  field :visible
 
   #Validations
   validate login_field, unique: true, length: 8, presence: true

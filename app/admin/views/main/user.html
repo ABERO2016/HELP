@@ -1,0 +1,41 @@
+<:Title>
+  HELP | Surveys
+
+<:Body>
+{{ if Volt.current_user.admin? }}
+<ol class="breadcrumb">
+  <li><a href="/users">Users</a></li>
+  <li class="active">{{ current_user.name }}</li>
+</ol>
+{{ end }}
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1 class="page-header">
+          {{ if Volt.current_user.admin? }}
+            {{ current_user.name }} <small>Surveys</small>
+          {{ else }}
+            Your Surveys
+          {{ end }}
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="list-group">
+        {{ users_surveys.each do |survey| }}
+          <a href="/results/{{ survey.id }}" class="list-group-item">Survey taken on {{ survey._date.strftime('%m/%d/%Y') }}
+            <span class="badge">{{ survey._date.strftime('%l:%M%p') }}</span>
+          </a>
+        {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

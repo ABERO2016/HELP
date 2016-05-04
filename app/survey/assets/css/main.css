@@ -6,7 +6,6 @@ ul.graph {
 
 ul.graph li
 {
-	margin-bottom: .5em;
 	padding: .2em;
 	background: #600;
 	color: black;
@@ -31,16 +30,22 @@ ul.graph li.percent_orange
 ul.graph li.percent_red {
 	background: #d9534f;
 }
-th.bar {
+td.bar {
   border-left: 1px solid black !important;
   width: 80%;
+	vertical-align: center !important;
 }
 .results-table {
   width: 100%;
 }
-.results-table th {
-  padding: 0px;
+.results-table td {
   border: none;
   text-align: right;
-  padding-right: 10px;
+  padding-right: 10px !important;
+	height: 40px;
+	vertical-align: center;
+}
+
+.results-table tr {
+	border: 1px solid #E5EBF2;
 }

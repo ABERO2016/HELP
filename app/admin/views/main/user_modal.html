@@ -10,48 +10,53 @@
           <h2 class="modal-title">User <small>{{ model.name || 'New User'}}</small></h2>
         </div>
         <div class="modal-body">
-          <div class="row">
-            <div class="col-sm-12">
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <th>First Name</th>
-                    <td>{{ model.first_name || "--" }}</td>
-                  </tr>
-                  <tr>
-                    <th>Last Name</th>
-                    <td>{{ model.last_name || "--" }}</td>
-                  </tr>
-                  <tr>
-                    <th>Prefered Name</th>
-                    <td>{{ model.prefered_name || "--" }}</td>
-                  </tr>
-                  <tr>
-                    <th>SMU ID</th>
-                    <td>{{ model.smu_id || "--" }}</td>
-                  </tr>
-                  <tr>
-                    <th>Graduation Year</th>
-                    <td>{{ model.graduation_year || "--" }}</td>
-                  </tr>
-                  <tr>
-                    <th>Major</th>
-                    <td>{{ model.major || "--" }}</td>
-                  </tr>
-                  <tr>
-                    <th>Last Login</th>
-                    <td>{{ model.last_login.strftime("%m/%d") }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <table class="table table-responsive">
+            <tbody>
+              <tr>
+                <td><b>First Name</b></td>
+                <td>{{ model.first_name || "--" }}</td>
+              </tr>
+              <tr>
+                <td><b>Last Name</b></td>
+                <td>{{ model.last_name || "--" }}</td>
+              </tr>
+              <tr>
+                <td><b>Prefered Name</b></td>
+                <td>{{ model.prefered_name || "--" }}</td>
+              </tr>
+              <tr>
+                <td><b>SMU Email</b></td>
+                <td>{{ model.email || "--" }}</td>
+              </tr>
+              <tr>
+                <td><b>SMU ID</b></td>
+                <td>{{ model.smu_id || "--" }}</td>
+              </tr>
+              <tr>
+                <td><b>Graduation Year</b></td>
+                <td>{{ model.graduation_year || "--" }}</td>
+              </tr>
+              <tr>
+                <td><b>Major</b></td>
+                <td>{{ model.major || "--" }}</td>
+              </tr>
+              <tr>
+                <td><b>Last Login</b></td>
+                <td>{{ model.last_login.strftime("%m/%d/%Y") }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="modal-footer">
-          {{ if model.survey_status == 'not taken' }}
-            <button e-click="allow_access(model.id)" class="btn btn-primary" >Issue Survey</button>
-          {{ elsif model.survey_status == 'in progress' }}
-            <button class="btn btn-default">Survey In Progress</button>
+          {{ if !model.visible }}
+            <button e-click="access(model.id)" class="btn btn-info"><span class="fa fa-unlock"></span> Allow Access</button>
+          {{ end }}
+          {{ if model.survey_status == 'taken' }}
+            <button e-click="allow_access(model.id)" class="btn btn-success">Issue a Survey</button>
+          {{ else }}
+            <button class="btn btn-default" disabled="true">Survey In Progress</button>
+          {{ end }}
+          {{ if have_survey? }}
           {{ else }}
             <button e-click="survey(model.id)" class="btn btn-primary" >View Survey Results</button>
           {{ end }}

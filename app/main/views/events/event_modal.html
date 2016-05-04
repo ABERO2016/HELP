@@ -1,0 +1,100 @@
+<:Body>
+<div class="modal fade" id="EventModal">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">{{ model.name || 'New Event' }}</h2>
+      </div>
+      <div class="modal-body">
+          {{ if Volt.current_user.admin? }}
+            <:fields:text value="{{ model._name }}" label="Event Name/Title"/>
+            <:fields:textarea value="{{ model._description }}" />
+            <:fields:text value="{{ model._rsvp }}" label="RSVP Link (Google Forms)"/>
+            <:fields:text value="{{ model._location }}" label="Event Location"/>
+            <:datepicker value="{{ model._date }}" label="Day of Event" />
+            <label for="myTime">Start Time</label>
+            <input class="form-control" type="time" id="myTime" value="{{ page._time }}"><br>
+            <label for="endTime">End Time</label>
+            <input class="form-control" type="time" id="endTime" value="{{ page._end_time }}"><br>
+          {{ else }}
+            <label>Description</label>
+            <p>{{ model._description }}</p><br>
+            <p><b>RSVP:</b>
+            {{ if info_is_link? }}
+              <a href="{{ model._rsvp }}" target="_blank">{{ model._rsvp }}</a>
+            {{ else }}
+              {{ model._rsvp || 'None' }}
+            {{ end }}
+            </p>
+            <table class="table table-responsive">
+              <tbody>
+                <tr>
+                  <td><b>Location</b></td>
+                  <td>{{ model._location || "--" }}</td>
+                </tr>
+                <tr>
+                  <td><b>Date</b></td>
+                  <td>{{ model._date || "--" }}</td>
+                </tr>
+                <tr>
+                  <td><b>Start Time</b></td>
+                  <td>{{ model._start_time.strftime("%l:%M %p") || "--" }}</td>
+                </tr>
+                <tr>
+                  <td><b>End Time</b></td>
+                  <td>{{ model._end_time.strftime("%l:%M %p") || "--" }}</td>
+                </tr>
+              </tbody>
+            </table>
+          {{ end }}
+          <div class="row">
+            <div class="col-lg-12">
+              <label class="control-label" style="text-align:center;"> Competencies for this Event</label>
+            </div>
+            {{ if model.saved? }}
+            <div class="col-lg-12">
+              <div class="list-group">
+                {{ event_competencies(model.id).each do |comp| }}
+                  <a href="" class="list-group-item">{{ comp.name }}</a>
+                {{ end }}
+              </div>
+            </div>
+            {{ else }}
+              <div class="col-md-6">
+                <div class="list-group">
+                  <:clubs:competency item="Self Aware">Self Awareness</:clubs:competency>
+                  <:clubs:competency item="Intentional Learner">Intentional Learner</:clubs:competency>
+                  <:clubs:competency item="Communicates Effectively">Communicates Effectively</:clubs:competency>
+                  <:clubs:competency item="Develops Relationships">Develops Relationships</:clubs:competency>
+                  <:clubs:competency item="Diversity and Difference">Diversity and Difference</:clubs:competency>
+                  <:clubs:competency item="Engaging Leadership">Engaging Leadership</:clubs:competency>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="list-group">
+                  <:clubs:competency item="Directive Leadership">Directive Leadership</:clubs:competency>
+                  <:clubs:competency item="Champions Effective Processes">Champions Effective Processes</:clubs:competency>
+                  <:clubs:competency item="Problem Solving">Problem Solving</:clubs:competency>
+                  <:clubs:competency item="Strategic Perspective">Strategic Perspective</:clubs:competency>
+                  <:clubs:competency item="Ethics and Integrity">Ethics and Integrity</:clubs:competency>
+                  <:clubs:competency item="Innovative Spirit">Innovative Spirit</:clubs:competency>
+                </div>
+              </div>
+            {{ end }}
+          </div>
+      </div>
+      <div class="modal-footer">
+        {{ if model.saved? && Volt.current_user.admin? }}
+          <button type="button" e-click="update_event" class="btn btn-primary btn-block"><span class="fa fa-check"></span> Save</button>
+          <button type="button" class="btn btn-danger btn-block" e-click="delete_and_close"><span class="fa fa-trash"></span>  Delete</button>
+        {{ elsif Volt.current_user.admin?}}
+          <button type="button" e-click="save_event" class="btn btn-primary btn-block"><span class="fa fa-check"></span> Create Event</button>
+        {{ end }}
+        <button id="close" type="button" data-dismiss="modal" class="btn btn-default btn-block"><span class="fa fa-times"></span> Close</button>
+      </div>
+    </div>
+  </div>
+</div>

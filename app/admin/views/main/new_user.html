@@ -12,8 +12,8 @@
           <div class="row">
             <div class="col-sm-12">
               <p> To add a user, enter their email. If adding multiple users: seperate emails by ;</p>
-              <input type="email" class="form-control" value="{{ page._email }}" >
-              <button class="btn btn-primary" e-click="send_email">Invite</button>
+              <:fields:textarea value="{{ page._email }}" /><br>
+              <button class="btn btn-primary btn-block" e-click="send_email">Invite</button>
             </div>
           </div>
         </div>

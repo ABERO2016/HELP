@@ -1,0 +1,54 @@
+<:Title>
+  HELP | New Club/Organization
+
+<:Body>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1 class="page-header">
+          New Club/Organization
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form e-submit="save_club">
+          <:fields:text value="{{ name }}" label="Club/Organization Name"/>
+          <:fields:textarea value="{{ description }}" />
+          <:fields:text value="{{ more_info }}" label="More Info - A link or email to contact "/>
+          <div class="row">
+            <div class="col-lg-12">
+              <label class="control-label" style="text-align:center;"> Select Competencies for this Club</label>
+            </div>
+            <div class="col-md-6">
+              <div class="list-group">
+                <:competency item="Self Aware">Self Awareness</:competency>
+                <:competency item="Intentional Learner">Intentional Learner</:competency>
+                <:competency item="Communicates Effectively">Communicates Effectively</:competency>
+                <:competency item="Develops Relationships">Relationship Development</:competency>
+                <:competency item="Diversity and Difference">Diversity and Difference</:competency>
+                <:competency item="Engaging Leadership">Engaging Leadership</:competency>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="list-group">
+                <:competency item="Directive Leadership">Directive Leadership</:competency>
+                <:competency item="Champions Effective Processes">Champions Effective Processing</:competency>
+                <:competency item="Problem Solving">Problem Solving</:competency>
+                <:competency item="Strategic Perspective">Strategic Perspective</:competency>
+                <:competency item="Ethics and Integrity">Ethics and Integrity</:competency>
+                <:competency item="Innovative Spirit">Innovative Spirit</:competency>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

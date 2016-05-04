@@ -29,6 +29,38 @@ module Main
       end
     end
 
+    def has_competency?
+      Volt.current_user._competency.then do |comp|
+        if comp == '' || comp == nil
+          false
+        else
+          true
+        end
+      end
+    end
+
+    def user_name(id)
+      store.users.where(id: id).first.then do |user|
+        user.name
+      end
+    end
+
+    def upcoming_events
+      store.events.where({:date => { '$gte' => Time.now.strftime("%m/%d/%Y") } }).order(:date => 1).all
+    end
+
+    def competency_one
+      Volt.current_user.then do |user|
+        user._competency
+      end
+    end
+
+    def competency_two
+      Volt.current_user.then do |user|
+        user._competency2
+      end
+    end
+
     def go_to_survey
       Volt.current_user_id.then do |id|
         store._surveyforms.where(user_id: id).first.then do |s|
@@ -40,9 +72,9 @@ module Main
     def save
       if !page._mktg.empty?
         Volt.current_user._mktg = page._mktg
-        flash._successes << "saved answer"
+        `swal("Thank You", "", "success");`
       else
-        flash._errors << "unable to save"
+        `swal("Error", "Please Select an option", "error");`
       end
     end
 

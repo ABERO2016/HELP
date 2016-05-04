@@ -1,0 +1,23 @@
+<:Body>
+<!-- Modal -->
+<div class="modal fade" id="emailModal">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">Email</h2>
+      </div>
+      <div class="modal-body">
+        <:fields:text value="{{ page._subject }}" label="Subject" />
+        <:fields:textarea value="{{ page._email_body }}" label="Body" />
+      </div>
+      <div class="modal-footer">
+        <button e-click="send_group_email" class="btn btn-primary"><span class="fa fa-send"></span> Send</button>
+        <button id="close" type="button" data-dismiss="modal" class="btn btn-default"><span class="fa fa-times"></span> Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
